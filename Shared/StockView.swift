@@ -14,7 +14,7 @@ struct StockView: View {
     ]
     var body: some View {
         NavigationView {
-            NavigationLink(destination: StockDataView_()) {
+            NavigationLink(destination: StockDataView()) {
                 VStack(alignment: .leading) {
                     ZStack {
                                  Rectangle()
