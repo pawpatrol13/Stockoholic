@@ -29,19 +29,6 @@ struct StockView: View {
             ZStack {
                 Color("BackgroundColor")
                     .edgesIgnoringSafeArea(.all)
-                VStack {
-                    Button {
-                        showingSheet2.toggle()
-                    } label: {
-                        Image(systemName:  "text.book.closed")
-                            .font(.title)
-                    }
-                    .sheet(isPresented: $showingSheet2) {
-                        SheetView2()
-                }
-                    .position(x: 27, y: 0)
-                    
-                }
                 VStack(alignment: .leading) {
                     ZStack {
                         Rectangle()
@@ -75,6 +62,19 @@ struct StockView: View {
                         }
                         
                     }
+                }
+                VStack {
+                    Button {
+                        showingSheet2.toggle()
+                    } label: {
+                        Image(systemName:  "text.book.closed")
+                            .font(.title)
+                    }
+                    .sheet(isPresented: $showingSheet2) {
+                        SheetView2()
+                }
+                    .position(x: 27, y: 0)
+                    
                 }
             }
         }
