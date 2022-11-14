@@ -44,11 +44,15 @@ struct PortfoilioView: View {
                             .padding()
                             .font(.headline)
                             .foregroundColor(.white)
-                        Rectangle()
-                            .frame(width: 300, height: 200)
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                            .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 300, height: 200)
+                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                                .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                            Text("Graph")
 
+                        }
+                      
                         
                     }
                     VStack {
@@ -60,7 +64,7 @@ struct PortfoilioView: View {
                             .font(.title)
                             .foregroundColor(.green)
                     }
-                    
+                     .frame(width: 290)
                     .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                     VStack {
                         Text("Networth")
