@@ -117,18 +117,23 @@ struct ContentView: View {
                         }
                     }
                 }
-                VStack {
-                    Button {
-                        showingSheet.toggle()
-                    } label: {
-                        Image(systemName:  "text.book.closed")
-                            .font(.title)
+                ZStack {
+                    HStack{
+                        VStack{
+                            Button {
+                                showingSheet.toggle()
+                            } label: {
+                                Image(systemName:  "text.book.closed")
+                                    .font(.title)
+                            }
+                            .sheet(isPresented: $showingSheet) {
+                                SheetView()
+                            }
+                            .padding(5)
+                            Spacer()
+                        }
+                        Spacer()
                     }
-                    .sheet(isPresented: $showingSheet) {
-                        SheetView()
-                    }
-                    .position(x: 27, y: 0)
-                    
                 }
             }
         }

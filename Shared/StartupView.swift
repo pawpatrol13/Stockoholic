@@ -49,19 +49,24 @@ struct StartupView: View {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading){
-                VStack {
-                    Button {
-                        showingSheet4.toggle()
-                    } label: {
-                        Image(systemName:  "text.book.closed")
-                            .font(.title)
-                            .padding()
-                    }
-                    .sheet(isPresented: $showingSheet4) {
-                        SheetView4()
+                ZStack {
+                    HStack{
+                        VStack{
+                            Button {
+                                showingSheet4.toggle()
+                            } label: {
+                                Image(systemName:  "text.book.closed")
+                                    .font(.title)
+                            }
+                            .sheet(isPresented: $showingSheet4) {
+                                SheetView4()
+                            }
+                            .padding(5)
+                            Spacer()
+                        }
+                        Spacer()
                     }
                 }
-                
                 ZStack {
                     Rectangle()
                         .foregroundColor(Color(red: 0.76862745098, green: 0.83137254902, blue: 0.81176470588))

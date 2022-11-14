@@ -45,18 +45,23 @@ struct StockDataView: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                Button {
-                    showingSheet3.toggle()
-                } label: {
-                    Image(systemName:  "text.book.closed")
-                        .font(.title)
+            ZStack {
+                HStack{
+                    VStack{
+                        Button {
+                            showingSheet3.toggle()
+                        } label: {
+                            Image(systemName:  "text.book.closed")
+                                .font(.title)
+                        }
+                        .sheet(isPresented: $showingSheet3) {
+                            SheetView3()
+                        }
+                        .padding(5)
+                        Spacer()
+                    }
+                    Spacer()
                 }
-                .sheet(isPresented: $showingSheet3) {
-                    SheetView3()
-                }
-                .position(x: 27, y: 8)
-                
             }
             VStack   {
                 Text("Apple")

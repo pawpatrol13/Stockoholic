@@ -47,18 +47,23 @@ struct StartupDataView: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                Button {
-                    showingSheet5.toggle()
-                } label: {
-                    Image(systemName:  "text.book.closed")
-                        .font(.title)
+            ZStack {
+                HStack{
+                    VStack{
+                        Button {
+                            showingSheet5.toggle()
+                        } label: {
+                            Image(systemName:  "text.book.closed")
+                                .font(.title)
+                        }
+                        .sheet(isPresented: $showingSheet5) {
+                            SheetView5()
+                        }
+                        .padding(5)
+                        Spacer()
+                    }
+                    Spacer()
                 }
-                .sheet(isPresented: $showingSheet5) {
-                    SheetView5()
-                }
-                .position(x: 27, y: 8)
-                
             }
             VStack   {
                 Text("Tesla Coils")

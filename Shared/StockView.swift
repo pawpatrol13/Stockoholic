@@ -47,16 +47,22 @@ struct StockView: View {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading){
-                VStack {
-                    Button {
-                        showingSheet2.toggle()
-                    } label: {
-                        Image(systemName:  "text.book.closed")
-                            .font(.title)
-                            .padding()
-                    }
-                    .sheet(isPresented: $showingSheet2) {
-                        SheetView2()
+                ZStack {
+                    HStack{
+                        VStack{
+                            Button {
+                                showingSheet2.toggle()
+                            } label: {
+                                Image(systemName:  "text.book.closed")
+                                    .font(.title)
+                            }
+                            .sheet(isPresented: $showingSheet2) {
+                                SheetView2()
+                            }
+                            .padding(5)
+                            Spacer()
+                        }
+                        Spacer()
                     }
                 }
                 
