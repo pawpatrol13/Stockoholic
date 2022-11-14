@@ -40,7 +40,7 @@ struct StartupView: View {
                 .sheet(isPresented: $showingSheet4) {
                     SheetView4()
                 }
-                .position(x: 27, y: 0)
+                .position(x: 27, y: 8)
                 
             }
             if #available(iOS 16.0, *) {
@@ -57,10 +57,10 @@ struct StartupView: View {
                             .foregroundColor(.gray)
                             .padding(13)
                         }
-                        .frame(height: 40)
+                        .frame(height: 60 )
                         .cornerRadius(13)
                         .padding()
-                        .offset(y:15)
+                        .offset(y:40)
                         List {
                             ForEach(Startup, id: \.self) { startup in
                                 Text(startup)
