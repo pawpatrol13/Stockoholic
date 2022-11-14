@@ -43,7 +43,7 @@ struct StartupView: View {
     @State var searchText = ""
     let Startup = [
         "Geniebook", "Carro", "Zenyum", "Syfe", "Advance Intelligence Group  (AIG)", "LingoAce","Spenmo","Cake DeFi","ADDX","Homage"
-    ].sorted()
+    ]
     var body: some View {
         ZStack{
             Color("BackgroundColor")
