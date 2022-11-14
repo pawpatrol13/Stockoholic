@@ -62,7 +62,6 @@ struct StartupView: View {
                                 SheetView4()
                             }
                             .padding(5)
-                            Spacer()
                         }
                         Spacer()
                     }

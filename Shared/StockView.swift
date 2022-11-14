@@ -60,7 +60,6 @@ struct StockView: View {
                                 SheetView2()
                             }
                             .padding(5)
-                            Spacer()
                         }
                         Spacer()
                     }
