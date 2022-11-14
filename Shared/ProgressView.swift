@@ -71,18 +71,23 @@ struct ProgressView: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                Button {
-                    showingSheet6.toggle()
-                } label: {
-                    Image(systemName:  "text.book.closed")
-                        .font(.title)
+            ZStack {
+                HStack{
+                    VStack{
+                        Button {
+                            showingSheet6.toggle()
+                        } label: {
+                            Image(systemName:  "text.book.closed")
+                                .font(.title)
+                        }
+                        .sheet(isPresented: $showingSheet6) {
+                            SheetView6()
+                        }
+                        .padding(5)
+                        Spacer()
+                    }
+                    Spacer()
                 }
-                .sheet(isPresented: $showingSheet6) {
-                    SheetView6()
-                }
-                .position(x: 27, y: 8)
-                
             }
             VStack {
                 ZStack {
@@ -93,8 +98,7 @@ struct ProgressView: View {
                         .font(.largeTitle)
                         .bold()
                 }
-                .frame(width: 200, height: 200)
-                .padding()
+                .padding(85)
                 
                 ZStack {
                     Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
