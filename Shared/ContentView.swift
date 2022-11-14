@@ -10,7 +10,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
+            ZStack {
+                Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Text("USERNAME")
+                        .padding()
+                    Circle()
+                        .frame(width: 200,height: 200)
+                        .padding()
+                        .foregroundColor(.gray)
                     HStack {
                         NavigationLink (destination: StockView()) {
                             VStack{
@@ -70,11 +79,14 @@ struct ContentView: View {
                                 .cornerRadius(10)
                             }
                         }
+                    Spacer()
                 }
                
             
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
+            }
+                
             }
         }
     }
@@ -82,6 +94,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
 
