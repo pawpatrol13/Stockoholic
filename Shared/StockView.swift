@@ -6,17 +6,42 @@
 //
 
 import SwiftUI
-
+struct SheetView2: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Button("Press to dismiss") {
+            dismiss()
+        }
+        .font(.title)
+        .padding()
+        .background(.black)
+    }
+}
 struct StockView: View {
+    @State private var showingSheet2 = false
     @State var searchText = ""
     let Stock = [
-        "Apple", "Tesla", "Twitter", "Mircosoft", "Yahoo", "Bank of China", "Google"
+        "Apple", "Tesla", "Twitter", "Mircosoft", "Yahoo", "Bank of China", "Google", "Alphabet", "Amazon", "Meta Platforms", "Nvidia" , "Berkshire Hathaway Class B"
     ]
     var body: some View {
         NavigationLink(destination: StockDataView()) {
             ZStack {
-                Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+                Color("BackgroundColor")
                     .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Button {
+                        showingSheet2.toggle()
+                    } label: {
+                        Image(systemName:  "text.book.closed")
+                            .font(.title)
+                    }
+                    .sheet(isPresented: $showingSheet2) {
+                        SheetView2()
+                }
+                    .position(x: 27, y: 0)
+                    
+                }
                 VStack(alignment: .leading) {
                     ZStack {
                         Rectangle()
@@ -32,6 +57,7 @@ struct StockView: View {
                     .frame(height: 40)
                     .cornerRadius(13)
                     .padding()
+                    .offset(y:15)
                     ZStack {
                         Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
                             .edgesIgnoringSafeArea(.all)

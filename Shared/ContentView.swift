@@ -6,20 +6,41 @@
 //
 
 import SwiftUI
+struct SheetView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Button("Press to dismiss") {
+            dismiss()
+        }
+        .font(.title)
+        .padding()
+        .background(.black)
+    }
+}
+
 
 struct ContentView: View {
+    @State private var showingSheet = false
     var body: some View {
         NavigationView {
             ZStack {
-                Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+                Color("BackgroundColor")
                     .edgesIgnoringSafeArea(.all)
-                VStack {
-                    Text("USERNAME")
-                        .padding()
-                    Circle()
-                        .frame(width: 200,height: 200)
-                        .padding()
-                        .foregroundColor(.gray)
+                VStack (alignment: .center){
+                    NavigationLink (destination: PortfoilioView()) {
+                        VStack {
+                            Image(systemName: "dollarsign.arrow.circlepath")
+                            Text("Portfolio")
+                        }
+                        .frame(width: 100, height: 80)
+                        .padding(40)
+                        .font(.title3)
+                        .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                        .background(Color("ForegroundColor"))
+                        .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                        .cornerRadius(10)
+                    }
                     HStack {
                         NavigationLink (destination: StockView()) {
                             VStack{
@@ -30,7 +51,7 @@ struct ContentView: View {
                             .padding(40)
                             .font(.title3)
                             .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
-                            .background(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                            .background(Color("ForegroundColor"))
                             
                             .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                             .cornerRadius(10)
@@ -44,53 +65,61 @@ struct ContentView: View {
                             .padding(40)
                             .font(.title3)
                             .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
-                            .background(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                            .background(Color("ForegroundColor"))
                             
                             .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                             .cornerRadius(10)
                         }
                     }
-                        HStack {
-                            NavigationLink (destination: PortfoilioView()) {
-                                VStack {
-                                    Image(systemName: "dollarsign.arrow.circlepath")
-                                    Text("Portfolio")
-                                }
-                                .frame(width: 100, height: 80)
-                                .padding(40)
-                                .font(.title3)
-                                .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
-                                .background(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
-                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                                .cornerRadius(10)
+                    HStack {
+                        NavigationLink (destination: ShopView()) {
+                            VStack {
+                                Image(systemName: "cart")
+                                Text("Shop")
                             }
-                            NavigationLink (destination: ProgressView()) {
-                                VStack{
-                                    Image(systemName: "flame")
-                                    Text("Your Progess")
-                                }
-                                .frame(width: 100, height: 80)
-                                .padding(40)
-                                .font(.title3)
-                                .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
-                                .background(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
-                                
-                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                                .cornerRadius(10)
-                            }
+                            .frame(width: 100, height: 80)
+                            .padding(40)
+                            .font(.title3)
+                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .background(Color("ForegroundColor"))
+                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .cornerRadius(10)
                         }
-                    Spacer()
+                        NavigationLink (destination: ProgressView()) {
+                            VStack{
+                                Image(systemName: "flame")
+                                Text("Your Progess")
+                            }
+                            .frame(width: 100, height: 80)
+                            .padding(40)
+                            .font(.title3)
+                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .background(Color("ForegroundColor"))
+                            
+                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .cornerRadius(10)
+                        }
+                    }
                 }
-               
-            
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-            }
-                
+                VStack {
+                    Button {
+                        showingSheet.toggle()
+                    } label: {
+                        Image(systemName:  "text.book.closed")
+                            .font(.title)
+                    }
+                    .sheet(isPresented: $showingSheet) {
+                        SheetView()
+                    }
+                    .position(x: 27, y: 0)
+                    
+                }
             }
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
-
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

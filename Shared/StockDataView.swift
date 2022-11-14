@@ -6,13 +6,40 @@
 //
 
 import SwiftUI
+struct SheetView3: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Button("Press to dismiss") {
+            dismiss()
+        }
+        .font(.title)
+        .padding()
+        .background(.black)
+    }
+}
+
 
 struct StockDataView: View {
     @State private var quantityOfStock = ""
+    @State private var showingSheet3 = false
     var body: some View {
         ZStack {
-            Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+            Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
+            VStack {
+                Button {
+                    showingSheet3.toggle()
+                } label: {
+                    Image(systemName:  "text.book.closed")
+                        .font(.title)
+                }
+                .sheet(isPresented: $showingSheet3) {
+                    SheetView3()
+            }
+                .position(x: 27, y: 0)
+                
+            }
             VStack   {
                 Text("Apple")
                     .padding()
@@ -22,7 +49,7 @@ struct StockDataView: View {
                     Rectangle()
                         .frame(width: 300, height: 200)
                         .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                        .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                        .foregroundColor(Color("BackgroundColor"))
                     Image(systemName: "chart.xyaxis.line")
                         .font(.system(size: 180))
                 }
@@ -31,10 +58,16 @@ struct StockDataView: View {
                         .font(.largeTitle)
                         .font(Font.body.bold())
                     VStack {
-                        Text("Pricefdnmfmmnfmf :")
+                        Text("Price :")
                             .font(Font.body.bold())
                         VStack {
                             TextField("Amount", text: $quantityOfStock)
+                                .keyboardType(.decimalPad)
+                                .frame(width: 250, height: 60)
+                                .foregroundColor(.white)
+                                .background(.gray)
+                                .cornerRadius(10)
+                            TextField("Price", text: $quantityOfStock)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 250, height: 60)
                                 .foregroundColor(.white)

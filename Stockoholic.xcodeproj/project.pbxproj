@@ -29,6 +29,8 @@
 		D95647D529165B880017F6A5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D329165B880017F6A5 /* ProgressView.swift */; };
 		D95647D729165B970017F6A5 /* PortfoilioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D629165B970017F6A5 /* PortfoilioView.swift */; };
 		D95647D829165B970017F6A5 /* PortfoilioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D629165B970017F6A5 /* PortfoilioView.swift */; };
+		D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
+		D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		D95647D029165B6F0017F6A5 /* StartupDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupDataView.swift; sourceTree = "<group>"; };
 		D95647D329165B880017F6A5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		D95647D629165B970017F6A5 /* PortfoilioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfoilioView.swift; sourceTree = "<group>"; };
+		D976D20F2921D1EE00D40F35 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,7 @@
 				D95647D029165B6F0017F6A5 /* StartupDataView.swift */,
 				D95647D329165B880017F6A5 /* ProgressView.swift */,
 				D95647D629165B970017F6A5 /* PortfoilioView.swift */,
+				D976D20F2921D1EE00D40F35 /* ShopView.swift */,
 				58AEB6D528E5FB9F00A01A4B /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -326,6 +330,7 @@
 				58AEB6FD28E5FB9F00A01A4B /* ContentView.swift in Sources */,
 				D95647D729165B970017F6A5 /* PortfoilioView.swift in Sources */,
 				D942242A2913A0AF00F08D12 /* StockView.swift in Sources */,
+				D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D95647D129165B6F0017F6A5 /* StartupDataView.swift in Sources */,
 				58AEB6FB28E5FB9F00A01A4B /* StockoholicApp.swift in Sources */,
 				D95647D429165B880017F6A5 /* ProgressView.swift in Sources */,
@@ -341,6 +346,7 @@
 				58AEB6FE28E5FB9F00A01A4B /* ContentView.swift in Sources */,
 				D95647D829165B970017F6A5 /* PortfoilioView.swift in Sources */,
 				D942242B2913A0AF00F08D12 /* StockView.swift in Sources */,
+				D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D95647D229165B6F0017F6A5 /* StartupDataView.swift in Sources */,
 				58AEB6FC28E5FB9F00A01A4B /* StockoholicApp.swift in Sources */,
 				D95647D529165B880017F6A5 /* ProgressView.swift in Sources */,
@@ -433,6 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -485,6 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

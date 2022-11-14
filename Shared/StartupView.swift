@@ -6,32 +6,61 @@
 //
 
 import SwiftUI
+struct SheetView4: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Button("Press to dismiss") {
+            dismiss()
+        }
+        .font(.title)
+        .padding()
+        .background(.black)
+    }
+}
+
 
 struct StartupView: View {
+    @State private var showingSheet4 = false
     @State var searchText = ""
     let Startup = [
         " Geniebook", "Carro", "Zenyum", "Syfe", "Advance Intelligence Group  (AIG)", "LingoAce","Spenmo","Cake DeFi","ADDX","Homage"
     ]
     var body: some View {
         ZStack {
-            Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+            Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            NavigationLink(destination: StartupDataView()) {
-                VStack(alignment: .leading) {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(Color(red: 0.76862745098, green: 0.83137254902, blue: 0.81176470588))
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            TextField("Search ..", text: $searchText)
+            VStack {
+                Button {
+                    showingSheet4.toggle()
+                } label: {
+                    Image(systemName:  "text.book.closed")
+                        .font(.title)
+                }
+                .sheet(isPresented: $showingSheet4) {
+                    SheetView4()
+                }
+                .position(x: 27, y: 0)
+                
+            }
+            if #available(iOS 16.0, *) {
+                NavigationLink(destination: StartupDataView()) {
+                    VStack(alignment: .leading) {
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(Color(red: 0.76862745098, green: 0.83137254902, blue: 0.81176470588))
+                            HStack {
+                                Image(systemName: "magnifyingglass")
+                                TextField("Search ..", text: $searchText)
+                            }
+                            
+                            .foregroundColor(.gray)
+                            .padding(13)
                         }
-                        
-                        .foregroundColor(.gray)
-                        .padding(13)
-                    }
-                    .frame(height: 40)
-                    .cornerRadius(13)
-                    .padding()
+                        .frame(height: 40)
+                        .cornerRadius(13)
+                        .padding()
+                        .offset(y:15)
                         List {
                             ForEach(Startup, id: \.self) { startup in
                                 Text(startup)
@@ -39,11 +68,14 @@ struct StartupView: View {
                             .listRowBackground(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
                             .frame(width: 300, height: 10)
                             .foregroundColor(.white)
-    
+                            
                         }
-
+                        
+                    }
+                    .navigationTitle("Start-ups")
                 }
-                .navigationTitle("Start-ups")
+            } else {
+                // Fallback on earlier versions
             }
             
         }
