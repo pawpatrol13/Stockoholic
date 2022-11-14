@@ -22,10 +22,6 @@ struct SheetView5: View {
 
 @available(iOS 16.0, *)
 struct StartupDataView: View {
-    init() {
-        UITableView.appearance().backgroundColor = .white
-        
-    }
     @State private var showingSheet5 = false
     @State private var startUpAmount = 0.0
     @available(iOS 16.0, *)
@@ -67,62 +63,50 @@ struct StartupDataView: View {
                         Text("Price paying :")
                             .font(Font.body.bold())
                         VStack {
-                            Form {
-                                Section {
-                                    TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
-                                        .keyboardType(.decimalPad)
-                                        .listRowBackground(Color(UIColor.systemGroupedBackground))
-                                        .cornerRadius(10)
-                                        .frame(width: 350, height: 60)
-                                        .foregroundColor(.white)
-                                        .background(Color("BackgroundColor"))
-                                        .cornerRadius(10)
-                                }
-                            }
+                            TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
+                                .keyboardType(.decimalPad)
+                                .listRowBackground(Color(UIColor.systemGroupedBackground))
+                                .cornerRadius(10)
+                                .frame(width: 350, height: 60)
+                                .foregroundColor(.white)
+                                .background(Color("ForegroundColor"))
+                                .cornerRadius(10)
                             
                             
                             VStack {
                                 Text("Quanity :")
                                     .font(Font.body.bold())
                             }
-                            Form {
-                                Section {
-                                    if #available(iOS 16.0, *) {
-                                        TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
-                                            .keyboardType(.decimalPad)
-                                            .frame(width: 350, height: 60)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                            .listRowBackground(Color(UIColor.systemGroupedBackground))
-                                            .scrollContentBackground(.hidden)
-                                            .background(Color("BackgroundColor"))
-                                    } else {
-                                        // Fallback on earlier versions
-                                    }
-                                }
-                            }
-                        }
-                        VStack {
-                            HStack {
-                                Button {
-                                    print("buy")
-                                }label: {
-                                    Text("Invest")
-                                        .frame(width: 100, height: 30)
-                                        .padding()
-                                        .background(.green)
-                                        .cornerRadius(10)
-                                }
+                            VStack {
+                                
+                                TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
+                                    .keyboardType(.decimalPad)
+                                    .frame(width: 350, height: 60)
+                                    .foregroundColor(.white)
+                                    .background(Color("ForegroundColor"))
+                                    .cornerRadius(10)
                             }
                         }
                     }
                 }
+                VStack {
+                    HStack {
+                        Button {
+                            print("buy")
+                        }label: {
+                            Text("Invest")
+                                .frame(width: 100, height: 30)
+                                .padding()
+                                .background(.green)
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+                Spacer()
             }
-            Spacer()
         }
     }
 }
-
 struct StartupDataView_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOS 16.0, *) {

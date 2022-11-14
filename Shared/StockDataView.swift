@@ -58,51 +58,61 @@ struct StockDataView: View {
                         .font(.largeTitle)
                         .font(Font.body.bold())
                     VStack {
+                        Text("Quantity :")
+                            .font(Font.body.bold())
+                            .padding()
+                    }
+                    VStack {
+                        TextField("Amount", text: $quantityOfStock)
+                            .keyboardType(.decimalPad)
+                            .frame(width: 250, height: 60)
+                            .foregroundColor(.white)
+                            .background(Color("ForegroundColor"))
+                            .cornerRadius(10)
+                    }
+                    VStack {
                         Text("Price :")
                             .font(Font.body.bold())
-                        VStack {
-                            TextField("Amount", text: $quantityOfStock)
-                                .keyboardType(.decimalPad)
-                                .frame(width: 250, height: 60)
-                                .foregroundColor(.white)
-                                .background(.gray)
-                                .cornerRadius(10)
-                            TextField("Price", text: $quantityOfStock)
-                                .keyboardType(.decimalPad)
-                                .frame(width: 250, height: 60)
-                                .foregroundColor(.white)
-                                .background(.gray)
-                                .cornerRadius(10)
-                        }
-                        VStack {
-                            HStack {
-                                Button {
-                                    print("buy")
-                                }label: {
-                                    Text("Buy")
-                                        .frame(width: 100, height: 30)
-                                        .padding()
-                                        .background(.green)
-                                        .cornerRadius(10)
-                                }
-                                Button {
-                                    print("sell")
-                                }label: {
-                                    Text("sell")
-                                        .frame(width: 100, height: 30)
-                                        .padding()
-                                        .background(.red)
-                                        .cornerRadius(10)
-                                }
+                    }
+                    VStack {
+                        TextField("Price", text: $quantityOfStock)
+                            .keyboardType(.decimalPad)
+                            .frame(width: 250, height: 60)
+                            .foregroundColor(.white)
+                            .background(Color("ForegroundColor"))
+                            .cornerRadius(10)
+                            .padding()
+                    }
+                    
+                    VStack {
+                        HStack {
+                            Button {
+                                print("buy")
+                            }label: {
+                                Text("Buy")
+                                    .frame(width: 100, height: 30)
+                                    .padding()
+                                    .background(.green)
+                                    .cornerRadius(10)
+                            }
+                            Button {
+                                print("sell")
+                            }label: {
+                                Text("sell")
+                                    .frame(width: 100, height: 30)
+                                    .padding()
+                                    .background(.red)
+                                    .cornerRadius(10)
                             }
                         }
                     }
                 }
-                Spacer()
             }
+            Spacer()
         }
     }
 }
+
 
 struct StockDataView_Previews: PreviewProvider {
     static var previews: some View {

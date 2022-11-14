@@ -6,6 +6,32 @@
 //
 
 import SwiftUI
+struct CircularProgressView: View {
+    let progress: Double
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(
+                    Color.orange.opacity(0.5),
+                    lineWidth: 30
+                )
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(
+                    Color.orange,
+                    style: StrokeStyle(
+                        lineWidth: 30,
+                        lineCap: .round
+                    )
+                )
+                .rotationEffect(.degrees(-90))
+            // 1
+                .animation(.easeOut, value: progress)
+            
+        }
+    }
+}
 struct SheetView6: View {
     @Environment(\.dismiss) var dismiss
     
@@ -22,6 +48,7 @@ struct SheetView6: View {
 
 struct ProgressView: View {
     @State private var showingSheet6 = false
+    @State var progress: Double = 0
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -41,14 +68,15 @@ struct ProgressView: View {
             }
             VStack {
                 ZStack {
-                    
-                    Circle()
-                        .frame(width: 200, height: 200)
-                    Image(systemName: "flame")
-                        .foregroundColor(.black)
-                        .font(.system(size: 100))
-                        .foregroundColor(.white)
+                    // 2
+                    CircularProgressView(progress: progress)
+                    // 3
+                    Text("\(progress * 100, specifier: "%.0f")")
+                        .font(.largeTitle)
+                        .bold()
                 }
+                .frame(width: 200, height: 200)
+                .padding()
                 
                 ZStack {
                     Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
