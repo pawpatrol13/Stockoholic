@@ -86,7 +86,7 @@ struct StockView: View {
                             .edgesIgnoringSafeArea(.all)
                         HStack {
                             List(){
-                                ForEach(Stock.filter({ searchText.isEmpty ? true : $0.contains(searchText) }), id: \.self) { stock in
+                                ForEach(Stock.filter({ searchText.isEmpty ? true : $0.contains(searchText)}).sorted(), id: \.self) { stock in
                                     Text(stock)
                                         .listRowBackground(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
                                         .frame(width: 300, height: 10)
