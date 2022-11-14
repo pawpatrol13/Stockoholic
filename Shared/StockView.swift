@@ -41,10 +41,10 @@ struct StockView: View {
                         .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
                         .padding(13)
                     }
-                    .frame(height: 40)
+                    .frame(height: 60)
                     .cornerRadius(13)
                     .padding()
-                    .offset(y:15)
+                    .offset(y:40)
                     ZStack {
                         Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
                             .edgesIgnoringSafeArea(.all)
@@ -73,7 +73,7 @@ struct StockView: View {
                     .sheet(isPresented: $showingSheet2) {
                         SheetView2()
                 }
-                    .position(x: 27, y: 0)
+                    .position(x: 27, y: 15)
                     
                 }
             }

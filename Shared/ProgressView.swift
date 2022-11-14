@@ -36,7 +36,7 @@ struct ProgressView: View {
                     .sheet(isPresented: $showingSheet6) {
                         SheetView6()
                     }
-                    .position(x: 27, y: 0)
+                    .position(x: 27, y: 8)
                     
                 }
                 VStack {

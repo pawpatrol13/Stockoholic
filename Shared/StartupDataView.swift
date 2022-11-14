@@ -43,7 +43,7 @@ struct StartupDataView: View {
                 .sheet(isPresented: $showingSheet5) {
                     SheetView5()
                 }
-                .position(x: 27, y: 0)
+                .position(x: 27, y: 8)
                 
             }
             VStack   {
