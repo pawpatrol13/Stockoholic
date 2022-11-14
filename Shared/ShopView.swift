@@ -27,7 +27,7 @@ struct ShopView: View {
                     Spacer()
                 }
                 .border(Color("TextColor"), width: 5)
-
+                
                 HStack {
                     Text(" 1")
                         .font(.largeTitle)
@@ -37,7 +37,7 @@ struct ShopView: View {
                     Text("$Amount")
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .font(.title)
-                      
+                    
                     Spacer()
                 }
                 .border(Color("TextColor"), width: 5)

@@ -27,63 +27,68 @@ struct StartupView: View {
         " Geniebook", "Carro", "Zenyum", "Syfe", "Advance Intelligence Group  (AIG)", "LingoAce","Spenmo","Cake DeFi","ADDX","Homage"
     ]
     var body: some View {
-        ZStack {
+        ZStack{
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                Button {
-                    showingSheet4.toggle()
-                } label: {
-                    Image(systemName:  "text.book.closed")
-                        .font(.title)
-                }
-                .sheet(isPresented: $showingSheet4) {
-                    SheetView4()
-                }
-                .position(x: 27, y: 8)
-                
-            }
-            if #available(iOS 16.0, *) {
-                NavigationLink(destination: StartupDataView()) {
-                    VStack(alignment: .leading) {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(Color(red: 0.76862745098, green: 0.83137254902, blue: 0.81176470588))
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                TextField("Search ..", text: $searchText)
-                            }
-                            
-                            .foregroundColor(.gray)
-                            .padding(13)
-                        }
-                        .frame(height: 60 )
-                        .cornerRadius(13)
-                        .padding()
-                        .offset(y:40)
-                        List {
-                            ForEach(Startup, id: \.self) { startup in
-                                Text(startup)
-                            }
-                            .listRowBackground(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
-                            .frame(width: 300, height: 10)
-                            .foregroundColor(.white)
-                            
-                        }
-                        
+            VStack(alignment: .leading){
+                VStack {
+                    Button {
+                        showingSheet4.toggle()
+                    } label: {
+                        Image(systemName:  "text.book.closed")
+                            .font(.title)
+                            .padding()
                     }
-                    .navigationTitle("Start-ups")
+                    .sheet(isPresented: $showingSheet4) {
+                        SheetView4()
+                    }
                 }
-            } else {
-                // Fallback on earlier versions
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color(red: 0.76862745098, green: 0.83137254902, blue: 0.81176470588))
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search ..", text: $searchText)
+                    }
+                    
+                    .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                    .padding(13)
+                }
+                .frame(height: 40)
+                .cornerRadius(13)
+                .padding()
+                
+                if #available(iOS 16.0, *) {
+                    NavigationLink(destination: StartupDataView()) {
+                        ZStack {
+                            Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
+                                .edgesIgnoringSafeArea(.all)
+                            HStack {
+                                List  {
+                                    ForEach(Startup, id: \.self) { startup in
+                                        Text(startup)
+                                            .listRowBackground(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                                            .frame(width: 300, height: 10)
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                    .navigationTitle("Start-Ups")
+                                }
+                            }
+                            
+                        }
+                    }
+                } else {
+                    // Fallback on earlier versions
+                }
             }
-            
         }
     }
 }
-    struct StartupView_Previews: PreviewProvider {
-        static var previews: some View {
-            StartupView()
-                .preferredColorScheme(.dark)
-        }
+struct StartupView_Previews: PreviewProvider {
+    static var previews: some View {
+        StartupView()
+            .preferredColorScheme(.dark)
     }
+}

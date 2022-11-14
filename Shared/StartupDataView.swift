@@ -24,8 +24,8 @@ struct SheetView5: View {
 struct StartupDataView: View {
     init() {
         UITableView.appearance().backgroundColor = .white
-
-       }
+        
+    }
     @State private var showingSheet5 = false
     @State private var startUpAmount = 0.0
     @available(iOS 16.0, *)
@@ -54,7 +54,7 @@ struct StartupDataView: View {
                 ZStack {
                     Rectangle()
                         .frame(width: 300, height: 200)
-                    .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                        .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                         .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
                     Image(systemName: "chart.xyaxis.line")
                         .font(.system(size: 180))
@@ -79,8 +79,8 @@ struct StartupDataView: View {
                                         .cornerRadius(10)
                                 }
                             }
-                           
-
+                            
+                            
                             VStack {
                                 Text("Quanity :")
                                     .font(Font.body.bold())

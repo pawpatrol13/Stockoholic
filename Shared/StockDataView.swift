@@ -36,7 +36,7 @@ struct StockDataView: View {
                 }
                 .sheet(isPresented: $showingSheet3) {
                     SheetView3()
-            }
+                }
                 .position(x: 27, y: 8)
                 
             }
