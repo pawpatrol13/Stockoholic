@@ -47,20 +47,31 @@ struct ContentView: View {
                 Color("BackgroundColor")
                     .edgesIgnoringSafeArea(.all)
                 VStack (alignment: .center){
-                    NavigationLink (destination: PortfoilioView()) {
-                        VStack {
-                            Image(systemName: "dollarsign.arrow.circlepath")
-                            Text("Portfolio")
+                    //placeholders, plan to put chart to represent money earned in zstack
+                    ZStack{
+                        VStack{
+                            Text("Net Worth:\n$9999999999999")
+                                .font(.largeTitle)
+                                .multilineTextAlignment(.center)
+                            Text("Earned per hour:\n$9999999999999")
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
                         }
-                        .frame(width: 100, height: 80)
-                        .padding(40)
-                        .font(.title3)
-                        .foregroundColor(Color("TextColor"))
-                        .background(Color("ForegroundColor"))
-                        .border(Color("TextColor"), width: 5)
-                        .cornerRadius(10)
                     }
-                    HStack {
+                    HStack{
+                        NavigationLink (destination: PortfoilioView()) {
+                            VStack {
+                                Image(systemName: "dollarsign.arrow.circlepath")
+                                Text("Portfolio")
+                            }
+                            .frame(width: 100, height: 80)
+                            .padding(40)
+                            .font(.title3)
+                            .foregroundColor(Color("TextColor"))
+                            .background(Color("ForegroundColor"))
+                            .border(Color("TextColor"), width: 5)
+                            .cornerRadius(10)
+                        }
                         NavigationLink (destination: StockView()) {
                             VStack{
                                 Image(systemName: "chart.line.uptrend.xyaxis")
@@ -74,6 +85,8 @@ struct ContentView: View {
                             .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
+                    }
+                    HStack{
                         NavigationLink (destination: StartupView()) {
                             VStack {
                                 Image(systemName: "person.3.sequence.fill")
@@ -87,8 +100,6 @@ struct ContentView: View {
                             .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
-                    }
-                    HStack {
                         NavigationLink (destination: ShopView()) {
                             VStack {
                                 Image(systemName: "cart")
@@ -102,19 +113,19 @@ struct ContentView: View {
                             .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
-                        NavigationLink (destination: ProgressView()) {
-                            VStack{
-                                Image(systemName: "flame")
-                                Text("Your Progess")
-                            }
-                            .frame(width: 100, height: 80)
-                            .padding(40)
-                            .font(.title3)
-                            .foregroundColor(Color("TextColor"))
-                            .background(Color("ForegroundColor"))
-                            .border(Color("TextColor"), width: 5)
-                            .cornerRadius(10)
+                    }
+                    NavigationLink (destination: ProgressView()) {
+                        VStack{
+                            Image(systemName: "flame")
+                            Text("Your Progess")
                         }
+                        .frame(width: 100, height: 80)
+                        .padding(40)
+                        .font(.title3)
+                        .foregroundColor(Color("TextColor"))
+                        .background(Color("ForegroundColor"))
+                        .border(Color("TextColor"), width: 5)
+                        .cornerRadius(10)
                     }
                 }
                 ZStack {
