@@ -36,9 +36,9 @@ struct ContentView: View {
                         .frame(width: 100, height: 80)
                         .padding(40)
                         .font(.title3)
-                        .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                        .foregroundColor(Color("TextColor"))
                         .background(Color("ForegroundColor"))
-                        .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                        .border(Color("TextColor"), width: 5)
                         .cornerRadius(10)
                     }
                     HStack {
@@ -50,10 +50,9 @@ struct ContentView: View {
                             .frame(width: 100, height: 80)
                             .padding(40)
                             .font(.title3)
-                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .foregroundColor(Color("TextColor"))
                             .background(Color("ForegroundColor"))
-                            
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
                         NavigationLink (destination: StartupView()) {
@@ -64,10 +63,9 @@ struct ContentView: View {
                             .frame(width: 100, height: 80)
                             .padding(40)
                             .font(.title3)
-                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .foregroundColor(Color("TextColor"))
                             .background(Color("ForegroundColor"))
-                            
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
                     }
@@ -80,9 +78,9 @@ struct ContentView: View {
                             .frame(width: 100, height: 80)
                             .padding(40)
                             .font(.title3)
-                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .foregroundColor(Color("TextColor"))
                             .background(Color("ForegroundColor"))
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
                         NavigationLink (destination: ProgressView()) {
@@ -93,10 +91,9 @@ struct ContentView: View {
                             .frame(width: 100, height: 80)
                             .padding(40)
                             .font(.title3)
-                            .foregroundColor(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111))
+                            .foregroundColor(Color("TextColor"))
                             .background(Color("ForegroundColor"))
-                            
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            .border(Color("TextColor"), width: 5)
                             .cornerRadius(10)
                         }
                     }
