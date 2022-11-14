@@ -66,7 +66,7 @@ struct StartupView: View {
                                 .edgesIgnoringSafeArea(.all)
                             HStack {
                                 List  {
-                                    ForEach(Startup, id: \.self) { startup in
+                                    ForEach(Startup.filter({ searchText.isEmpty ? true : $0.contains(searchText) }), id: \.self) { startup in
                                         Text(startup)
                                             .listRowBackground(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
                                             .frame(width: 300, height: 10)
