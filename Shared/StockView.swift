@@ -8,6 +8,7 @@
 import SwiftUI
 struct SheetView2: View {
     @Environment(\.dismiss) var dismiss
+
     
     var body: some View {
         ZStack {
@@ -41,7 +42,8 @@ struct StockView: View {
     @State var searchText = ""
     let Stock = [
         "Apple", "Tesla", "Twitter", "Mircosoft", "Yahoo", "Bank of China", "Google", "Alphabet", "Amazon", "Meta Platforms", "Nvidia" , "Berkshire Hathaway Class B"
-    ]
+    ] .sorted()
+
     var body: some View {
         ZStack{
             Color("BackgroundColor")

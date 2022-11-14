@@ -42,8 +42,8 @@ struct StartupView: View {
     @State private var showingSheet4 = false
     @State var searchText = ""
     let Startup = [
-        " Geniebook", "Carro", "Zenyum", "Syfe", "Advance Intelligence Group  (AIG)", "LingoAce","Spenmo","Cake DeFi","ADDX","Homage"
-    ]
+        "Geniebook", "Carro", "Zenyum", "Syfe", "Advance Intelligence Group  (AIG)", "LingoAce","Spenmo","Cake DeFi","ADDX","Homage"
+    ].sorted()
     var body: some View {
         ZStack{
             Color("BackgroundColor")
