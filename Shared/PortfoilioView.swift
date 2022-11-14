@@ -10,12 +10,30 @@ struct SheetView7: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        Button("Press to dismiss") {
-            dismiss()
+        ZStack {
+            Color("BackgroundColor")
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Welcome to Stockoholic")
+                    .font(.title)
+                Text("This is a educational paper trading to teach you about the finanical market (e.g stock market and start-ups)")
+                    .font(Font.body.bold())
+            }
+            .padding()
+            .foregroundColor(.white)
+            .border(Color("TextColor"), width: 5)
+            
+            VStack {
+                Spacer()
+                Button("Dismiss") {
+                    dismiss()
+                }
+                .font(.title2)
+                .padding()
+                .background(Color("ForegroundColor"))
+                .cornerRadius(10)
+            }
         }
-        .font(.title)
-        .padding()
-        .background(.black)
     }
 }
 
