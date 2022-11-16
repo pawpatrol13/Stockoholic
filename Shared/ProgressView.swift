@@ -111,18 +111,43 @@ struct ProgressView: View {
                                     .padding(20)
                                 Spacer()
                             }
-                            Text("Hello world")
-                                .frame(width: 250, height: 0)
-                                .padding(50)
-                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                            Text("Hello world")
-                                .frame(width: 250, height: 0)
-                                .padding(50)
-                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                            Text("Hello world")
-                                .frame(width: 250, height: 0)
-                                .padding(50)
-                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            HStack {
+                                Text("Hello world")
+                                Spacer()
+                                VStack {
+                                    Text("Hello world")
+                                    Text("Hello world")
+                                }
+                              
+                            }
+                            .frame(width: 250, height: 0)
+                            .padding(50)
+                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                          
+                            HStack {
+                                Text("Hello world")
+                                Spacer()
+                                VStack {
+                                    Text("Hello world")
+                                    Text("Hello world")
+                                }
+                              
+                            }
+                            .frame(width: 250, height: 0)
+                            .padding(50)
+                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                            HStack {
+                                Text("Hello world")
+                                Spacer()
+                                VStack {
+                                    Text("Hello world")
+                                    Text("Hello world")
+                                }
+                              
+                            }
+                            .frame(width: 250, height: 0)
+                            .padding(50)
+                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                         }
                     }
                     
