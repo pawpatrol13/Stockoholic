@@ -46,88 +46,93 @@ struct ContentView: View {
             ZStack {
                 Color("BackgroundColor")
                     .edgesIgnoringSafeArea(.all)
-                VStack (alignment: .center){
-                    //placeholders, plan to put chart to represent money earned in zstack
-                    ZStack{
-                        VStack{
-                            Text("Net Worth:\n$9999999999999")
+                
+                VStack {
+                    VStack {
+                        Text("Portfoilo Value")
+                            .padding()
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 300, height: 200)
+                                .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                                .foregroundColor(Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444))
+                            Text("Graph")
+                            
+                        }
+                        .padding()
+                        
+                    }
+                    HStack {
+                        VStack {
+                            Text("Account Balance")
+                                .padding()
                                 .font(.largeTitle)
-                                .multilineTextAlignment(.center)
-                            Text("Earned per hour:\n$9999999999999")
-                                .font(.title3)
-                                .multilineTextAlignment(.center)
+                            Text("$100000")
+                                .padding()
+                                .font(.title)
+                                .foregroundColor(.green)
                         }
-                    }
-                    HStack{
-                        NavigationLink (destination: PortfoilioView()) {
-                            VStack {
-                                Image(systemName: "dollarsign.arrow.circlepath")
-                                Text("Portfolio")
-                            }
-                            .frame(width: 100, height: 80)
-                            .padding(40)
-                            .font(.title3)
-                            .foregroundColor(Color("TextColor"))
-                            .background(Color("ForegroundColor"))
-                            .border(Color("TextColor"), width: 5)
-                            .cornerRadius(10)
+                        .frame(width: 210, height: 260)
+                        .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                        .cornerRadius(10)
+                        VStack {
+                            Text("Networth")
+                                .padding()
+                                .font(.largeTitle)
+                            Text("$100000")
+                                .padding()
+                                .font(.title)
+                                .foregroundColor(.green)
                         }
-                        NavigationLink (destination: StockView()) {
-                            VStack{
-                                Image(systemName: "chart.line.uptrend.xyaxis")
-                                Text("Stocks")
-                            }
-                            .frame(width: 100, height: 80)
-                            .padding(40)
-                            .font(.title3)
-                            .foregroundColor(Color("TextColor"))
-                            .background(Color("ForegroundColor"))
-                            .border(Color("TextColor"), width: 5)
-                            .cornerRadius(10)
-                        }
-                    }
-                    HStack{
-                        NavigationLink (destination: StartupView()) {
-                            VStack {
-                                Image(systemName: "person.3.sequence.fill")
-                                Text("Start-ups")
-                            }
-                            .frame(width: 100, height: 80)
-                            .padding(40)
-                            .font(.title3)
-                            .foregroundColor(Color("TextColor"))
-                            .background(Color("ForegroundColor"))
-                            .border(Color("TextColor"), width: 5)
-                            .cornerRadius(10)
-                        }
-                        NavigationLink (destination: ShopView()) {
-                            VStack {
-                                Image(systemName: "cart")
-                                Text("Shop")
-                            }
-                            .frame(width: 100, height: 80)
-                            .padding(40)
-                            .font(.title3)
-                            .foregroundColor(Color("TextColor"))
-                            .background(Color("ForegroundColor"))
-                            .border(Color("TextColor"), width: 5)
-                            .cornerRadius(10)
-                        }
-                    }
-                    NavigationLink (destination: ProgressView()) {
-                        VStack{
-                            Image(systemName: "flame")
-                            Text("Your Progess")
-                        }
-                        .frame(width: 100, height: 80)
-                        .padding(40)
-                        .font(.title3)
-                        .foregroundColor(Color("TextColor"))
-                        .background(Color("ForegroundColor"))
-                        .border(Color("TextColor"), width: 5)
+                        .frame(width: 210, height: 260)
+                        .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                         .cornerRadius(10)
                     }
+                    .padding()
+                    VStack {
+                        Text("Asset Owned")
+                            .font(.largeTitle)
+                            Text("Apple Stock : 2")
+                            Text("Mircosoft Stock : 5")
+                            Text("Yahoo Stock : 4")
+                        
+                    }
+                    .padding()
+                    .frame(width: 300, height: 130)
+                    .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
+                    .cornerRadius(10)
+                    
+                    Spacer()
                 }
+                HStack {
+                    HStack {
+                        NavigationLink (destination: StockView()) {
+                            Image(systemName: "chart.line.uptrend.xyaxis")
+                        }
+                        .padding()
+                        NavigationLink (destination: StartupView()) {
+                            Image(systemName: "person.3.sequence.fill")
+                        }
+                        .padding()
+                        NavigationLink (destination: ShopView()) {
+                            Image(systemName: "cart")
+                        }
+                        .padding()
+                        NavigationLink (destination: ProgressView()) {
+                            Image(systemName: "flame")
+                        }
+                        .padding()
+                    }
+                    .frame(width: 430)
+                    .font(.largeTitle)
+                    .border(Color("TextColor"), width: 5)
+                    .foregroundColor(Color("TextColor"))
+                    .cornerRadius(10)
+                }
+                .position(x: 230, y: 832)
+                
                 ZStack {
                     HStack{
                         VStack{
@@ -136,6 +141,7 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName:  "text.book.closed")
                                     .font(.title)
+                                    .position(x: 29, y: 0)
                             }
                             .sheet(isPresented: $showingSheet) {
                                 SheetView()
