@@ -39,8 +39,9 @@ struct SheetView3: View {
 
 
 struct StockDataView: View {
-    @State private var quantityOfStock = ""
+    @State private var quantityOfStock = 0.0
     @State private var showingSheet3 = false
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -81,12 +82,12 @@ struct StockDataView: View {
                         .font(.largeTitle)
                         .font(Font.body.bold())
                     VStack {
-                        Text("Quantity :")
+                        Text("Quantity:")
                             .font(Font.body.bold())
                             .padding()
                     }
                     VStack {
-                        TextField("Amount", text: $quantityOfStock)
+                        TextField("Quantity", value: $quantityOfStock, format: .number)
                             .keyboardType(.decimalPad)
                             .frame(width: 250, height: 60)
                             .foregroundColor(.white)
@@ -94,17 +95,17 @@ struct StockDataView: View {
                             .cornerRadius(10)
                     }
                     VStack {
-                        Text("Price :")
+                        Text("Price:")
                             .font(Font.body.bold())
+                            .padding()
                     }
                     VStack {
-                        TextField("Price", text: $quantityOfStock)
+                        TextField("Price", value: $quantityOfStock, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
                             .keyboardType(.decimalPad)
                             .frame(width: 250, height: 60)
                             .foregroundColor(.white)
                             .background(Color("ForegroundColor"))
                             .cornerRadius(10)
-                            .padding()
                     }
                     
                     VStack {
@@ -117,15 +118,17 @@ struct StockDataView: View {
                                     .padding()
                                     .background(.green)
                                     .cornerRadius(10)
+                                    .foregroundColor(Color("BackgroundColor"))
                             }
                             Button {
                                 print("sell")
                             }label: {
-                                Text("sell")
+                                Text("Sell")
                                     .frame(width: 100, height: 30)
                                     .padding()
                                     .background(.red)
                                     .cornerRadius(10)
+                                    .foregroundColor(Color("BackgroundColor"))
                             }
                         }
                     }
