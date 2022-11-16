@@ -47,7 +47,7 @@ struct StartupView: View {
     var body: some View {
         ZStack{
             Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(edges: .top)
             VStack(alignment: .leading){
                 ZStack {
                     HStack{
@@ -85,7 +85,7 @@ struct StartupView: View {
                     NavigationLink(destination: StartupDataView()) {
                         ZStack {
                             Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
-                                .edgesIgnoringSafeArea(.all)
+                                .ignoresSafeArea(edges: .top)
                             HStack {
                                 List  {
                                     ForEach(Startup.filter({ searchText.isEmpty ? true : $0.contains(searchText)}).sorted(), id: \.self) { startup in

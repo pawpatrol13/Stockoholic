@@ -18,7 +18,7 @@ struct ShopView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(edges: .top)
             VStack {
                 HStack {
                     Button {

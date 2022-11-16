@@ -70,7 +70,7 @@ struct ProgressView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(edges: .top)
             ZStack {
                 HStack{
                     VStack{
@@ -102,7 +102,7 @@ struct ProgressView: View {
                 
                 ZStack {
                     Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
-                        .edgesIgnoringSafeArea(.all)
+                        .ignoresSafeArea(edges: .top)
                     HStack {
                         VStack {
                             HStack {
