@@ -94,9 +94,9 @@ struct ContentView: View {
                     VStack {
                         Text("Asset Owned")
                             .font(.largeTitle)
-                            Text("Apple Stock : 2")
-                            Text("Mircosoft Stock : 5")
-                            Text("Yahoo Stock : 4")
+                        Text("Apple Stock : 2")
+                        Text("Mircosoft Stock : 5")
+                        Text("Yahoo Stock : 4")
                         
                     }
                     .padding()
@@ -106,32 +106,35 @@ struct ContentView: View {
                     
                     Spacer()
                 }
-                HStack {
+                
+                VStack{
+                    Spacer()
                     HStack {
-                        NavigationLink (destination: StockView()) {
-                            Image(systemName: "chart.line.uptrend.xyaxis")
+                        HStack {
+                            NavigationLink (destination: StockView()) {
+                                Image(systemName: "chart.line.uptrend.xyaxis")
+                            }
+                            .padding()
+                            NavigationLink (destination: StartupView()) {
+                                Image(systemName: "person.3.sequence.fill")
+                            }
+                            .padding()
+                            NavigationLink (destination: ShopView()) {
+                                Image(systemName: "cart")
+                            }
+                            .padding()
+                            NavigationLink (destination: ProgressView()) {
+                                Image(systemName: "flame")
+                            }
+                            .padding()
                         }
-                        .padding()
-                        NavigationLink (destination: StartupView()) {
-                            Image(systemName: "person.3.sequence.fill")
-                        }
-                        .padding()
-                        NavigationLink (destination: ShopView()) {
-                            Image(systemName: "cart")
-                        }
-                        .padding()
-                        NavigationLink (destination: ProgressView()) {
-                            Image(systemName: "flame")
-                        }
-                        .padding()
+                        .frame(width: 430)
+                        .font(.largeTitle)
+                        .border(Color("TextColor"), width: 5)
+                        .foregroundColor(Color("TextColor"))
+                        .cornerRadius(10)
                     }
-                    .frame(width: 430)
-                    .font(.largeTitle)
-                    .border(Color("TextColor"), width: 5)
-                    .foregroundColor(Color("TextColor"))
-                    .cornerRadius(10)
                 }
-                .position(x: 230, y: 832)
                 
                 ZStack {
                     HStack{
@@ -141,7 +144,7 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName:  "text.book.closed")
                                     .font(.title)
-
+                                
                             }
                             .sheet(isPresented: $showingSheet) {
                                 SheetView()
