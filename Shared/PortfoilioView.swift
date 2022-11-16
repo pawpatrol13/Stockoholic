@@ -119,6 +119,17 @@ struct PortfoilioView: View {
         }
         
         .navigationTitle("Your Portfoilo")
+        .navigationTitle("Start-Ups")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Your Portfoilo")
+                        .font(.system(size: 60))
+                        .foregroundColor(Color.white)
+                }
+            }
+            
+        }
     }
 }
 

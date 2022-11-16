@@ -96,6 +96,16 @@ struct StartupView: View {
                                         
                                     }
                                     .navigationTitle("Start-Ups")
+                                    .toolbar {
+                                        ToolbarItem(placement: .principal) {
+                                            VStack {
+                                                Text("Start-ups")
+                                                    .font(.system(size: 60))
+                                                    .foregroundColor(Color.white)
+                                            }
+                                        }
+                                        
+                                    }
                                 }
                             }
                             

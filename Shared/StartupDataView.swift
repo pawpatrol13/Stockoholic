@@ -127,6 +127,17 @@ struct StartupDataView: View {
                 }
                 Spacer()
             }
+            .navigationTitle("Start-ups")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Start-ups")
+                            .font(.system(size: 60))
+                            .foregroundColor(Color.white)
+                    }
+                }
+                
+            }
         }
     }
 }

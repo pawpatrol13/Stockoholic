@@ -131,6 +131,17 @@ struct StockDataView: View {
                     }
                 }
             }
+            .navigationTitle("Stocks")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Stocks")
+                            .font(.system(size: 60))
+                            .foregroundColor(Color.white)
+                    }
+                }
+                
+            }
             Spacer()
         }
     }

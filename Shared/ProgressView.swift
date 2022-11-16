@@ -129,6 +129,16 @@ struct ProgressView: View {
                 }
             }
             .navigationTitle("Your Progress")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Your Progress")
+                            .font(.system(size: 60))
+                            .foregroundColor(Color.white)
+                    }
+                }
+                
+            }
             
         }
     }
