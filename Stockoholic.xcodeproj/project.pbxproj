@@ -29,8 +29,6 @@
 		D95647D229165B6F0017F6A5 /* StartupDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D029165B6F0017F6A5 /* StartupDataView.swift */; };
 		D95647D429165B880017F6A5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D329165B880017F6A5 /* ProgressView.swift */; };
 		D95647D529165B880017F6A5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D329165B880017F6A5 /* ProgressView.swift */; };
-		D95647D729165B970017F6A5 /* PortfoilioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D629165B970017F6A5 /* PortfoilioView.swift */; };
-		D95647D829165B970017F6A5 /* PortfoilioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D629165B970017F6A5 /* PortfoilioView.swift */; };
 		D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
 		D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
 /* End PBXBuildFile section */
@@ -71,7 +69,6 @@
 		D95647CD29165B250017F6A5 /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
 		D95647D029165B6F0017F6A5 /* StartupDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupDataView.swift; sourceTree = "<group>"; };
 		D95647D329165B880017F6A5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		D95647D629165B970017F6A5 /* PortfoilioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfoilioView.swift; sourceTree = "<group>"; };
 		D976D20F2921D1EE00D40F35 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +125,6 @@
 				D95647CD29165B250017F6A5 /* StartupView.swift */,
 				D95647D029165B6F0017F6A5 /* StartupDataView.swift */,
 				D95647D329165B880017F6A5 /* ProgressView.swift */,
-				D95647D629165B970017F6A5 /* PortfoilioView.swift */,
 				D976D20F2921D1EE00D40F35 /* ShopView.swift */,
 				D91CAA6329221E6000157FE5 /* alphabetically order .swift */,
 				58AEB6D528E5FB9F00A01A4B /* Assets.xcassets */,
@@ -332,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58AEB6FD28E5FB9F00A01A4B /* ContentView.swift in Sources */,
-				D95647D729165B970017F6A5 /* PortfoilioView.swift in Sources */,
 				D942242A2913A0AF00F08D12 /* StockView.swift in Sources */,
 				D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D95647D129165B6F0017F6A5 /* StartupDataView.swift in Sources */,
@@ -349,7 +344,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58AEB6FE28E5FB9F00A01A4B /* ContentView.swift in Sources */,
-				D95647D829165B970017F6A5 /* PortfoilioView.swift in Sources */,
 				D942242B2913A0AF00F08D12 /* StockView.swift in Sources */,
 				D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D95647D229165B6F0017F6A5 /* StartupDataView.swift in Sources */,

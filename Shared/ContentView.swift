@@ -141,12 +141,13 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName:  "text.book.closed")
                                     .font(.title)
-                                    .position(x: 29, y: 0)
+
                             }
                             .sheet(isPresented: $showingSheet) {
                                 SheetView()
                             }
                             .padding(5)
+                            .position(x: 37, y: 0)
                             Spacer()
                         }
                         Spacer()
