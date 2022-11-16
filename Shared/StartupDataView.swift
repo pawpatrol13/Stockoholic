@@ -83,7 +83,7 @@ struct StartupDataView: View {
                         .font(.largeTitle)
                         .font(Font.body.bold())
                     VStack {
-                        Text("Price paying :")
+                        Text("Price paying:")
                             .font(Font.body.bold())
                         VStack {
                             TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
@@ -97,12 +97,12 @@ struct StartupDataView: View {
                             
                             
                             VStack {
-                                Text("Quanity :")
+                                Text("Quanity:")
                                     .font(Font.body.bold())
                             }
                             VStack {
                                 
-                                TextField("Amount", value: $startUpAmount, format: .currency(code: Locale.current.currencyCode ?? "SGD"))
+                                TextField("Amount", value: $startUpAmount, format: .number)
                                     .keyboardType(.decimalPad)
                                     .frame(width: 350, height: 60)
                                     .foregroundColor(.white)
