@@ -38,7 +38,7 @@ struct SheetView7: View {
     }
 }
 
-struct Portfoilio_View_: View {
+struct PortfoilioView: View {
     @State private var showingSheet = false
     var body: some View {
         ZStack {
@@ -115,7 +115,7 @@ struct Portfoilio_View_: View {
 
                         }
                         .sheet(isPresented: $showingSheet) {
-                            SheetView()
+                            SheetView7()
                         }
                         .padding(5)
                         .position(x: 37, y: 0)
@@ -130,7 +130,7 @@ struct Portfoilio_View_: View {
 
 struct Portfoilio_View__Previews: PreviewProvider {
     static var previews: some View {
-        Portfoilio_View_()
+        PortfoilioView()
             .preferredColorScheme(.dark)
     }
 }
