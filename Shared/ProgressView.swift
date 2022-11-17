@@ -32,141 +32,128 @@ struct CircularProgressView: View {
         }
     }
 }
-struct SheetView6: View {
-    @Environment(\.dismiss) var dismiss
-    
-    var body: some View {
-        ZStack {
-            Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Text("Welcome to Stockoholic")
-                    .font(.title)
-                Text("This is a educational paper trading to teach you about the finanical market (e.g stock market and start-ups)")
-                    .font(Font.body.bold())
-            }
-            .padding()
-            .foregroundColor(.white)
-            .border(Color("TextColor"), width: 5)
-            
-            VStack {
-                Spacer()
-                Button("Dismiss") {
-                    dismiss()
-                }
-                .font(.title2)
-                .padding()
-                .background(Color("ForegroundColor"))
-                .cornerRadius(10)
-            }
-        }
-    }
-}
+
 
 
 struct ProgressView: View {
     @State private var showingSheet6 = false
+    @State var progressTitle: Double = 0
     @State var progress: Double = 0
+    @AppStorage("level") var level = 0
+    @State var done1 = false
+    @State var done2 = false
+    @State var done3 = false
+    @State var done4 = false
+    @State var done5 = false
+    @AppStorage("cash") var cash = 1000
+    @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0]
+    
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
-                .ignoresSafeArea(edges: .top)
-            ZStack {
-                HStack{
-                    VStack{
-                        Button {
-                            showingSheet6.toggle()
-                        } label: {
-                            Image(systemName:  "text.book.closed")
-                                .font(.title)
-                        }
-                        .sheet(isPresented: $showingSheet6) {
-                            SheetView6()
-                        }
-                        .padding(5)
-                        Spacer()
-                    }
-                    Spacer()
-                }
-            }
+
+       
             VStack {
                 ZStack {
                     // 2
                     CircularProgressView(progress: progress)
                     // 3
-                    Text("\(progress * 100, specifier: "%.0f")")
+                    Text("\(progressTitle, specifier: "%.0f")")
                         .font(.largeTitle)
                         .bold()
                 }
                 .padding(85)
                 
-                ZStack {
-                    Color(red: 0.03111111111, green: 0.14666666666, blue: 0.20444444444)
-                        .ignoresSafeArea(edges: .top)
-                    HStack {
-                        VStack {
-                            HStack {
-                                Text("Your Goals")
-                                    .font(.largeTitle)
-                                    .padding(20)
-                                Spacer()
+         
+              
+                NavigationView {
+                    List {
+                      
+                        
+                        if cash > 10000 {
+                            Section {
+                                Text("You earned $ 10 000. You're off to a great start!")
                             }
-                            HStack {
-                                Text("Hello world")
-                                Spacer()
-                                VStack {
-                                    Text("Hello world")
-                                    Text("Hello world")
-                                }
-                              
-                            }
-                            .frame(width: 250, height: 0)
-                            .padding(50)
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                          
-                            HStack {
-                                Text("Hello world")
-                                Spacer()
-                                VStack {
-                                    Text("Hello world")
-                                    Text("Hello world")
-                                }
-                              
-                            }
-                            .frame(width: 250, height: 0)
-                            .padding(50)
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
-                            HStack {
-                                Text("Hello world")
-                                Spacer()
-                                VStack {
-                                    Text("Hello world")
-                                    Text("Hello world")
-                                }
-                              
-                            }
-                            .frame(width: 250, height: 0)
-                            .padding(50)
-                            .border(Color(red: 0.86222222222, green: 0.93777777777, blue: 0.91111111111), width: 5)
                         }
+                        
+                        if cash > 100000 {
+                            Section {
+                                Text("You earned $ 100 000. You're on to riches, alright!")
+                            }
+                        }
+                        
+                        if cash > 1000000 {
+                            Section {
+                                Text("You earned $ 1 million. You've officially joined the millionaire club.")
+                            }
+                        }
+                        
+                        if cash > 1000000000 {
+                            Section {
+                                Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
+                            }
+                        }
+                        
+                        if cash > 1000000000000 {
+                            Section {
+                                Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
+                            }
+                        }
+                        
                     }
-                    
+                    .navigationTitle("Achievements")
                 }
             }
-            .navigationTitle("Your Progress")
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("Your Progress")
-                            .font(.system(size: 60))
-                            .foregroundColor(Color.white)
-                    }
+        }
+        .onAppear {
+            
+            if done1 == false  {
+                if cash > 10000 {
+                    level += 1
+                    progress += 0.2
+                    progressTitle += 20
+                    done1 = true
                 }
-                
             }
             
+            if done2 == false {
+                if cash > 100000 {
+                    level += 1
+                    progress += 0.2
+                    progressTitle += 20
+                    done2 = true
+                }
+            }
+            
+            if done3 == false {
+                
+                if cash > 1000000 {
+                    level += 1
+                    progress += 0.2
+                    progressTitle += 20
+                    done3 = true
+                }
+            }
+            
+            if done4 == false {
+                if cash > 1000000000 {
+                    level += 1
+                    progress += 0.2
+                    progressTitle += 20
+                    done4 = true
+                }
+            }
+            
+            if done5 == false {
+                if cash > 1000000000000 {
+                    level += 1
+                    progress += 0.2
+                    progressTitle += 20
+                    done5 = true
+                }
+            }
         }
     }
+   
 }
 
 struct ProgressView_Previews: PreviewProvider {

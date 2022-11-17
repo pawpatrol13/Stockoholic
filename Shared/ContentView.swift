@@ -7,39 +7,38 @@
 
 import SwiftUI
 
+
+
+
 struct ContentView: View {
-    @State private var selection = 3
+    @State private var selection = 1
     init(){
         UITabBar.appearance().backgroundColor = UIColor.systemGray6
     }
     
     var body: some View {
         TabView(selection: $selection){
-            StartupView()
-                .tabItem{
-                    Label("Start-ups",systemImage: "person.3")
-                }
-                .tag(1)
+            
             StockView()
                 .tabItem{
                     Label("Stocks",systemImage: "chart.xyaxis.line")
                 }
-                .tag(2)
+                .tag(1)
             PortfoilioView()
                 .tabItem{
                     Label("Portfolio",systemImage: "list.bullet.rectangle.portrait")
                 }
-                .tag(3)
+                .tag(2)
             ProgressView()
                 .tabItem{
                     Label("Progress",systemImage: "flame")
                 }
-                .tag(4)
+                .tag(3)
             ShopView()
                 .tabItem{
-                    Label("Shop",systemImage: "cart")
+                    Label("Market",systemImage: "cart")
                 }
-                .tag(5)
+                .tag(4)
         }
         .tint(Color("ForegroundColor"))
     }
