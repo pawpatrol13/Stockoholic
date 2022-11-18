@@ -39,6 +39,7 @@ struct StockRow: View {
                 
                 Text("\(stock.name)")
                     .font(.title2)
+                    .foregroundColor(.white)
                     .fontWeight(.medium)
                 Spacer()
              
@@ -491,7 +492,6 @@ struct StockView: View {
                 
                 
             }
-            .searchable(text: $searchText)
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {
                 VStack {
