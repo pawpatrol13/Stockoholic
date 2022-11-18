@@ -377,19 +377,7 @@ struct PortfoilioView: View {
             
             
             }
-            .navigationBarItems(leading:
-                                    
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "questionmark.app.fill")
-                    .font(.title2)
-                    .foregroundColor(.red)
-            })
-                                
-        
-            
-            )
+     
         }
     }
     
