@@ -21,11 +21,24 @@ struct PortfoilioView: View {
     @AppStorage("itemsValue") var itemsValue = 0
     @AppStorage("level") var level = 0
     @AppStorage("cash") var cash = 1000
+    @State private var ownedItems: [String] = UserDefaults.standard.object(forKey: "ownedItems") as? [String] ?? [""]
     @State var show = false
     @State var stockSelected = 1
     @State var sharesToSell = 1
     @State var sureSell = false
+    
+    @AppStorage("ferrariCheck") var ferrariCheck = false
+    @AppStorage("lamCheck") var lamCheck = false
+    @AppStorage("familyCheck") var familyCheck = false
+    @AppStorage("condoCheck") var condoCheck = false
+    @AppStorage("bungalowCheck") var bungalowCheck = false
+    
     @State var notEnoughShares = false
+    @AppStorage("ferrariPrice") var ferrariPrice = 250000
+    @AppStorage("lamPrice") var lamPrice = 350000
+    @AppStorage("familyPrice") var familyPrice = 500000
+    @AppStorage("condoPrice") var condoPrice = 1500000
+    @AppStorage("bungalowPrice") var bungalowPrice = 10000000
     @State var sharesSold = false
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0]
     var body: some View {
@@ -38,7 +51,7 @@ struct PortfoilioView: View {
                             Spacer()
                             VStack {
                                 
-                                Image(systemName: "person")
+                                Image(systemName: "person.fill")
                                     .font(.system(size: 90))
                            
                                 Spacer()
@@ -120,6 +133,59 @@ struct PortfoilioView: View {
                                 }
                                 Spacer()
                             }
+                        }
+                        
+                        Group {
+                            HStack {
+                                Spacer()
+                                Text("Items Owned")
+                                    .fontWeight(.bold)
+                                    .font(.title2)
+                                Spacer()
+                            }
+                            
+                            ForEach(ownedItems, id: \.self) { item in
+                                HStack {
+                                    Spacer()
+                                
+                                    if item == "ferrari" {
+                                        Image(systemName: "car")
+                                            .foregroundColor(.yellow)
+                                        Spacer()
+                                        Text("Ferrari")
+                                            .font(.title3)
+                                    } else if item == "lam" {
+                                        Image(systemName: "car.fill")
+                                            .foregroundColor(.red)
+                                        Spacer()
+                                        Text("Lamborghini")
+                                            .font(.title3)
+                                    } else if item == "family" {
+                                        Image(systemName: "house")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                        Text("Family Estate")
+                                            .font(.title3)
+                                    } else if item == "condo" {
+                                        Image(systemName: "house.fill")
+                                            .foregroundColor(.cyan)
+                                        Spacer()
+                                          
+                                        Text("Condominium")
+                                            .font(.title3)
+                                    } else if item == "bungalow" {
+                                        Image(systemName: "music.note.house.fill")
+                                            .foregroundColor(.brown)
+                                        Text("Bungalow")
+                                            .font(.title3)
+                                    }
+                                    
+                                    
+                                  
+                                    Spacer()
+                                }
+                            }
+                            
                         }
                     }
                 
@@ -276,11 +342,39 @@ struct PortfoilioView: View {
             }
             .navigationTitle("Portfolio")
             .onAppear {
+                netWorth = cash
+                if ownedItems.contains("ferrari") && ferrariCheck == false {
+                    netWorth += ferrariPrice
+                    ferrariCheck = true
+                }
+                
+                if ownedItems.contains("lam") && lamCheck == false {
+                    netWorth += lamPrice
+                    lamCheck = true
+                }
+                
+                if ownedItems.contains("family") && lamCheck == false {
+                    netWorth += familyPrice
+                    lamCheck = true
+                }
+                
+                if ownedItems.contains("condo") && condoCheck == false {
+                    netWorth += condoPrice
+                    condoCheck = true
+                }
+                
+                if ownedItems.contains("bungalow") && bungalowCheck == false {
+                    netWorth += bungalowPrice
+                    bungalowCheck = true
+                }
+             
                 if shares.count < 2 {
                     
                 } else {
                     show = true
                 }
+                
+            
             
             }
             .navigationBarItems(leading:

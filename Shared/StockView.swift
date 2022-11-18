@@ -29,7 +29,7 @@ struct StockRow: View {
     @State var sharesOwned = []
     var stock: Stockie
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
-
+   
     var body: some View {
         VStack {
             HStack {
@@ -102,7 +102,7 @@ struct StockView: View {
      @AppStorage("jackHigh") var jackHigh = 150
      @AppStorage("laureneHigh") var laureneHigh = 200
      @AppStorage("georgianHigh") var georgianHigh = 45
-    
+@AppStorage("new2") var new2 = true
     // average low
     @AppStorage("duskLow") var duskLow = 50
      @AppStorage("musicLow") var musicLow = 80
@@ -493,8 +493,52 @@ struct StockView: View {
             }
             .searchable(text: $searchText)
             .navigationTitle("Stocks")
-       
-       
+            .sheet(isPresented: $new2) {
+                VStack {
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Text("Welcome to Stockoholic!")
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                        Spacer()
+                    }
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Spacer()
+                            Text("This app is meant for both kids and adults to learn more about investing. You can buy shares in 7 different companies from different industries with virtual currency. Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. Can you become a billionaire investor?")
+                                .fontWeight(.light)
+                            
+                            Spacer()
+                            
+                            Text("Remember, buy low, sell high!")
+                            Spacer()
+                            Text("Tips:")
+                                .font(.title)
+                                .fontWeight(.black)
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                Text(" 1. Diversify your portfolio \n 2. Do your research \n 3. Don’t listen to others advice without \n checking first \n 4. Don’t blindly invest in stocks because others \n tell you to \n 5. Don’t put all your eggs in one basket")
+                                    .fontWeight(.light)
+                                Spacer()
+                            }
+                          Spacer()
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .onDisappear {
+                new2 = false
+            }
+
         }
         .onReceive(timer) { time in
             if timeRemaining > 0 {
