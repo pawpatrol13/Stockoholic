@@ -76,7 +76,7 @@ struct StockView: View {
     @State var companySelected = ""
     @State var price = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 600
+      @State var timeRemaining = 10
     
     // prices
    @AppStorage("duskPrice") var duskPrice = 50
@@ -96,22 +96,22 @@ struct StockView: View {
      @AppStorage("georgianArrow") var georgianArrow = true
     
     // average high
-    @AppStorage("duskHigh") var duskHigh = 50
-     @AppStorage("musicHigh") var musicHigh = 80
-     @AppStorage("furniHigh") var furniHigh = 120
-     @AppStorage("beatsHigh") var beatsHigh = 100
-     @AppStorage("jackHigh") var jackHigh = 150
-     @AppStorage("laureneHigh") var laureneHigh = 200
-     @AppStorage("georgianHigh") var georgianHigh = 45
+    @AppStorage("duskHigh") var duskHigh = 120
+     @AppStorage("musicHigh") var musicHigh = 230
+     @AppStorage("furniHigh") var furniHigh = 180
+     @AppStorage("beatsHigh") var beatsHigh = 150
+     @AppStorage("jackHigh") var jackHigh = 160
+     @AppStorage("laureneHigh") var laureneHigh = 230
+     @AppStorage("georgianHigh") var georgianHigh = 135
 @AppStorage("new2") var new2 = true
     // average low
-    @AppStorage("duskLow") var duskLow = 50
-     @AppStorage("musicLow") var musicLow = 80
-     @AppStorage("furniLow") var furniLow = 120
-     @AppStorage("beatsLow") var beatsLow = 100
-     @AppStorage("jackLow") var jackLow = 150
-     @AppStorage("laureneLow") var laureneLow = 200
-     @AppStorage("georgianLow") var georgianLow = 45
+    @AppStorage("duskLow") var duskLow = 28
+     @AppStorage("musicLow") var musicLow = 40
+     @AppStorage("furniLow") var furniLow = 60
+     @AppStorage("beatsLow") var beatsLow = 50
+     @AppStorage("jackLow") var jackLow = 75
+     @AppStorage("laureneLow") var laureneLow = 100
+     @AppStorage("georgianLow") var georgianLow = 35
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     @State var tooPoor = false
     @State var stocks = [
@@ -511,8 +511,9 @@ struct StockView: View {
                         Spacer()
                         VStack {
                             Spacer()
-                            Text("This app is meant for both kids and adults to learn more about investing. You can buy shares in 7 different companies from different industries with virtual currency. Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. Please not that share prices in this app do not reflect real share values! Can you become a billionaire investor?")
+                            Text("- This app is meant for both kids and adults to learn more about investing. \n \n - You can buy shares in 7 different companies from different industries with virtual currency. \n \n- Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. \n \n - Please not that share prices in this app do not reflect real share values! \n \nCan you become a billionaire investor?")
                                 .fontWeight(.light)
+                                .font(.system(size: 16))
                             
                             Spacer()
                             
@@ -525,7 +526,7 @@ struct StockView: View {
                             
                             HStack {
                                 Spacer()
-                                Text(" 1. Diversify your portfolio \n 2. Do your research \n 3. Don’t listen to others advice without \n checking first \n 4. Don’t blindly invest in stocks because others \n tell you to \n 5. Don’t put all your eggs in one basket")
+                                Text(" 1. Diversify your portfolio \n 2. Do your research \n 3. Don’t listen to others advice without \n checking first \n 4. Don’t blindly invest in stocks \n because others tell you to \n 5. Don’t put all your eggs \n in one basket")
                                     .fontWeight(.light)
                                 Spacer()
                             }
@@ -534,6 +535,7 @@ struct StockView: View {
                         Spacer()
                     }
                 }
+
             }
             .onDisappear {
                 new2 = false
@@ -551,68 +553,82 @@ struct StockView: View {
                 furniPrice = Int.random(in: 50..<230)
                 beatsPrice = Int.random(in: 20..<530)
                 jackPrice = Int.random(in: 20..<450)
-                laurenePrice = Int.random(in: 120..<830)
+                laurenePrice = Int.random(in: 20..<830)
                 georgianPrice = Int.random(in: 20..<343)
                 
                 if duskPrice > 165 {
                     duskArrow = true
-                    duskHigh = 250
+                    duskHigh = Int.random(in: 170...250)
+                    duskLow = Int.random(in: 120...164)
                 } else {
                     duskArrow = false
-                    duskLow = 50
+                    duskHigh = Int.random(in: 130...220)
+                    duskLow = Int.random(in: 50...90)
                 }
                 
                 if musicPrice > 270 {
                     musicArrow = true
-                    musicHigh = 350
+                    musicHigh = Int.random(in: 350...450)
+                    musicLow = Int.random(in: 150...250)
                 } else {
                     musicArrow = false
-                    musicLow = 150
+                    musicHigh = Int.random(in: 150...250)
+                    musicLow = Int.random(in: 50...100)
                 }
                 
                 if furniPrice > 120 {
                     furniArrow = true
-                    furniHigh = 180
+                    furniHigh = Int.random(in: 150...220)
+                    furniLow = Int.random(in: 40...110)
                 } else {
                     furniArrow = false
-                    furniLow = 80
+                    furniHigh = Int.random(in: 100...170)
+                    furniLow = Int.random(in: 40...80)
                 }
                 
                 if beatsPrice > 270 {
                     beatsArrow = true
-                    beatsHigh = 450
+                    beatsHigh = Int.random(in: 350...450)
+                    beatsLow = Int.random(in: 150...250)
                 } else {
                     beatsArrow = false
-                    beatsLow = 90
+                    beatsHigh = Int.random(in: 150...250)
+                    beatsLow = Int.random(in: 80...120)
                 }
                 
                 if jackPrice > 230 {
                     jackArrow = true
-                    jackHigh = 300
+                    jackHigh = Int.random(in: 270...370)
+                    jackLow = Int.random(in: 120...250)
                 } else {
                     jackArrow = false
-                    jackLow = 110
+                    jackHigh = Int.random(in: 150...250)
+                    jackLow = Int.random(in: 70...130)
                 }
                 
                 if laurenePrice > 415 {
                     laureneArrow = true
-                    laureneHigh = 650
+                    laureneHigh = Int.random(in: 570...780)
+                    laureneLow = Int.random(in: 270...370)
                 } else {
                     laureneArrow = false
-                    laureneLow = 230
+                    laureneHigh = Int.random(in: 370...570)
+                    laureneLow = Int.random(in: 120...290)
                 }
                 
                 if georgianPrice > 135 {
                     georgianArrow = true
-                    georgianHigh = 275
+                    georgianHigh = Int.random(in: 250...320)
+                    georgianLow = Int.random(in: 80...170)
                 } else {
                     georgianArrow = false
-                    georgianLow = 75
+                    georgianHigh = Int.random(in: 150...250)
+                    georgianLow = Int.random(in: 40...150)
                 }
                 
                 
                 
-                timeRemaining = 600
+                timeRemaining = 10
                 
                 //Any other code that should happen after countdown
             }

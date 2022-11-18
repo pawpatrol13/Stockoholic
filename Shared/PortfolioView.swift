@@ -17,7 +17,7 @@ struct PortfoilioView: View {
      @AppStorage("jackPrice") var jackPrice = 150
      @AppStorage("laurenePrice") var laurenePrice = 200
      @AppStorage("georgianPrice") var georgianPrice = 45
-    @AppStorage("netWorth") var netWorth = 0
+    @State var netWorth = 0
     @AppStorage("itemsValue") var itemsValue = 0
     @AppStorage("level") var level = 0
     @AppStorage("cash") var cash = 1000
@@ -27,11 +27,11 @@ struct PortfoilioView: View {
     @State var sharesToSell = 1
     @State var sureSell = false
     
-    @AppStorage("ferrariCheck") var ferrariCheck = false
-    @AppStorage("lamCheck") var lamCheck = false
-    @AppStorage("familyCheck") var familyCheck = false
-    @AppStorage("condoCheck") var condoCheck = false
-    @AppStorage("bungalowCheck") var bungalowCheck = false
+    @State var ferrariCheck = false
+    @State var lamCheck = false
+    @State var familyCheck = false
+    @State var condoCheck = false
+    @State var bungalowCheck = false
     
     @State var notEnoughShares = false
     @AppStorage("ferrariPrice") var ferrariPrice = 250000
@@ -57,14 +57,10 @@ struct PortfoilioView: View {
                                 Spacer()
                              
                               
-                                Text("Net worth: $\(netWorth)")
+                                Text("Value of items owned: $\(netWorth)")
                                     .font(.title2)
                                     .fontWeight(.light)
-                                Spacer()
-                                
-                                Text("Value of items owned: $\(itemsValue)")
-                                    .font(.title2)
-                                    .fontWeight(.light)
+                              
                                 
                                 Spacer()
                                 Text("Level: \(level)")
@@ -85,7 +81,7 @@ struct PortfoilioView: View {
                         Text("* Value of items owned refers to items from shop. It does not include total value of shares.")
                             .fontWeight(.ultraLight)
                             .font(.caption)
-                        Group {
+                        Section {
                             Text("* Quit and restart app to see updated shares")
                                 .font(.caption)
                                 .fontWeight(.light)
@@ -106,23 +102,27 @@ struct PortfoilioView: View {
                                         
                                     } else {
                                         
-                                        VStack {
-                                            Text("Dusk Motors, Inc: \(shares[0])")
+                                        HStack {
+                                         
+                                            VStack {
+                                                Text("Dusk Motors, Inc: \(shares[0])")
+                                                Spacer()
+                                                Text("Music Max, Inc: \(shares[1])")
+                                                Spacer()
+                                                Text("FurniWear, Inc: \(shares[2])")
+                                                Spacer()
+                                            }
+                                            Text("Beats Entertainment LLC: \(shares[3])")
                                             Spacer()
-                                            Text("Music Max, Inc: \(shares[1])")
-                                            Spacer()
-                                            Text("FurniWear, Inc: \(shares[2])")
-                                            Spacer()
-                                        }
-                                        Text("Beats Entertainment LLC: \(shares[3])")
-                                        Spacer()
-                                        
-                                        VStack {
-                                            Text("Jack's Beef: \(shares[4])")
-                                            Spacer()
-                                            Text("Laurene & Co: \(shares[5])")
-                                            Spacer()
-                                            Text("Georgian Air: \(shares[6])")
+                                            
+                                            VStack {
+                                                Text("Jack's Beef: \(shares[4])")
+                                                Spacer()
+                                                Text("Laurene & Co: \(shares[5])")
+                                                Spacer()
+                                                Text("Georgian Air: \(shares[6])")
+                                                Spacer()
+                                            }
                                             Spacer()
                                         }
                                     }
@@ -146,22 +146,22 @@ struct PortfoilioView: View {
                             
                             ForEach(ownedItems, id: \.self) { item in
                                 HStack {
-                                    Spacer()
+                                 
                                 
                                     if item == "ferrari" {
-                                        Image(systemName: "car")
-                                            .foregroundColor(.yellow)
+                                        Image(systemName: "car.fill")
+                                            .foregroundColor(.red)
                                         Spacer()
                                         Text("Ferrari")
                                             .font(.title3)
                                     } else if item == "lam" {
                                         Image(systemName: "car.fill")
-                                            .foregroundColor(.red)
+                                            .foregroundColor(.yellow)
                                         Spacer()
                                         Text("Lamborghini")
                                             .font(.title3)
                                     } else if item == "family" {
-                                        Image(systemName: "house")
+                                        Image(systemName: "house.fill")
                                             .foregroundColor(.white)
                                         Spacer()
                                         Text("Family Estate")
@@ -342,7 +342,8 @@ struct PortfoilioView: View {
             }
             .navigationTitle("Portfolio")
             .onAppear {
-                netWorth = cash
+                
+           
                 if ownedItems.contains("ferrari") && ferrariCheck == false {
                     netWorth += ferrariPrice
                     ferrariCheck = true

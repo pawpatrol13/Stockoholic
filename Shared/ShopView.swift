@@ -25,7 +25,7 @@ struct ShopView: View {
     @AppStorage("lamHigh") var lamHigh = 270000
     @AppStorage("familyHigh") var familyHigh = 350000
     @AppStorage("condoHigh") var condoHigh = 1100000
-    @AppStorage("bungalowPrice") var bungalowHigh = 7500000
+    @AppStorage("bungalowHigh") var bungalowHigh = 7500000
     @State var sureBuyItem = false
     @AppStorage("ferrariLow") var ferrariLow = 120000
     @AppStorage("lamLow") var lamLow = 150000
@@ -39,19 +39,19 @@ struct ShopView: View {
     var body: some View {
         NavigationView {
             List {
-                
+                Section {
                 Button {
-               sureBuyItem = true
+                    sureBuyItem = true
                 } label: {
                     Section {
                         HStack {
-                 
-                          
-                            Image(systemName: "car")
-                                .font(.largeTitle)
-                                .foregroundColor(.yellow)
                             
-                           Spacer()
+                            
+                            Image(systemName: "car.fill")
+                                .font(.largeTitle)
+                                .foregroundColor(.red)
+                            
+                            Spacer()
                             
                             Text("$ \(ferrariPrice)")
                                 .foregroundColor(.green)
@@ -80,9 +80,9 @@ struct ShopView: View {
                         if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
                             cash -= ferrariPrice
                             ownedItems.append("ferrari")
-                    
+                            
                         } else {
-                          notEnoughMoney = true
+                            notEnoughMoney = true
                         }
                     }
                     
@@ -91,233 +91,244 @@ struct ShopView: View {
                     }
                     
                 } message: {
-                    Text("Your net worth will change based on this item's price, but you can't resell it.")
+                    Text("Your value of items will change based on this item's price, but you can't resell it.")
                 }
                 .alert("Error!", isPresented: $notEnoughMoney) {
                     
                 } message: {
                     Text("You either don't have enough money to purchase this item or you already own it")
+                }
+            }
+                
+                Section {
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                Image(systemName: "car.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                
+                                
+                                Text("$ \(lamPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                            }
+                            
+                            VStack {
+                                Spacer()
+                                Text("Lamborghini")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(lamHigh)")
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                Text("Estimated low: $ \(lamLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
+                        
+                        Button("Yes") {
+                            if cash >= lamPrice && ownedItems.contains("lam") == false {
+                                cash -= lamPrice
+                                ownedItems.append("lam")
+                                
+                            } else {
+                                notEnoughMoney = true
+                            }
+                        }
+                        
+                        Button("No") {
+                            
+                        }
+                        
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
+                    }
+                    .alert("Error!", isPresented: $notEnoughMoney) {
+                        
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it")
+                    }
                 }
                 
-                Button {
-                   sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-                       
-                            Image(systemName: "car.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                            Spacer()
+                Section {
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                Image(systemName: "house.fill")
+                                    .foregroundColor(.white)
+                                    .font(.largeTitle)
+                                Spacer()
+                                
+                                
+                                Text("$ \(familyPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                            }
                             
-                            
-                            Text("$ \(lamPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
+                            VStack {
+                                Spacer()
+                                Text("Family Estate")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(familyHigh)")
+                                    .foregroundColor(.yellow)
+                                
+                                Spacer()
+                                Text("Estimated low: $ \(familyLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
+                        
+                        Button("Yes") {
+                            if cash >= familyPrice && ownedItems.contains("family") == false {
+                                cash -= familyPrice
+                                ownedItems.append("family")
+                            } else {
+                                notEnoughMoney = true
+                            }
                         }
                         
-                        VStack {
-                            Spacer()
-                            Text("Lamborghini")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                            Text("Estimated high: $ \(lamHigh)")
-                                .foregroundColor(.yellow)
-                            Spacer()
-                            Text("Estimated low: $ \(lamLow)")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
-                    Button("Yes") {
-                        if cash >= lamPrice && ownedItems.contains("lam") == false {
-                            cash -= lamPrice
-                            ownedItems.append("lam")
+                        Button("No") {
                             
-                        } else {
-                            notEnoughMoney = true
-                        }
-                    }
-                    
-                    Button("No") {
-                        
-                    }
-                    
-                } message: {
-                    Text("Your net worth will change based on this item's price, but you can't resell it.")
-                }
-                .alert("Error!", isPresented: $notEnoughMoney) {
-                    
-                } message: {
-                    Text("You either don't have enough money to purchase this item or you already own it")
-                }
-                Button {
-                    sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-                          
-                            Image(systemName: "house")
-                                .foregroundColor(.white)
-                                .font(.largeTitle)
-                            Spacer()
-                            
-                            
-                            Text("$ \(familyPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
                         }
                         
-                        VStack {
-                            Spacer()
-                            Text("Family Estate")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                            Text("Estimated high: $ \(familyHigh)")
-                                .foregroundColor(.yellow)
-                            
-                            Spacer()
-                            Text("Estimated low: $ \(familyLow)")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
-                    Button("Yes") {
-                        if cash >= familyPrice && ownedItems.contains("family") == false {
-                            cash -= familyPrice
-                            ownedItems.append("family")
-                        } else {
-                            notEnoughMoney = true
+                
+                Section {
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                Image(systemName: "house.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.cyan)
+                                Spacer()
+                                
+                                
+                                Text("$ \(condoPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                            }
+                            
+                            VStack {
+                                Spacer()
+                                Text("Condominium")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(condoHigh)")
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                Text("Estimated low: $ \(condoLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
                         }
                     }
-                    
-                    Button("No") {
+                    .alert("Error!", isPresented: $notEnoughMoney) {
                         
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it")
                     }
-                    
-                } message: {
-                    Text("Your net worth will change based on this item's price, but you can't resell it.")
-                }
-                Button {
-                    sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-              
-                            Image(systemName: "house.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.cyan)
-                            Spacer()
-                            
-                            
-                            Text("$ \(condoPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
-                        }
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
                         
-                        VStack {
-                            Spacer()
-                            Text("Condominium")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                            Text("Estimated high: $ \(condoHigh)")
-                                .foregroundColor(.yellow)
-                            Spacer()
-                            Text("Estimated low: $ \(condoLow)")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                }
-                .alert("Error!", isPresented: $notEnoughMoney) {
-                    
-                } message: {
-                    Text("You either don't have enough money to purchase this item or you already own it")
-                }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
-                    Button("Yes") {
-                        if cash >= condoPrice && ownedItems.contains("condo") == false {
-                            cash -= condoPrice
-                            ownedItems.append("condo")
-                        } else {
-                           notEnoughMoney = true
-                        }
-                    }
-                    
-                    Button("No") {
-                        
-                    }
-                    
-                } message: {
-                    Text("Your net worth will change based on this item's price, but you can't resell it.")
-                }
-                Button {
-                    sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-            
-                            Image(systemName: "music.note.house.fill")
-                                .foregroundColor(.brown)
-                                .font(.largeTitle)
-                              
-                            Spacer()
-                            
-                            
-                            Text("$ \(bungalowPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
+                        Button("Yes") {
+                            if cash >= condoPrice && ownedItems.contains("condo") == false {
+                                cash -= condoPrice
+                                ownedItems.append("condo")
+                            } else {
+                                notEnoughMoney = true
+                            }
                         }
                         
-                        VStack {
-                            Spacer()
-                            Text("Bungalow")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                            Text("Estimated high: $ \(bungalowHigh)")
-                                .foregroundColor(.yellow)
-                            Spacer()
-                            Text("Estimated low: $ \(bungalowLow)")
-                                .foregroundColor(.red)
-                            Spacer()
+                        Button("No") {
+                            
                         }
-                    }
-                }
-                .alert("Error!", isPresented: $notEnoughMoney) {
-                    
-                } message: {
-                    Text("You either don't have enough money to purchase this item or you already own it.")
-                }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
-                    Button("Yes") {
-                        if cash >= bungalowPrice && ownedItems.contains("bungalow") == false {
-                            cash -= bungalowPrice
-                            ownedItems.append("bungalow")
-                        } else {
-                            notEnoughMoney = true
-                        }
-                    }
-                    
-                    Button("No") {
                         
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
-                    
-                } message: {
-                    Text("Your net worth will change based on this item's price, but you can't resell it.")
                 }
-            
+                
+                Section {
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                Image(systemName: "music.note.house.fill")
+                                    .foregroundColor(.brown)
+                                    .font(.largeTitle)
+                                
+                                Spacer()
+                                
+                                
+                                Text("$ \(bungalowPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                            }
+                            
+                            VStack {
+                                Spacer()
+                                Text("Bungalow")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(bungalowHigh)")
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                Text("Estimated low: $ \(bungalowLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .alert("Error!", isPresented: $notEnoughMoney) {
+                        
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it.")
+                    }
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
+                        
+                        Button("Yes") {
+                            if cash >= bungalowPrice && ownedItems.contains("bungalow") == false {
+                                cash -= bungalowPrice
+                                ownedItems.append("bungalow")
+                            } else {
+                                notEnoughMoney = true
+                            }
+                        }
+                        
+                        Button("No") {
+                            
+                        }
+                        
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
+                    }
+                }
             }
             .navigationTitle("Market")
         }
