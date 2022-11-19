@@ -90,6 +90,7 @@ struct ProgressView: View {
                                     Image("100K 2")
                                     Spacer()
                                     Text("You earned $ 100 000. You're on to riches, alright!")
+                                        .fontWeight(.black)
                                 }
                             }
                         }
@@ -100,7 +101,7 @@ struct ProgressView: View {
                                     Image("1M 2")
                                     Spacer()
                                     Text("You earned $ 1 million. You've officially joined the millionaire club.")
-                                   
+                                        .fontWeight(.black)
                                     
                                 }
                             }
@@ -113,6 +114,7 @@ struct ProgressView: View {
                                     Image("1B 2")
                                     Spacer()
                                     Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
+                                        .fontWeight(.black)
                                 }
                             }
                         }
@@ -124,6 +126,7 @@ struct ProgressView: View {
                                     Image("1T 2")
                                     Spacer()
                                     Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
+                                        .fontWeight(.black)
                                 }
                             }
                         }

@@ -634,6 +634,7 @@ struct StockView: View {
             }
         }
         .onAppear {
+           
             if new == true {
                 shares.append(0)
                 shares.append(0)

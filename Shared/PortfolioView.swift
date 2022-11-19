@@ -103,27 +103,31 @@ struct PortfoilioView: View {
                                     } else {
                                         
                                         HStack {
-                                         
-                                            VStack {
-                                                Text("Dusk Motors, Inc: \(shares[0])")
-                                                Spacer()
-                                                Text("Music Max, Inc: \(shares[1])")
-                                                Spacer()
-                                                Text("FurniWear, Inc: \(shares[2])")
-                                                Spacer()
-                                            }
-                                            Text("Beats Entertainment LLC: \(shares[3])")
-                                            Spacer()
                                             
                                             VStack {
-                                                Text("Jack's Beef: \(shares[4])")
+                                                Text("Dusk Motors, Inc:                    \(shares[0])")
                                                 Spacer()
-                                                Text("Laurene & Co: \(shares[5])")
+                                                Text("Music Max, Inc:                        \(shares[1])")
                                                 Spacer()
-                                                Text("Georgian Air: \(shares[6])")
+                                                Text("FurniWear, Inc:                         \(shares[2])")
+                                                Spacer()
+                                                
+                                                Text("Beats Entertainment LLC:       \(shares[3])")
                                                 Spacer()
                                             }
-                                            Spacer()
+                                          
+                                        }
+                                           
+                                        HStack {
+                                            VStack {
+                                                Text("Jack's Beef:                              \(shares[4])")
+                                                Spacer()
+                                                Text("Laurene & Co:                           \(shares[5])")
+                                                Spacer()
+                                                Text("Georgian Air:                             \(shares[6])")
+                                                Spacer()
+                                            }
+                                            
                                         }
                                     }
                                     
@@ -214,19 +218,19 @@ struct PortfoilioView: View {
                         Spacer()
                 
                         if stockSelected == 1 {
-                            Text("Total value: \(duskPrice*sharesToSell)")
+                            Text("Total value: $ \(duskPrice*sharesToSell)")
                         } else if stockSelected == 2 {
-                            Text("Total value: \(musicPrice*sharesToSell)")
+                            Text("Total value: $ \(musicPrice*sharesToSell)")
                         } else if stockSelected == 3 {
-                            Text("Total value: \(furniPrice*sharesToSell)")
+                            Text("Total value: $ \(furniPrice*sharesToSell)")
                         } else if stockSelected == 4 {
-                            Text("Total value: \(beatsPrice*sharesToSell)")
+                            Text("Total value: $ \(beatsPrice*sharesToSell)")
                         } else if stockSelected == 5 {
-                            Text("Total value: \(jackPrice*sharesToSell)")
+                            Text("Total value: $ \(jackPrice*sharesToSell)")
                         } else if stockSelected == 6 {
-                            Text("Total value: \(laurenePrice*sharesToSell)")
+                            Text("Total value: $ \(laurenePrice*sharesToSell)")
                         } else if stockSelected == 7 {
-                            Text("Total value: \(georgianPrice*sharesToSell)")
+                            Text("Total value: $ \(georgianPrice*sharesToSell)")
                         }
                 
                         HStack {
@@ -259,6 +263,7 @@ struct PortfoilioView: View {
                                 if shares[0] >= sharesToSell {
                                     cash += duskPrice*sharesToSell
                                     shares[0] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -268,6 +273,7 @@ struct PortfoilioView: View {
                                 if shares[1] >= sharesToSell {
                                     cash += musicPrice*sharesToSell
                                     shares[1] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -276,6 +282,7 @@ struct PortfoilioView: View {
                                 if shares[2] >= sharesToSell {
                                     cash += furniPrice*sharesToSell
                                     shares[2] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -284,6 +291,7 @@ struct PortfoilioView: View {
                                 if shares[3] >= sharesToSell {
                                     cash += beatsPrice*sharesToSell
                                     shares[3] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -292,6 +300,7 @@ struct PortfoilioView: View {
                                 if shares[4] >= sharesToSell {
                                     cash += jackPrice*sharesToSell
                                     shares[4] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -300,6 +309,7 @@ struct PortfoilioView: View {
                                 if shares[5] >= sharesToSell {
                                     cash += laurenePrice*sharesToSell
                                     shares[5] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -308,6 +318,7 @@ struct PortfoilioView: View {
                                 if shares[6] >= sharesToSell {
                                     cash += georgianPrice*sharesToSell
                                     shares[6] -= sharesToSell
+                                    UserDefaults.standard.set(shares, forKey: "shares")
                                     sharesSold = true
                                 } else {
                                     notEnoughShares = true
@@ -380,6 +391,7 @@ struct PortfoilioView: View {
             }
      
         }
+       
     }
     
 
