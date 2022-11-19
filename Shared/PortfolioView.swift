@@ -159,31 +159,45 @@ struct PortfoilioView: View {
                                         Spacer()
                                         Text("Ferrari")
                                             .font(.title3)
-                                    } else if item == "lam" {
+                                    }
+                                    
+                                    if item == "lam" {
                                         Image(systemName: "car.fill")
                                             .foregroundColor(.yellow)
                                         Spacer()
                                         Text("Lamborghini")
                                             .font(.title3)
-                                    } else if item == "family" {
+                                    }
+                                    
+                                    
+                                    if item == "family" {
                                         Image(systemName: "house.fill")
                                             .foregroundColor(.white)
                                         Spacer()
                                         Text("Family Estate")
                                             .font(.title3)
-                                    } else if item == "condo" {
+                                    }
+                                    
+                                    
+                                    if item == "condo" {
                                         Image(systemName: "house.fill")
                                             .foregroundColor(.cyan)
                                         Spacer()
                                           
                                         Text("Condominium")
                                             .font(.title3)
-                                    } else if item == "bungalow" {
+                                    }
+                                    
+                                    
+                                    if item == "bungalow" {
                                         Image(systemName: "music.note.house.fill")
                                             .foregroundColor(.brown)
                                         Text("Bungalow")
                                             .font(.title3)
-                                    } else if item == "mansion" {
+                                    }
+                                    
+                                    
+                                    if item == "mansion" {
                                         Image(systemName: "cablecar.fill")
                                             .foregroundColor(.gray)
                                         Text("Mega Mansion")
