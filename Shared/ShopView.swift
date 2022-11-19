@@ -80,7 +80,7 @@ struct ShopView: View {
                         if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
                             cash -= ferrariPrice
                             ownedItems.append("ferrari")
-                            
+                            UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
                         } else {
                             notEnoughMoney = true
                         }
@@ -139,7 +139,7 @@ struct ShopView: View {
                             if cash >= lamPrice && ownedItems.contains("lam") == false {
                                 cash -= lamPrice
                                 ownedItems.append("lam")
-                                
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
                             } else {
                                 notEnoughMoney = true
                             }
@@ -199,6 +199,7 @@ struct ShopView: View {
                             if cash >= familyPrice && ownedItems.contains("family") == false {
                                 cash -= familyPrice
                                 ownedItems.append("family")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
                             } else {
                                 notEnoughMoney = true
                             }
@@ -257,6 +258,7 @@ struct ShopView: View {
                             if cash >= condoPrice && ownedItems.contains("condo") == false {
                                 cash -= condoPrice
                                 ownedItems.append("condo")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
                             } else {
                                 notEnoughMoney = true
                             }
@@ -316,6 +318,7 @@ struct ShopView: View {
                             if cash >= bungalowPrice && ownedItems.contains("bungalow") == false {
                                 cash -= bungalowPrice
                                 ownedItems.append("bungalow")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
                             } else {
                                 notEnoughMoney = true
                             }

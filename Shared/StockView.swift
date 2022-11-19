@@ -76,7 +76,7 @@ struct StockView: View {
     @State var companySelected = ""
     @State var price = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 10
+      @State var timeRemaining = 30
     
     // prices
    @AppStorage("duskPrice") var duskPrice = 50
@@ -136,6 +136,8 @@ struct StockView: View {
             List(stocks) { stock in
                 
                 Section {
+                    Text("Share prices change every 30s")
+                        .foregroundColor(.gray)
                     Button {
                         buyShares = true
                         companySelected = "\(stock.name)"
@@ -548,13 +550,13 @@ struct StockView: View {
                 timeRemaining -= 1
                
             } else {
-                duskPrice = Int.random(in: 30..<330)
-                musicPrice = Int.random(in: 20..<530)
+                duskPrice = Int.random(in: 50..<330)
+                musicPrice = Int.random(in: 50..<530)
                 furniPrice = Int.random(in: 50..<230)
-                beatsPrice = Int.random(in: 20..<530)
-                jackPrice = Int.random(in: 20..<450)
-                laurenePrice = Int.random(in: 20..<830)
-                georgianPrice = Int.random(in: 20..<343)
+                beatsPrice = Int.random(in: 50..<530)
+                jackPrice = Int.random(in: 50..<450)
+                laurenePrice = Int.random(in: 50..<830)
+                georgianPrice = Int.random(in: 50..<343)
                 
                 if duskPrice > 165 {
                     duskArrow = true
@@ -579,11 +581,11 @@ struct StockView: View {
                 if furniPrice > 120 {
                     furniArrow = true
                     furniHigh = Int.random(in: 150...220)
-                    furniLow = Int.random(in: 40...110)
+                    furniLow = Int.random(in: 50...110)
                 } else {
                     furniArrow = false
                     furniHigh = Int.random(in: 100...170)
-                    furniLow = Int.random(in: 40...80)
+                    furniLow = Int.random(in: 50...80)
                 }
                 
                 if beatsPrice > 270 {
@@ -623,12 +625,12 @@ struct StockView: View {
                 } else {
                     georgianArrow = false
                     georgianHigh = Int.random(in: 150...250)
-                    georgianLow = Int.random(in: 40...150)
+                    georgianLow = Int.random(in: 50...150)
                 }
                 
                 
                 
-                timeRemaining = 10
+                timeRemaining = 30
                 
                 //Any other code that should happen after countdown
             }
