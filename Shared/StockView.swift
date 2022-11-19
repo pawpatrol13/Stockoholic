@@ -131,13 +131,12 @@ struct StockView: View {
     
     var body: some View {
         NavigationView {
-       
+         
        
             List(stocks) { stock in
-                
+              
                 Section {
-                    Text("Share prices change every 30s")
-                        .foregroundColor(.gray)
+                
                     Button {
                         buyShares = true
                         companySelected = "\(stock.name)"
@@ -487,7 +486,7 @@ struct StockView: View {
                     
                     
                 }  footer: {
-                    Text("Click to purchase shares")
+                    Text("Click to purchase shares. Share prices change every 30s.")
                 }
                 
                     
