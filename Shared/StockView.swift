@@ -76,7 +76,7 @@ struct StockView: View {
     @State var companySelected = ""
     @State var price = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 30
+      @State var timeRemaining = 20
     
     // prices
    @AppStorage("duskPrice") var duskPrice = 50
@@ -420,7 +420,38 @@ struct StockView: View {
                                 
                                 if companySelected != "" {
                                     
-                                    Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \n Note: Stock information in this app do not reflect real values!")
+                                    if companySelected == "Dusk Motors" {
+                                        Text("Dusk Motors is a world renowned vehicle company that has made innovative contributions in the automobile industry. From motorcycles to electric cars, Dusk Motors is revolutionising transportation.\n\nThey are currently working on electric vehicles and more environmetally friendly solutions.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "Music Max, Inc." {
+                                        Text("Music Max has revolutionised the way we listen to music. From great headphones to a plethora of streaming services, Music Max has made music available to millions.\n\nThey're currently investing in better headphone technology, and plan to better support artists for their creations on the platform.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "FurniWear, Inc." {
+                                        Text("What started out as a humble winter clothing store has become the hit clothing brand of the century.\n\nWith outfits to match almost anyone's needs, FurniWear's working to make fashion more accessible, affordable, comfy and full of style.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "Beats Entertainment LLC" {
+                                        Text("Beats Entertainment is a movie studio that has produced some of the biggest hits of the decade. They're innovating to bring movies closer to people.\n\nThey've recently launched their own movie streaming service, with their full movie library on the app.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "Jack's Beef" {
+                                        Text("What started out as a humble butcher's business is now the leader in a plethora of meat products. From Beef Jerky, to Beef stew, to steak to hamburgers, they've got a lot of food.\n\nThey have over 500 restaurants across the country, with some of their meat products in all major retailers for you prepare their food at home.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "Laurene & Co." {
+                                        Text("A company that specialises in jewelry and exclusive handbags as well as purses, Laurene & Co.'s mission is to make products of only the finest craftsmanship in the world.\n\nWith over 1000 stores across the world, they trade at higher share prices due to their reputation as a globally renowned luxury goods retailer.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+                                    } else if companySelected == "Georgian Air" {
+                                        Text("Georgian Air is a low-cost long haul airline company that seeks to provide a great flying experience at low prices.\n\nThey have flights connecting all major cities, and have a strong frequent flyer loyalty programme.")
+                                            .fontWeight(.ultraLight)
+                                            .font(.callout)
+
+                                    }
+                                    
+                                    Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \nNote: Stock information in this app do not reflect real values!")
                                         .foregroundColor(.gray)
                                     
                                     HStack {
@@ -465,7 +496,7 @@ struct StockView: View {
                                              
                                             }
                                         } message: {
-                                            Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(companySelected)? This purchase is non-refundable.")
+                                            Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(companySelected)?")
                                         }
                                         .alert("You don't have enough cash!", isPresented: $tooPoor) {
                                             
@@ -486,11 +517,11 @@ struct StockView: View {
                     
                     
                 }  footer: {
-                    Text("Click to purchase shares. Share prices change every 30s.")
+                    Text("Click to purchase shares. Share prices change every 20s.")
                 }
                 
                     
-                
+             
                 
             }
             .navigationTitle("Stocks")
@@ -541,6 +572,8 @@ struct StockView: View {
             .onDisappear {
                 new2 = false
             }
+            
+            
 
         }
         .onReceive(timer) { time in
@@ -551,11 +584,11 @@ struct StockView: View {
             } else {
                 duskPrice = Int.random(in: 50..<330)
                 musicPrice = Int.random(in: 50..<530)
-                furniPrice = Int.random(in: 50..<230)
+                furniPrice = Int.random(in: 60..<230)
                 beatsPrice = Int.random(in: 50..<530)
-                jackPrice = Int.random(in: 50..<450)
-                laurenePrice = Int.random(in: 50..<830)
-                georgianPrice = Int.random(in: 50..<343)
+                jackPrice = Int.random(in: 75..<450)
+                laurenePrice = Int.random(in: 100..<830)
+                georgianPrice = Int.random(in: 60..<343)
                 
                 if duskPrice > 165 {
                     duskArrow = true
@@ -580,11 +613,11 @@ struct StockView: View {
                 if furniPrice > 120 {
                     furniArrow = true
                     furniHigh = Int.random(in: 150...220)
-                    furniLow = Int.random(in: 50...110)
+                    furniLow = Int.random(in: 60...110)
                 } else {
                     furniArrow = false
                     furniHigh = Int.random(in: 100...170)
-                    furniLow = Int.random(in: 50...80)
+                    furniLow = Int.random(in: 60...80)
                 }
                 
                 if beatsPrice > 270 {
@@ -604,7 +637,7 @@ struct StockView: View {
                 } else {
                     jackArrow = false
                     jackHigh = Int.random(in: 150...250)
-                    jackLow = Int.random(in: 70...130)
+                    jackLow = Int.random(in: 75...130)
                 }
                 
                 if laurenePrice > 415 {
@@ -624,34 +657,17 @@ struct StockView: View {
                 } else {
                     georgianArrow = false
                     georgianHigh = Int.random(in: 150...250)
-                    georgianLow = Int.random(in: 50...150)
+                    georgianLow = Int.random(in: 60...150)
                 }
                 
                 
                 
-                timeRemaining = 30
+                timeRemaining = 20
                 
                 //Any other code that should happen after countdown
             }
         }
-        .onAppear {
-           
-            if new == true {
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-           
-                new = false
-                
-                
-            } else {
-                
-            }
-        }
+      
       
     
     }

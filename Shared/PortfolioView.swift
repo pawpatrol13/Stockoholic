@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct PortfoilioView: View {
+    @AppStorage("new") var new = true
     @State private var showingSheet = false
     @AppStorage("duskPrice") var duskPrice = 50
      @AppStorage("musicPrice") var musicPrice = 80
@@ -40,7 +41,7 @@ struct PortfoilioView: View {
     @AppStorage("condoPrice") var condoPrice = 1500000
     @AppStorage("bungalowPrice") var bungalowPrice = 10000000
     @State var sharesSold = false
-    @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0]
+    @State var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0]
     var body: some View {
         NavigationView {
             List {
@@ -181,6 +182,11 @@ struct PortfoilioView: View {
                                         Image(systemName: "music.note.house.fill")
                                             .foregroundColor(.brown)
                                         Text("Bungalow")
+                                            .font(.title3)
+                                    } else if item == "mansion" {
+                                        Image(systemName: "cablecar.fill")
+                                            .foregroundColor(.gray)
+                                        Text("Mega Mansion")
                                             .font(.title3)
                                     }
                                     
@@ -391,7 +397,23 @@ struct PortfoilioView: View {
             }
      
         }
-       
+        .onAppear {
+            if new == true {
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+             
+                new = false
+                
+                
+            } else {
+                
+            }
+        }
     }
     
 

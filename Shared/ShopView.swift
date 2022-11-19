@@ -20,16 +20,19 @@ struct ShopView: View {
     @AppStorage("familyPrice") var familyPrice = 500000
     @AppStorage("condoPrice") var condoPrice = 1500000
     @AppStorage("bungalowPrice") var bungalowPrice = 10000000
+    @AppStorage("mansionPrice") var mansionPrice = 100000000
     @AppStorage("cash") var cash = 1000
     @AppStorage("ferrariHigh") var ferrariHigh = 180000
     @AppStorage("lamHigh") var lamHigh = 270000
     @AppStorage("familyHigh") var familyHigh = 350000
+    @AppStorage("mansionHigh") var mansionHigh = 250000000
     @AppStorage("condoHigh") var condoHigh = 1100000
     @AppStorage("bungalowHigh") var bungalowHigh = 7500000
     @State var sureBuyItem = false
     @AppStorage("ferrariLow") var ferrariLow = 120000
     @AppStorage("lamLow") var lamLow = 150000
     @AppStorage("familyLow") var familyLow = 230000
+    @AppStorage("mansionLow") var mansionLow = 50000000
     @AppStorage("condoLow") var condoLow = 200000
     @AppStorage("bungalowLow") var bungalowLow = 2500000
     @State var notEnoughMoney = false
@@ -38,8 +41,13 @@ struct ShopView: View {
       @State var timeRemaining = 600
     var body: some View {
         NavigationView {
+       
             List {
                 Section {
+                    Text("Item prices change every 10 min")
+                        .fontWeight(.light)
+                        .foregroundColor(.gray)
+                        .font(.callout)
                 Button {
                     sureBuyItem = true
                 } label: {
@@ -332,6 +340,67 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 }
+                
+                
+                Section {
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                Image(systemName: "cablecar.fill")
+                                    .foregroundColor(.gray)
+                                    .font(.largeTitle)
+                                
+                                Spacer()
+                                
+                                
+                                Text("$ \(mansionPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                            }
+                            
+                            VStack {
+                                Spacer()
+                                Text("Mega Mansion")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(mansionHigh)")
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                Text("Estimated low: $ \(mansionLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .alert("Error!", isPresented: $notEnoughMoney) {
+                        
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it.")
+                    }
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
+                        
+                        Button("Yes") {
+                            if cash >= bungalowPrice && ownedItems.contains("mansion") == false {
+                                cash -= bungalowPrice
+                                ownedItems.append("mansion")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
+                            } else {
+                                notEnoughMoney = true
+                            }
+                        }
+                        
+                        Button("No") {
+                            
+                        }
+                        
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
+                    }
+                }
             }
             .navigationTitle("Market")
         }
@@ -346,7 +415,7 @@ struct ShopView: View {
                 familyPrice = Int.random(in: 12000..<2000000)
                 condoPrice = Int.random(in: 250000..<5300000)
                 bungalowPrice = Int.random(in: 2500000..<20000000)
-         
+                mansionPrice = Int.random(in: 45000000..<350000000)
                 
               
                 
