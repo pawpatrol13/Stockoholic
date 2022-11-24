@@ -11,13 +11,6 @@ import SwiftUI
 struct PortfoilioView: View {
     @AppStorage("new") var new = true
     @State private var showingSheet = false
-    @AppStorage("duskPrice") var duskPrice = 50
-    @AppStorage("musicPrice") var musicPrice = 80
-    @AppStorage("furniPrice") var furniPrice = 120
-    @AppStorage("beatsPrice") var beatsPrice = 100
-    @AppStorage("jackPrice") var jackPrice = 150
-    @AppStorage("laurenePrice") var laurenePrice = 200
-    @AppStorage("georgianPrice") var georgianPrice = 45
     @State var netWorth = 0
     @AppStorage("itemsValue") var itemsValue = 0
     @AppStorage("level") var level = 0

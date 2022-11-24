@@ -13,13 +13,13 @@ class StockManager: ObservableObject {
         }
     }
     
-    let sampleStocks: [Stock] = [Stock(name: "Dusk Motors", pricePerStockArray: [300]),
-                                 Stock(name: "Music Max, Inc.", pricePerStockArray: [520]),
-                                 Stock(name: "FurniWear, Inc.", pricePerStockArray: [220]),
-                                 Stock(name: "Beats Entertainment LLC", pricePerStockArray: [500]),
-                                 Stock(name: "Jack's Beef", pricePerStockArray: [450]),
-                                 Stock(name: "Laurene & Co.", pricePerStockArray: [825]),
-                                 Stock(name: "Georgian Air", pricePerStockArray: [343])]
+    let sampleStocks: [Stock] = [Stock(name: "Dusk Motors", pricePerStockArray: [300], num: 0),
+                                 Stock(name: "Music Max, Inc.", pricePerStockArray: [520], num: 1),
+                                 Stock(name: "FurniWear, Inc.", pricePerStockArray: [220], num: 2),
+                                 Stock(name: "Beats Entertainment LLC", pricePerStockArray: [500], num: 3),
+                                 Stock(name: "Jack's Beef", pricePerStockArray: [450], num: 4),
+                                 Stock(name: "Laurene & Co.", pricePerStockArray: [825], num: 5),
+                                 Stock(name: "Georgian Air", pricePerStockArray: [343], num: 6)]
     
     init() {
         load()
