@@ -12,7 +12,7 @@ import Charts
 
 var upOrDowns = [false, true]
 
-struct Stock: Identifiable{
+struct Stock: Identifiable, Codable{
     let id = UUID()
     
     let name:String
@@ -50,31 +50,24 @@ struct StockView: View {
     @AppStorage("new2") var new2 = true
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     @State var tooPoor = false
-    @State var stocks = [
-        Stock(name: "Dusk Motors", pricePerStockArray: [300]),
-        Stock(name: "Music Max, Inc.", pricePerStockArray: [520]),
-        Stock(name: "FurniWear, Inc.", pricePerStockArray: [220]),
-        Stock(name: "Beats Entertainment LLC", pricePerStockArray: [500]),
-        Stock(name: "Jack's Beef", pricePerStockArray: [450]),
-        Stock(name: "Laurene & Co.", pricePerStockArray: [825]),
-        Stock(name: "Georgian Air", pricePerStockArray: [343])
-    ]
+    
+    @StateObject var stockManager = StockManager()
     
     func UpdateStocks(){
-        stocks[0].pricePerStockArray.insert((Int(round(Double(stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        stocks[1].pricePerStockArray.insert((Int(round(Double(stocks[1].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
-        stocks[2].pricePerStockArray.insert((Int(round(Double(stocks[2].pricePerStockArray[0]) * Double.random(in: 0.975...1.025)))),at:0)
-        stocks[3].pricePerStockArray.insert((Int(round(Double(stocks[3].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
-        stocks[4].pricePerStockArray.insert((Int(round(Double(stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        stocks[5].pricePerStockArray.insert((Int(round(Double(stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
-        stocks[6].pricePerStockArray.insert((Int(round(Double(stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[0].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[1].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[1].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[2].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[2].pricePerStockArray[0]) * Double.random(in: 0.975...1.025)))),at:0)
+        stockManager.stocks[3].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[3].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[4].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
+        stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
     }
     
     var body: some View {
         NavigationView {
             
             
-            List(stocks) { stock in
+            List(stockManager.stocks) { stock in
                 
                 Section {
                     
