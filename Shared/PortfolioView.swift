@@ -23,7 +23,6 @@ struct PortfoilioView: View {
     @AppStorage("level") var level = 0
     @AppStorage("cash") var cash = 1000
     @State private var ownedItems: [String] = UserDefaults.standard.object(forKey: "ownedItems") as? [String] ?? [""]
-    @State private var settingFeature: [String] = UserDefaults.standard.object(forKey: "settings") as? [String] ?? [""]
     @State var show = false
     @State var stockSelected = 1
     @State var sharesToSell = 1
@@ -226,83 +225,83 @@ struct PortfoilioView: View {
                             Spacer()
                         }
                         Spacer()
-                        ForEach(settingFeature, id: \.self) { feature in
-                            HStack {
-                                Text("Light Mode")
-                                    .font(.title3)
-                                Spacer()
-                                Image(systemName: "lightswitch.on")
-                                Text("Light Mode")
-                                    .font(.title3)
-                                Spacer()
-                                Image(systemName: "lightswitch.on")
-                                Text("Light Mode")
-                                    .font(.title3)
-                                Spacer()
-                                Image(systemName: "lightswitch.on")
+                        HStack {
+                            VStack {
+                                HStack{
+                                    Text("Light Mode")
+                                        .font(.title3)
+                                    Spacer()
+                                    Image(systemName: "lightswitch.on")
+                                }
+                                HStack{
+                                    Text("Dark Mode")
+                                        .font(.title3)
+                                    Spacer()
+                                    Image(systemName: "lightswitch.on")
+                                }
+                               
                             }
                         }
-                        
-                        
-                    }
-                }
-                .navigationTitle("Portfolio")
-                .onAppear {
-                    
-                    
-                    if ownedItems.contains("ferrari") && ferrariCheck == false {
-                        netWorth += ferrariPrice
-                        ferrariCheck = true
                     }
                     
-                    if ownedItems.contains("lam") && lamCheck == false {
-                        netWorth += lamPrice
-                        lamCheck = true
-                    }
                     
-                    if ownedItems.contains("family") && lamCheck == false {
-                        netWorth += familyPrice
-                        lamCheck = true
-                    }
-                    
-                    if ownedItems.contains("condo") && condoCheck == false {
-                        netWorth += condoPrice
-                        condoCheck = true
-                    }
-                    
-                    if ownedItems.contains("bungalow") && bungalowCheck == false {
-                        netWorth += bungalowPrice
-                        bungalowCheck = true
-                    }
-                    
-                    if shares.count < 2 {
-                        
-                    } else {
-                        show = true
-                    }
                 }
             }
+            .navigationTitle("Portfolio")
             .onAppear {
-                if new == true {
-                    shares.append(0)
-                    shares.append(0)
-                    shares.append(0)
-                    shares.append(0)
-                    shares.append(0)
-                    shares.append(0)
-                    shares.append(0)
-                    
-                    new = false
-                    
+                
+                
+                if ownedItems.contains("ferrari") && ferrariCheck == false {
+                    netWorth += ferrariPrice
+                    ferrariCheck = true
+                }
+                
+                if ownedItems.contains("lam") && lamCheck == false {
+                    netWorth += lamPrice
+                    lamCheck = true
+                }
+                
+                if ownedItems.contains("family") && lamCheck == false {
+                    netWorth += familyPrice
+                    lamCheck = true
+                }
+                
+                if ownedItems.contains("condo") && condoCheck == false {
+                    netWorth += condoPrice
+                    condoCheck = true
+                }
+                
+                if ownedItems.contains("bungalow") && bungalowCheck == false {
+                    netWorth += bungalowPrice
+                    bungalowCheck = true
+                }
+                
+                if shares.count < 2 {
                     
                 } else {
-                    
+                    show = true
                 }
             }
-            
         }
+        .onAppear {
+            if new == true {
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                shares.append(0)
+                
+                new = false
+                
+                
+            } else {
+                
+            }
+        }
+        
     }
-    
 }
 struct Portfoilio_View__Previews: PreviewProvider {
     static var previews: some View {
