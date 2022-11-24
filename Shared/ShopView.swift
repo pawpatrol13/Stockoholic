@@ -10,7 +10,7 @@ import SwiftUI
 struct ShopView: View {
     init() {
         //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Georgia-Bold", size: 30)!]
+        UINavigationBar.appearance()
         
         //Use this if NavigationBarTitle is with displayMode = .inline
         //UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Georgia-Bold", size: 20)!]
