@@ -51,14 +51,17 @@ struct PortfoilioView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                
+                                Spacer()
                                 Image(systemName: "person.fill")
                                     .font(.system(size: 90))
                            
                                 Spacer()
                              
                               
-                                Text("Value of items owned: $\(netWorth)")
+                                Text("Value of items owned:")
+                                    .font(.title2)
+                                    .fontWeight(.light)
+                                Text(" $\(netWorth)")
                                     .font(.title2)
                                     .fontWeight(.light)
                               
@@ -73,15 +76,10 @@ struct PortfoilioView: View {
                                     Text("Cash: $\(cash)")
                                         .font(.title2)
                                         .fontWeight(.light)
-                                
+                               Spacer()
                             }
                             Spacer()
-                            
-                        
                         }
-                        Text("* Value of items owned refers to items from shop. It does not include total value of shares.")
-                            .fontWeight(.ultraLight)
-                            .font(.caption)
                         Section {
                             Text("* Quit and restart app to see updated shares")
                                 .font(.caption)
@@ -407,7 +405,7 @@ struct PortfoilioView: View {
                     show = true
                 }
                 
-            
+            netWorth=netWorth+duskPrice*shares[0]+musicPrice*shares[1]+furniPrice*shares[2]+beatsPrice*shares[3]+jackPrice*shares[4]+laurenePrice*shares[5]+georgianPrice*shares[6]
             
             }
      
