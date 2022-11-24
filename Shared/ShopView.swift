@@ -96,7 +96,7 @@ struct ShopView: View {
                     Text("You either don't have enough money to purchase this item or you already own it")
                 }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
                 Section {
                     Button {
@@ -150,7 +150,7 @@ struct ShopView: View {
                         Text("You either don't have enough money to purchase this item or you already own it")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
                 Section {
                     Button {
@@ -201,7 +201,7 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
                 Section {
                     Button {
@@ -256,7 +256,7 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
                 Section {
                     Button {
@@ -310,7 +310,7 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
                 Section {
                     Button {
@@ -364,7 +364,7 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min")
+                    Text("Item prices change every 10 min.")
                 }
             }
             .navigationTitle("Market")

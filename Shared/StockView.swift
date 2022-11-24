@@ -32,6 +32,7 @@ struct StockRow: View {
     
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 
                 
@@ -163,7 +164,7 @@ struct StockView: View {
                         if stock.num == 0 {
                             
                             HStack {
-                                
+                                Spacer()
                                 if duskArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -173,17 +174,11 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(duskPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
                                 Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(duskHigh)")
@@ -196,9 +191,10 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         } else if stock.num == 1 {
                             HStack {
-                                
+                                Spacer()
                                 if musicArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -208,17 +204,11 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(musicPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
                                 Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(musicHigh)")
@@ -231,9 +221,10 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         } else if stock.num == 2 {
                             HStack {
-                                
+                                Spacer()
                                 if furniArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -243,17 +234,11 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(furniPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
                                 Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(furniHigh)")
@@ -266,9 +251,10 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         } else if stock.num == 3 {
                             HStack {
-                                
+                                Spacer()
                                 if beatsArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -278,17 +264,11 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(beatsPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
                                 Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(beatsHigh)")
@@ -301,11 +281,9 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
-                            
-                            
+                            Spacer()
                         }  else if stock.num == 4 {
                             HStack {
-                                
                                 if jackArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -315,17 +293,10 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(jackPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
-                                Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(jackHigh)")
@@ -338,9 +309,10 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         }  else if stock.num == 5 {
                             HStack {
-                                
+                                Spacer()
                                 if laureneArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -350,17 +322,11 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(laurenePrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
                                 Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(laureneHigh)")
@@ -373,9 +339,9 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         }  else if stock.num == 6 {
                             HStack {
-                                
                                 if georgianArrow == true  {
                                     Image(systemName: "arrow.up")
                                         .foregroundColor(.green)
@@ -385,17 +351,10 @@ struct StockView: View {
                                         .foregroundColor(.red)
                                         .font(.title)
                                 }
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
                                 Text("$ \(georgianPrice)")
                                     .foregroundColor(.green)
                                     .font(.title2)
-                                Spacer()
                             }
-                            
-                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(georgianHigh)")
@@ -408,6 +367,7 @@ struct StockView: View {
                                     .font(.body)
                                     .fontWeight(.light)
                             }
+                            Spacer()
                         }
                         
                         
@@ -517,7 +477,9 @@ struct StockView: View {
                     
                     
                 }  footer: {
-                    Text("Click to purchase shares. Share prices change every 20s.")
+                    HStack(alignment:.center){
+                        Text("Click to purchase. Share prices change every 20s.")
+                    }
                 }
                 
                 
