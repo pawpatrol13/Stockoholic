@@ -49,16 +49,11 @@ struct ShopView: View {
                 } label: {
                     Section {
                         HStack {
-                            
                             Image(systemName: "car.fill")
                                 .font(.largeTitle)
                                 .foregroundColor(.red)
                                 .padding(.top)
-                            Text("Ferrari")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                                .padding(.top)
+                            
                             Spacer()
                             Text("$ \(ferrariPrice)")
                                 .foregroundColor(.green)
@@ -66,6 +61,11 @@ struct ShopView: View {
                                 .padding(.top)
                         }
                         VStack {
+                            Spacer()
+                            Text("Ferrari")
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundColor(.white)
                             Spacer()
                             Text("Estimated high: $ \(ferrariHigh)")
                                 .foregroundColor(.yellow)
@@ -77,7 +77,6 @@ struct ShopView: View {
                     }
                 }
                 .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
                     Button("Yes") {
                         if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
                             cash -= ferrariPrice
@@ -87,41 +86,34 @@ struct ShopView: View {
                             notEnoughMoney = true
                         }
                     }
-                    
                     Button("No") {
-                        
                     }
-                    
                 } message: {
                     Text("Your value of items will change based on this item's price, but you can't resell it.")
                 }
                 .alert("Error!", isPresented: $notEnoughMoney) {
-                    
                 } message: {
                     Text("You either don't have enough money to purchase this item or you already own it")
                 }
                 } footer: {
                     Text("Item prices change every 10 min")
                 }
-                
                 Section {
                     Button {
                         sureBuyItem = true
                     } label: {
                         Section {
                             HStack {
-                                
                                 Image(systemName: "car.fill")
                                     .font(.largeTitle)
                                     .foregroundColor(.yellow)
+                                    .padding(.top)
                                 Spacer()
-                                
-                                
                                 Text("$ \(lamPrice)")
                                     .foregroundColor(.green)
                                     .font(.title)
+                                    .padding(.top)
                             }
-                            
                             VStack {
                                 Spacer()
                                 Text("Lamborghini")
@@ -139,7 +131,6 @@ struct ShopView: View {
                         }
                     }
                     .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                        
                         Button("Yes") {
                             if cash >= lamPrice && ownedItems.contains("lam") == false {
                                 cash -= lamPrice
@@ -149,41 +140,34 @@ struct ShopView: View {
                                 notEnoughMoney = true
                             }
                         }
-                        
                         Button("No") {
-                            
                         }
-                        
                     } message: {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                     .alert("Error!", isPresented: $notEnoughMoney) {
-                        
                     } message: {
                         Text("You either don't have enough money to purchase this item or you already own it")
                     }
                 } footer: {
                     Text("Item prices change every 10 min")
                 }
-                
                 Section {
                     Button {
                         sureBuyItem = true
                     } label: {
                         Section {
                             HStack {
-                                
                                 Image(systemName: "house.fill")
                                     .foregroundColor(.white)
                                     .font(.largeTitle)
+                                    .padding(.top)
                                 Spacer()
-                                
-                                
                                 Text("$ \(familyPrice)")
                                     .foregroundColor(.green)
                                     .font(.title)
+                                    .padding(.top)
                             }
-                            
                             VStack {
                                 Spacer()
                                 Text("Family Estate")
@@ -193,7 +177,6 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Estimated high: $ \(familyHigh)")
                                     .foregroundColor(.yellow)
-                                
                                 Spacer()
                                 Text("Estimated low: $ \(familyLow)")
                                     .foregroundColor(.red)
@@ -212,18 +195,14 @@ struct ShopView: View {
                                 notEnoughMoney = true
                             }
                         }
-                        
                         Button("No") {
-                            
                         }
-                        
                     } message: {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
                     Text("Item prices change every 10 min")
                 }
-                
                 Section {
                     Button {
                         sureBuyItem = true
@@ -234,14 +213,13 @@ struct ShopView: View {
                                 Image(systemName: "house.fill")
                                     .font(.largeTitle)
                                     .foregroundColor(.cyan)
+                                    .padding(.top)
                                 Spacer()
-                                
-                                
                                 Text("$ \(condoPrice)")
                                     .foregroundColor(.green)
                                     .font(.title)
+                                    .padding(.top)
                             }
-                            
                             VStack {
                                 Spacer()
                                 Text("Condominium")
@@ -259,12 +237,10 @@ struct ShopView: View {
                         }
                     }
                     .alert("Error!", isPresented: $notEnoughMoney) {
-                        
                     } message: {
                         Text("You either don't have enough money to purchase this item or you already own it")
                     }
                     .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                        
                         Button("Yes") {
                             if cash >= condoPrice && ownedItems.contains("condo") == false {
                                 cash -= condoPrice
@@ -274,37 +250,30 @@ struct ShopView: View {
                                 notEnoughMoney = true
                             }
                         }
-                        
                         Button("No") {
-                            
                         }
-                        
                     } message: {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
                     Text("Item prices change every 10 min")
                 }
-                
                 Section {
                     Button {
                         sureBuyItem = true
                     } label: {
                         Section {
                             HStack {
-                                
                                 Image(systemName: "music.note.house.fill")
                                     .foregroundColor(.brown)
                                     .font(.largeTitle)
-                                
+                                    .padding(.top)
                                 Spacer()
-                                
-                                
                                 Text("$ \(bungalowPrice)")
                                     .foregroundColor(.green)
                                     .font(.title)
+                                    .padding(.top)
                             }
-                            
                             VStack {
                                 Spacer()
                                 Text("Bungalow")
@@ -322,12 +291,10 @@ struct ShopView: View {
                         }
                     }
                     .alert("Error!", isPresented: $notEnoughMoney) {
-                        
                     } message: {
                         Text("You either don't have enough money to purchase this item or you already own it.")
                     }
                     .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                        
                         Button("Yes") {
                             if cash >= bungalowPrice && ownedItems.contains("bungalow") == false {
                                 cash -= bungalowPrice
@@ -337,19 +304,14 @@ struct ShopView: View {
                                 notEnoughMoney = true
                             }
                         }
-                        
                         Button("No") {
-                            
                         }
-                        
                     } message: {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
                     Text("Item prices change every 10 min")
                 }
-                
-                
                 Section {
                     Button {
                         sureBuyItem = true
@@ -359,15 +321,13 @@ struct ShopView: View {
                                 Image(systemName: "cablecar.fill")
                                     .foregroundColor(.gray)
                                     .font(.largeTitle)
-                                
+                                    .padding(.top)
                                 Spacer()
-                                
-                                
                                 Text("$ \(mansionPrice)")
                                     .foregroundColor(.green)
                                     .font(.title)
+                                    .padding(.top)
                             }
-                            
                             VStack {
                                 Spacer()
                                 Text("Mega Mansion")
@@ -385,12 +345,10 @@ struct ShopView: View {
                         }
                     }
                     .alert("Error!", isPresented: $notEnoughMoney) {
-                        
                     } message: {
                         Text("You either don't have enough money to purchase this item or you already own it.")
                     }
                     .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                        
                         Button("Yes") {
                             if cash >= bungalowPrice && ownedItems.contains("mansion") == false {
                                 cash -= bungalowPrice
@@ -400,11 +358,8 @@ struct ShopView: View {
                                 notEnoughMoney = true
                             }
                         }
-                        
                         Button("No") {
-                            
                         }
-                        
                     } message: {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
@@ -416,9 +371,7 @@ struct ShopView: View {
         }
         .onReceive(timer) { time in
             if timeRemaining > 0 {
-                
                 timeRemaining -= 1
-               
             } else {
                 ferrariPrice = Int.random(in: 100000..<1000000)
                 lamPrice = Int.random(in: 120000..<1500000)
@@ -426,16 +379,10 @@ struct ShopView: View {
                 condoPrice = Int.random(in: 250000..<5300000)
                 bungalowPrice = Int.random(in: 2500000..<20000000)
                 mansionPrice = Int.random(in: 45000000..<350000000)
-                
-              
-                
-                
                 timeRemaining = 600
-                
                 //Any other code that should happen after countdown
             }
         }
-
     }
 }
     struct ShopView_Previews: PreviewProvider {
