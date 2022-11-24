@@ -58,12 +58,10 @@ struct PortfoilioView: View {
                                 Spacer()
                              
                               
-                                Text("Value of items owned:")
+                                Text("Value of items owned:\n$\(netWorth)")
                                     .font(.title2)
                                     .fontWeight(.light)
-                                Text(" $\(netWorth)")
-                                    .font(.title2)
-                                    .fontWeight(.light)
+                                    .multilineTextAlignment(.center)
                               
                                 
                                 Spacer()
