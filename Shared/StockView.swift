@@ -278,9 +278,6 @@ struct StockView: View {
             .onDisappear {
                 new2 = false
             }
-            
-            
-            
         }
         .onReceive(timer) { time in
             if timeRemaining > 0 {
@@ -295,9 +292,6 @@ struct StockView: View {
                 //Any other code that should happen after countdown
             }
         }
-        
-        
-        
     }
 }
 struct StockView_Previews: PreviewProvider {
