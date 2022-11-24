@@ -150,8 +150,7 @@ struct PortfoilioView: View {
                         }
                         
                         ForEach(ownedItems, id: \.self) { item in
-                            HStack(){
-                                
+                            HStack {
                                 
                                 if item == "ferrari" {
                                     Image(systemName: "car.fill")
@@ -192,6 +191,7 @@ struct PortfoilioView: View {
                                 if item == "bungalow" {
                                     Image(systemName: "music.note.house.fill")
                                         .foregroundColor(.brown)
+                                    Spacer()
                                     Text("Bungalow")
                                         .font(.title3)
                                 }
@@ -200,6 +200,7 @@ struct PortfoilioView: View {
                                 if item == "mansion" {
                                     Image(systemName: "cablecar.fill")
                                         .foregroundColor(.gray)
+                                    Spacer()
                                     Text("Mega Mansion")
                                         .font(.title3)
                                 }
