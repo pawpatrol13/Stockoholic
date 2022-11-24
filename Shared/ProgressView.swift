@@ -50,8 +50,8 @@ struct ProgressView: View {
     
     var body: some View {
         ZStack {
-
-       
+            
+            
             VStack {
                 ZStack {
                     // 2
@@ -63,21 +63,21 @@ struct ProgressView: View {
                 }
                 .padding(85)
                 
-         
-              
+                
+                
                 NavigationView {
                     List {
-                      
+                        
                         
                         if cash > 10000 {
-                           
+                            
                             Section {
                                 
                                 HStack {
                                     Image("10K 3")
                                         .frame(width: 20, height: 10)
-                                 Spacer()
-                                  Spacer()
+                                    Spacer()
+                                    Spacer()
                                     Text("You earned $ 10 000. You're off to a great start!")
                                         .fontWeight(.black)
                                 }
@@ -185,7 +185,7 @@ struct ProgressView: View {
             }
         }
     }
-   
+    
 }
 
 struct ProgressView_Previews: PreviewProvider {
