@@ -29,12 +29,12 @@ struct StockRow: View {
     @State var sharesOwned = []
     var stock: Stockie
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
-   
+    
     var body: some View {
         VStack {
             HStack {
                 
-              
+                
                 Spacer()
                 
                 Text("\(stock.name)")
@@ -42,7 +42,7 @@ struct StockRow: View {
                     .foregroundColor(.white)
                     .fontWeight(.medium)
                 Spacer()
-             
+                
                 
                 
                 
@@ -55,11 +55,11 @@ struct StockRow: View {
                     .foregroundColor(.gray)
                     .fontWeight(.light)
                 Spacer()
-          
+                
             }
             Spacer()
             
-        
+            
         }
     }
 }
@@ -68,18 +68,18 @@ struct StockView: View {
     @State var showStock = false
     @State var searchText = ""
     @AppStorage("cash") var cash = 1000
-
+    
     @State var buyShares = false
-@State var numie = 0
+    @State var numie = 0
     @State var sureBuy = false
     @State var sharesBuying = 1
     @State var companySelected = ""
     @State var price = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 20
+    @State var timeRemaining = 20
     
     // prices
-   @AppStorage("duskPrice") var duskPrice = 50
+    @AppStorage("duskPrice") var duskPrice = 50
     @AppStorage("musicPrice") var musicPrice = 80
     @AppStorage("furniPrice") var furniPrice = 120
     @AppStorage("beatsPrice") var beatsPrice = 100
@@ -88,34 +88,34 @@ struct StockView: View {
     @AppStorage("georgianPrice") var georgianPrice = 45
     // high or low
     @AppStorage("duskArrow") var duskArrow = true
-     @AppStorage("musicArrow") var musicArrow = true
-     @AppStorage("furniArrow") var furniArrow = true
-     @AppStorage("beatsArrow") var beatsArrow = true
-     @AppStorage("jackArrow") var jackArrow = true
-     @AppStorage("laureneArrow") var laureneArrow = true
-     @AppStorage("georgianArrow") var georgianArrow = true
+    @AppStorage("musicArrow") var musicArrow = true
+    @AppStorage("furniArrow") var furniArrow = true
+    @AppStorage("beatsArrow") var beatsArrow = true
+    @AppStorage("jackArrow") var jackArrow = true
+    @AppStorage("laureneArrow") var laureneArrow = true
+    @AppStorage("georgianArrow") var georgianArrow = true
     
     // average high
     @AppStorage("duskHigh") var duskHigh = 120
-     @AppStorage("musicHigh") var musicHigh = 230
-     @AppStorage("furniHigh") var furniHigh = 180
-     @AppStorage("beatsHigh") var beatsHigh = 150
-     @AppStorage("jackHigh") var jackHigh = 160
-     @AppStorage("laureneHigh") var laureneHigh = 230
-     @AppStorage("georgianHigh") var georgianHigh = 135
-@AppStorage("new2") var new2 = true
+    @AppStorage("musicHigh") var musicHigh = 230
+    @AppStorage("furniHigh") var furniHigh = 180
+    @AppStorage("beatsHigh") var beatsHigh = 150
+    @AppStorage("jackHigh") var jackHigh = 160
+    @AppStorage("laureneHigh") var laureneHigh = 230
+    @AppStorage("georgianHigh") var georgianHigh = 135
+    @AppStorage("new2") var new2 = true
     // average low
     @AppStorage("duskLow") var duskLow = 28
-     @AppStorage("musicLow") var musicLow = 40
-     @AppStorage("furniLow") var furniLow = 60
-     @AppStorage("beatsLow") var beatsLow = 50
-     @AppStorage("jackLow") var jackLow = 75
-     @AppStorage("laureneLow") var laureneLow = 100
-     @AppStorage("georgianLow") var georgianLow = 35
+    @AppStorage("musicLow") var musicLow = 40
+    @AppStorage("furniLow") var furniLow = 60
+    @AppStorage("beatsLow") var beatsLow = 50
+    @AppStorage("jackLow") var jackLow = 75
+    @AppStorage("laureneLow") var laureneLow = 100
+    @AppStorage("georgianLow") var georgianLow = 35
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     @State var tooPoor = false
     @State var stocks = [
-    
+        
         Stockie(name: "Dusk Motors", price: 0, upOrDown: upOrDowns[0], marketCap: "5B", lowestToday: "8", highestToday: "10", num: 0),
         Stockie(name: "Music Max, Inc.", price: 0, upOrDown: upOrDowns[1], marketCap: "350M", lowestToday: "1", highestToday: "3", num: 1),
         Stockie(name: "FurniWear, Inc.", price: 0, upOrDown: upOrDowns[1], marketCap: "3.58B", lowestToday: "1", highestToday: "3", num: 2),
@@ -126,17 +126,17 @@ struct StockView: View {
         
         Stockie(name: "Georgian Air", price: 0, upOrDown: upOrDowns[1], marketCap: "850M", lowestToday: "1", highestToday: "3", num: 6)
     ]
-
-  
+    
+    
     
     var body: some View {
         NavigationView {
-         
-       
+            
+            
             List(stocks) { stock in
-              
-                Section {
                 
+                Section {
+                    
                     Button {
                         buyShares = true
                         companySelected = "\(stock.name)"
@@ -156,7 +156,7 @@ struct StockView: View {
                         } else if stock.name == "Georgian Air" {
                             price = georgianPrice
                         }
-                     
+                        
                         numie = stock.num
                     } label: {
                         StockRow(stock: stock)
@@ -183,7 +183,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(duskHigh)")
@@ -218,7 +218,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(musicHigh)")
@@ -253,7 +253,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(furniHigh)")
@@ -288,7 +288,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(beatsHigh)")
@@ -325,7 +325,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(jackHigh)")
@@ -360,7 +360,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(laureneHigh)")
@@ -395,7 +395,7 @@ struct StockView: View {
                                 Spacer()
                             }
                             
-                     
+                            
                             Spacer()
                             HStack {
                                 Text("Average high: $ \(georgianHigh)")
@@ -409,11 +409,11 @@ struct StockView: View {
                                     .fontWeight(.light)
                             }
                         }
-                       
-                     
+                        
+                        
                     }
                     .sheet(isPresented: $buyShares) {
-                    
+                        
                         NavigationView {
                             
                             List {
@@ -448,7 +448,7 @@ struct StockView: View {
                                         Text("Georgian Air is a low-cost long haul airline company that seeks to provide a great flying experience at low prices.\n\nThey have flights connecting all major cities, and have a strong frequent flyer loyalty programme.")
                                             .fontWeight(.ultraLight)
                                             .font(.callout)
-
+                                        
                                     }
                                     
                                     Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \nNote: Stock information in this app do not reflect real values!")
@@ -469,7 +469,7 @@ struct StockView: View {
                                     HStack {
                                         Spacer()
                                         Button("Purchase") {
-                                       sureBuy = true
+                                            sureBuy = true
                                         }
                                         .foregroundColor(.blue)
                                         .alert("Are you sure?", isPresented: $sureBuy) {
@@ -477,7 +477,7 @@ struct StockView: View {
                                             HStack {
                                                 Button("Yes") {
                                                     
-                                               
+                                                    
                                                     if cash >= price*sharesBuying {
                                                         shares[numie] += sharesBuying
                                                         UserDefaults.standard.set(shares, forKey: "shares")
@@ -485,15 +485,15 @@ struct StockView: View {
                                                         buyShares = false
                                                         print(shares)
                                                     } else {
-                                                       tooPoor = true
+                                                        tooPoor = true
                                                     }
                                                     
                                                 }
-                                              
+                                                
                                                 Button("No") {
                                                     
                                                 }
-                                             
+                                                
                                             }
                                         } message: {
                                             Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(companySelected)?")
@@ -520,8 +520,8 @@ struct StockView: View {
                     Text("Click to purchase shares. Share prices change every 20s.")
                 }
                 
-                    
-             
+                
+                
                 
             }
             .navigationTitle("Stocks")
@@ -534,8 +534,8 @@ struct StockView: View {
                     HStack {
                         Spacer()
                         Text("Welcome to Stockoholic!")
-                        .font(.largeTitle)
-                        .fontWeight(.black)
+                            .font(.largeTitle)
+                            .fontWeight(.black)
                         Spacer()
                     }
                     Spacer()
@@ -562,33 +562,33 @@ struct StockView: View {
                                     .fontWeight(.light)
                                 Spacer()
                             }
-                          Spacer()
+                            Spacer()
                         }
                         Spacer()
                     }
                 }
-
+                
             }
             .onDisappear {
                 new2 = false
             }
             
             
-
+            
         }
         .onReceive(timer) { time in
             if timeRemaining > 0 {
                 
                 timeRemaining -= 1
-               
+                
             } else {
-                duskPrice = Int.random(in: 50..<330)
-                musicPrice = Int.random(in: 50..<530)
-                furniPrice = Int.random(in: 60..<230)
-                beatsPrice = Int.random(in: 50..<530)
-                jackPrice = Int.random(in: 75..<450)
-                laurenePrice = Int.random(in: 100..<830)
-                georgianPrice = Int.random(in: 60..<343)
+                duskPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
+                musicPrice = Int(round(Double(duskPrice) * Double.random(in: 0.925...1.075)))
+                furniPrice = Int(round(Double(duskPrice) * Double.random(in: 0.975...1.025)))
+                beatsPrice = Int(round(Double(duskPrice) * Double.random(in: 0.925...1.075)))
+                jackPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
+                laurenePrice = Int(round(Double(duskPrice) * Double.random(in: 0.9...1.1)))
+                georgianPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
                 
                 if duskPrice > 165 {
                     duskArrow = true
@@ -667,15 +667,15 @@ struct StockView: View {
                 //Any other code that should happen after countdown
             }
         }
-      
-      
-    
+        
+        
+        
     }
 }
-    struct StockView_Previews: PreviewProvider {
-        static var previews: some View {
-            StockView()
-                .preferredColorScheme(.dark)
-        }
+struct StockView_Previews: PreviewProvider {
+    static var previews: some View {
+        StockView()
+            .preferredColorScheme(.dark)
     }
+}
 

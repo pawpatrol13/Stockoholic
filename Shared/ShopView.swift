@@ -38,75 +38,75 @@ struct ShopView: View {
     @State var notEnoughMoney = false
     @State private var ownedItems: [String] = UserDefaults.standard.object(forKey: "ownedItems") as? [String] ?? [""]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 600
+    @State var timeRemaining = 600
     var body: some View {
         NavigationView {
-       
+            
             List {
                 Section {
                     Text("Item prices change every 10 min")
                         .fontWeight(.light)
                         .foregroundColor(.gray)
                         .font(.callout)
-                Button {
-                    sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-                            
-                            
-                            Image(systemName: "car.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                            
-                            Spacer()
-                            
-                            Text("$ \(ferrariPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
-                            
-                            
-                        }
-                        VStack {
-                            Spacer()
-                            Text("Ferrari")
-                                .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                            Text("Estimated high: $ \(ferrariHigh)")
-                                .foregroundColor(.yellow)
-                            Spacer()
-                            Text("Estimated low: $ \(ferrariLow)")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    
-                    Button("Yes") {
-                        if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
-                            cash -= ferrariPrice
-                            ownedItems.append("ferrari")
-                            UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
-                        } else {
-                            notEnoughMoney = true
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                
+                                
+                                Image(systemName: "car.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.red)
+                                
+                                Spacer()
+                                
+                                Text("$ \(ferrariPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                                
+                                
+                            }
+                            VStack {
+                                Spacer()
+                                Text("Ferrari")
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                                Text("Estimated high: $ \(ferrariHigh)")
+                                    .foregroundColor(.yellow)
+                                Spacer()
+                                Text("Estimated low: $ \(ferrariLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
                         }
                     }
-                    
-                    Button("No") {
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
                         
+                        Button("Yes") {
+                            if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
+                                cash -= ferrariPrice
+                                ownedItems.append("ferrari")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
+                            } else {
+                                notEnoughMoney = true
+                            }
+                        }
+                        
+                        Button("No") {
+                            
+                        }
+                        
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
-                    
-                } message: {
-                    Text("Your value of items will change based on this item's price, but you can't resell it.")
+                    .alert("Error!", isPresented: $notEnoughMoney) {
+                        
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it")
+                    }
                 }
-                .alert("Error!", isPresented: $notEnoughMoney) {
-                    
-                } message: {
-                    Text("You either don't have enough money to purchase this item or you already own it")
-                }
-            }
                 
                 Section {
                     Button {
@@ -408,7 +408,7 @@ struct ShopView: View {
             if timeRemaining > 0 {
                 
                 timeRemaining -= 1
-               
+                
             } else {
                 ferrariPrice = Int.random(in: 100000..<1000000)
                 lamPrice = Int.random(in: 120000..<1500000)
@@ -417,7 +417,7 @@ struct ShopView: View {
                 bungalowPrice = Int.random(in: 2500000..<20000000)
                 mansionPrice = Int.random(in: 45000000..<350000000)
                 
-              
+                
                 
                 
                 timeRemaining = 600
@@ -425,12 +425,12 @@ struct ShopView: View {
                 //Any other code that should happen after countdown
             }
         }
-
+        
     }
 }
-    struct ShopView_Previews: PreviewProvider {
-        static var previews: some View {
-            ShopView()
-                .preferredColorScheme(.dark)
-        }
+struct ShopView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShopView()
+            .preferredColorScheme(.dark)
     }
+}
