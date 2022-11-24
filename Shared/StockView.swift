@@ -66,7 +66,6 @@ struct StockView: View {
     var body: some View {
         NavigationView {
             
-            
             List(stockManager.stocks) { stock in
                 
                 Section {
@@ -112,12 +111,76 @@ struct StockView: View {
                         }
                     }
                     .sheet(isPresented: $buyShares) {
-                        
                         NavigationView {
-                            
                             List {
                                 
                                 if companySelected != "" {
+                                    if #available(iOS 16.0, *) {
+                                        Chart{
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-90))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-90)))"),
+                                                y: .value("Price", stock.pricePerStockArray[9])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[9] > stock.pricePerStockArray[10] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-80))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-80)))"),
+                                                y: .value("Price", stock.pricePerStockArray[8])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[8] > stock.pricePerStockArray[9] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
+                                                y: .value("Price", stock.pricePerStockArray[7])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[7] > stock.pricePerStockArray[8] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
+                                                y: .value("Price", stock.pricePerStockArray[6])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[6] > stock.pricePerStockArray[7] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
+                                                y: .value("Price", stock.pricePerStockArray[5])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[5] > stock.pricePerStockArray[6] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
+                                                y: .value("Price", stock.pricePerStockArray[4])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[4] > stock.pricePerStockArray[5] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
+                                                y: .value("Price", stock.pricePerStockArray[3])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[3] > stock.pricePerStockArray[4] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
+                                                y: .value("Price", stock.pricePerStockArray[2])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[2] > stock.pricePerStockArray[3] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
+                                                y: .value("Price", stock.pricePerStockArray[1])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[1] > stock.pricePerStockArray[2] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date())):\(Calendar.current.component(.second, from: Date()))"),
+                                                y: .value("Price", stock.pricePerStockArray[0])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[0] > stock.pricePerStockArray[1] ? Color.green : Color.red)
+                                        }
+                                        .padding()
+                                    } else {
+                                        // Fallback on earlier versions
+                                    }
                                     
                                     if companySelected == "Dusk Motors" {
                                         Text("Dusk Motors is a world renowned vehicle company that has made innovative contributions in the automobile industry. From motorcycles to electric cars, Dusk Motors is revolutionising transportation.\n\nThey are currently working on electric vehicles and more environmetally friendly solutions.")
@@ -206,7 +269,7 @@ struct StockView: View {
                                     }
                                     
                                     
-                                } else  if companySelected == "" {
+                                } else {
                                     Text("This stock is still loading. Click another one.")
                                 }
                             }
@@ -278,7 +341,15 @@ struct StockView: View {
                 timeRemaining -= 1
                 
             } else {
-                UpdateStocks()
+                while stockManager.stocks[0].pricePerStockArray.count < 12 {
+                    UpdateStocks()
+                }
+                
+                for i in 0...5 {
+                    if stockManager.stocks[i].pricePerStockArray.count > 11{
+                        stockManager.stocks[i].pricePerStockArray.removeLast()
+                    }
+                }
                 
                 timeRemaining = 10
                 
