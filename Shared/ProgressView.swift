@@ -107,7 +107,7 @@ struct ProgressView: View {
                             }
                         }
                         
-                        if cash > 1000000000 {
+                        if cash > 100000000 {
                             Section {
                                 
                                 HStack {
