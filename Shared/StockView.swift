@@ -60,6 +60,8 @@ struct StockView: View {
     
     public func ChangeStocksOwned(num:Int,diff:Int){
         stockManager.stocks[num].stocksOwned += diff
+        print(num)
+        print(diff)
     }
     
     @State var show = false
