@@ -45,7 +45,7 @@ struct StockView: View {
     @State var timeRemaining = 0
     @AppStorage("new2") var new2 = true
     
-    @State var currentStock: Stock?
+    @State var currentStock: Int?
     
     @StateObject var stockManager = StockManager()
     
@@ -57,7 +57,6 @@ struct StockView: View {
         stockManager.stocks[4].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
         stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
         stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        print(stockManager.stocks[0].pricePerStockArray)
     }
     @State var show = false
     @State var sharesToSell = 1
@@ -76,7 +75,7 @@ struct StockView: View {
             List(stockManager.stocks) { stock in
                 Section {
                     Button {
-                        currentStock = stock
+                        currentStock = stock.num
                         buyShares = true
                     } label: {
                         StockRow(stock: stock)
@@ -122,7 +121,7 @@ struct StockView: View {
                 }
             }
             .sheet(isPresented: $buyShares) {
-                BuyAndSellView(stock: currentStock ?? Stock(name: "<StockNotLoading>", pricePerStockArray: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], num: 0))
+                BuyAndSellView(stockNum: currentStock ?? -1)
             }
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {
