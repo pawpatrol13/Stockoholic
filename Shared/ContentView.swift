@@ -24,7 +24,7 @@ struct ContentView: View {
                     Label("Stocks",systemImage: "chart.xyaxis.line")
                 }
                 .tag(1)
-            PortfoilioView()
+            PortfolioView()
                 .tabItem{
                     Label("Portfolio",systemImage: "list.bullet.rectangle.portrait")
                 }
