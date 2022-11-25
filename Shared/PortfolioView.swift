@@ -34,7 +34,7 @@ struct PortfolioView: View {
     @AppStorage("bungalowPrice") var bungalowPrice = 10000000
     @State var sharesSold = false
     
-    @EnvironmentObject var stockManager: StockManager
+    @ObservedObject var stockManager = StockManager()
 
     var body: some View {
         NavigationView {
@@ -46,13 +46,6 @@ struct PortfolioView: View {
                             Spacer()
                             Image(systemName:"person.crop.circle")
                                 .font(.system(size: 90))
-                            
-                            Spacer()
-                            
-                            Text("Net Worth: $\(netWorth)")
-                                .font(.title2)
-                                .fontWeight(.light)
-                                .multilineTextAlignment(.center)
                             
                             
                             Spacer()
@@ -67,6 +60,11 @@ struct PortfolioView: View {
                                 .fontWeight(.light)
                             Spacer()
                             
+                            Text("Assets: $\(netWorth)")
+                                .font(.title2)
+                                .fontWeight(.light)
+                                .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
@@ -87,44 +85,37 @@ struct PortfolioView: View {
                                 HStack{
                                     Text("Dusk Motors, Inc:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[0].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[0].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("Music Max, Inc:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[1].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[1].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("FurniWear, Inc:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[2].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[2].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("Beats Entertainment LLC:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[3].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[3].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("Jack's Beef:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[4].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[4].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("Laurene & Co:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[5].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[5].stocksOwned)  ")
                                 }
                                 HStack{
                                     Text("Georgian Air:")
                                     Spacer()
-                                    Text("\(stockManager.stocks[6].stocksOwned)")
-                                        .frame(alignment: .trailing)
+                                    Text("\(stockManager.stocks[6].stocksOwned)  ")
                                 }
 
                             }
@@ -143,68 +134,59 @@ struct PortfolioView: View {
                                 .font(.title2)
                             Spacer()
                         }
-                        .padding(.top)
                         
                         ForEach(ownedItems, id: \.self) { item in
                             HStack {
                                 
                                 
                                 if item == "ferrari" {
+                                    Text("Ferrari")
+                                    Spacer()
                                     Image(systemName: "car.fill")
                                         .foregroundColor(.red)
-                                    Spacer()
-                                    Text("Ferrari")
-                                        .font(.title3)
+                                    
                                 }
                                 
                                 if item == "lam" {
+                                    Text("Lamborghini")
+                                    Spacer()
                                     Image(systemName: "car.fill")
                                         .foregroundColor(.yellow)
-                                    Spacer()
-                                    Text("Lamborghini")
-                                        .font(.title3)
                                 }
                                 
                                 
                                 if item == "family" {
+                                    Text("Family Estate")
+                                    Spacer()
                                     Image(systemName: "house.fill")
                                         .foregroundColor(Color("FamilyEstate"))
-                                    Spacer()
-                                    Text("Family Estate")
-                                        .font(.title3)
                                 }
                                 
                                 
                                 if item == "condo" {
+                                    Text("Condominium")
+                                    Spacer()
                                     Image(systemName: "house.fill")
                                         .foregroundColor(.cyan)
-                                    Spacer()
-                                    
-                                    Text("Condominium")
-                                        .font(.title3)
                                 }
                                 
                                 
                                 if item == "bungalow" {
+                                    Text("Bungalow")
+                                    Spacer()
                                     Image(systemName: "music.note.house.fill")
                                         .foregroundColor(.brown)
-                                    Spacer()
-                                    Text("Bungalow")
-                                        .font(.title3)
                                 }
                                 
                                 
                                 if item == "mansion" {
+                                    Text("Mega Mansion")
+                                    Spacer()
                                     Image(systemName: "cablecar.fill")
                                         .foregroundColor(.gray)
-                                    Text("Mega Mansion")
-                                        .font(.title3)
                                 }
-                                
-                                
-                                
-                                Spacer()
                             }
+                            .padding([.leading, .trailing],10)
                         }
                     }
                         

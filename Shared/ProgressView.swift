@@ -70,64 +70,40 @@ struct ProgressView: View {
                         
                         
                         if cash > 10000 {
-                            
-                            Section {
-                                
                                 HStack {
                                     Image("10K 3")
-                                    Spacer()
-                                    Spacer()
                                     Text("You earned $ 10 000. You're off to a great start!")
-                                        .fontWeight(.black)
                                 }
-                            }
                         }
                         
                         if cash > 100000 {
-                            Section {
                                 HStack {
                                     Image("100K 2")
-                                    Spacer()
+                                    
                                     Text("You earned $ 100 000. You're on to riches, alright!")
-                                        .fontWeight(.black)
                                 }
-                            }
                         }
                         
                         if cash > 1000000 {
-                            Section {
                                 HStack {
                                     Image("1M 2")
-                                    Spacer()
                                     Text("You earned $ 1 million. You've officially joined the millionaire club.")
-                                        .fontWeight(.black)
                                     
                                 }
-                            }
                         }
                         
                         if cash > 100000000 {
-                            Section {
-                                
                                 HStack {
                                     Image("100M 2")
-                                    Spacer()
                                     Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
-                                        .fontWeight(.black)
                                 }
-                            }
                         }
                         
                         if cash > 1000000000 {
-                            Section {
-                                
                                 HStack {
                                     Image("1B 2")
-                                    Spacer()
                                     Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
-                                        .fontWeight(.black)
                                 }
-                            }
                         }
                         
                     }
@@ -190,6 +166,5 @@ struct ProgressView: View {
 struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
         ProgressView()
-            .preferredColorScheme(.dark)
     }
 }
