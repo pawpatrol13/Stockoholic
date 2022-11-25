@@ -10,7 +10,6 @@ import Charts
 
 struct BuyAndSellView: View {
     @EnvironmentObject var stockManager: StockManager
-    @State var stockView:StockView
     
     @AppStorage("cash") var cash = 1000
     @State var stockNum:Int
@@ -154,7 +153,7 @@ struct BuyAndSellView: View {
                                     
                                     
                                     if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                        stockView.ChangeStocksOwned(num: stockNum, diff: sharesBuying)
+                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
                                         cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
                                     } else {
                                         tooPoor = true
@@ -211,7 +210,7 @@ struct BuyAndSellView: View {
                                 Button("Yes") {
                                     if stockManager.stocks[stockNum].stocksOwned >= sharesToSell {
                                         cash += stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell
-                                        stockView.ChangeStocksOwned(num: stockNum, diff: -sharesToSell)
+                                        stockManager.stocks[stockNum].stocksOwned -= sharesToSell
                                         sharesSold = true
                                     } else {
                                         notEnoughShares = true
@@ -246,6 +245,6 @@ struct BuyAndSellView: View {
 
 struct BuyAndSellView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyAndSellView(stockView: StockView(), stockNum: 0)
+        BuyAndSellView(stockNum: 0)
     }
 }

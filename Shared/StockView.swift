@@ -58,12 +58,6 @@ struct StockView: View {
         stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
     }
     
-    public func ChangeStocksOwned(num:Int,diff:Int){
-        stockManager.stocks[num].stocksOwned += diff
-        print(num)
-        print(diff)
-    }
-    
     @State var show = false
     @State var sharesToSell = 1
     @State var sureSell = false
@@ -129,7 +123,7 @@ struct StockView: View {
                 }
             }
             .sheet(isPresented: $buyShares) {
-                BuyAndSellView(stockView: self, stockNum: currentStock ?? -1)
+                BuyAndSellView(stockNum: currentStock ?? -1)
             }
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {
