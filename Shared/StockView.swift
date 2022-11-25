@@ -45,6 +45,8 @@ struct StockView: View {
     @State var timeRemaining = 0 
     @AppStorage("new2") var new2 = true
     
+    @State var currentStock: Stock?
+    
     @StateObject var stockManager = StockManager()
     
     func UpdateStocks(){
@@ -76,6 +78,7 @@ struct StockView: View {
                     
                     Button {
                         buyShares = true
+                        currentStock = stock
                     } label: {
                         StockRow(stock: stock)
                         HStack {
@@ -113,9 +116,6 @@ struct StockView: View {
                                 .fontWeight(.light)
                         }
                     }
-                    .sheet(isPresented: $buyShares) {
-                        BuyAndSellView(stock: stock)
-                    }
                     
                     
                 }  footer: {
@@ -125,6 +125,9 @@ struct StockView: View {
                 
                 
                 
+            }
+            .sheet(isPresented: $buyShares) {
+                BuyAndSellView(stock: currentStock ?? Stock(name: "This shouldn't appear", pricePerStockArray: [0, 0, 0, 0, 0, 0, 0], num: 0))
             }
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {

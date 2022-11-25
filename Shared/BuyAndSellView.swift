@@ -234,6 +234,9 @@ struct BuyAndSellView: View {
             }
             .navigationTitle("\(stock.name)")
         }
+        .onAppear {
+            print(stock)
+        }
     }
 }
 
