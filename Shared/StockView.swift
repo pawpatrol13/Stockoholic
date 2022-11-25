@@ -145,7 +145,7 @@ struct StockView: View {
                         Spacer()
                         VStack {
                             Spacer()
-                            Text("- This app is meant for both kids and adults to learn more about investing. \n \n - You can buy shares in 7 different companies from different industries with virtual currency. \n \n- Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. \n \n - Please not that share prices in this app do not reflect real share values! \n \nCan you become a billionaire investor?")
+                            Text("- This app is meant for both kids and adults to learn more about investing. \n \n - You can buy shares in 8 different companies from different industries with virtual currency. \n \n- Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. \n \n - Please not that share prices in this app do not reflect real share values! \n \nCan you become a billionaire investor?")
                                 .fontWeight(.light)
                                 .font(.system(size: 16))
                             
