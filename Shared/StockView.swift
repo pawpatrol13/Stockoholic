@@ -24,9 +24,7 @@ struct Stock: Identifiable, Codable{
 }
 
 struct StockRow: View {
-    @State var sharesOwned = []
     var stock: Stock
-    @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     
     var body: some View {
         Text("\(stock.name)")
@@ -59,6 +57,11 @@ struct StockView: View {
         stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
         stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
     }
+    
+    public func ChangeStocksOwned(num:Int,diff:Int){
+        stockManager.stocks[num].stocksOwned += diff
+    }
+    
     @State var show = false
     @State var sharesToSell = 1
     @State var sureSell = false
@@ -85,27 +88,27 @@ struct StockView: View {
                         HStack {
                             
                             if stock.pricePerStockArray.count < 2 || stock.pricePerStockArray[0] > stock.pricePerStockArray[1]{
-                                Image(systemName: "arrow.up")
+                                Image(systemName: "arrowtriangle.up.fill")
                                     .foregroundColor(.green)
                                     .font(.title)
                             } else  {
-                                Image(systemName: "arrow.down")
+                                Image(systemName: "arrowtriangle.down.fill")
                                     .foregroundColor(.red)
                                     .font(.title)
                             }
                             Text("$ \(stock.pricePerStockArray[0])")
-                                .foregroundColor(.green)
+                                .foregroundColor(stock.pricePerStockArray.count < 2 || stock.pricePerStockArray[0] > stock.pricePerStockArray[1] ? .green : .red)
                                 .font(.title2)
                         }
                         Spacer()
                         HStack {
                             Text("Average high: $ \(stock.pricePerStockArray.max() ?? 0)")
-                                .font(.body)
                                 .foregroundColor(Color("Yellow"))
+                                .font(.body)
                                 .fontWeight(.light)
                             Spacer()
                             Text("Average low: $ \(stock.pricePerStockArray.min() ?? 0)")
-                                .foregroundColor(.red)
+                                .foregroundColor(Color("Yellow"))
                                 .font(.body)
                                 .fontWeight(.light)
                         }

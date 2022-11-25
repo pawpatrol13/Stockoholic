@@ -9,7 +9,8 @@ import SwiftUI
 import Charts
 
 struct BuyAndSellView: View {
-    @StateObject var stockManager = StockManager()
+    @ObservedObject var stockManager = StockManager()
+    @State var stockView = StockView()
     
     @AppStorage("cash") var cash = 1000
     @State var stockNum:Int
@@ -153,7 +154,7 @@ struct BuyAndSellView: View {
                                     
                                     
                                     if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
+                                        stockView.ChangeStocksOwned(num: stockNum, diff: sharesBuying)
                                         cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
                                     } else {
                                         tooPoor = true
@@ -210,7 +211,7 @@ struct BuyAndSellView: View {
                                 Button("Yes") {
                                     if stockManager.stocks[stockNum].stocksOwned >= sharesToSell {
                                         cash += stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell
-                                        stockManager.stocks[stockNum].stocksOwned -= sharesToSell
+                                        stockView.ChangeStocksOwned(num: stockNum, diff: -sharesToSell)
                                         sharesSold = true
                                     } else {
                                         notEnoughShares = true
