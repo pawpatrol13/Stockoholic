@@ -175,7 +175,7 @@ struct PortfolioView: View {
                                 
                                 if item == "family" {
                                     Image(systemName: "house.fill")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color("FamilyEstate"))
                                     Spacer()
                                     Text("Family Estate")
                                         .font(.title3)

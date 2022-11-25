@@ -39,6 +39,7 @@ struct ShopView: View {
     @State private var ownedItems: [String] = UserDefaults.standard.object(forKey: "ownedItems") as? [String] ?? [""]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       @State var timeRemaining = 600
+    @State var timeRemainingMinutes = 0
     var body: some View {
         NavigationView {
        
@@ -64,11 +65,11 @@ struct ShopView: View {
                             Spacer()
                             Text("Ferrari")
                                 .font(.title)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("TextColor"))
                             Spacer()
                             Text("Estimated high: $ \(ferrariHigh)")
-                                .foregroundColor(.yellow)
+                                .foregroundColor(Color("Yellow"))
                             Spacer()
                             Text("Estimated low: $ \(ferrariLow)")
                                 .foregroundColor(.red)
@@ -96,7 +97,11 @@ struct ShopView: View {
                     Text("You either don't have enough money to purchase this item or you already own it")
                 }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
                 Section {
                     Button {
@@ -118,11 +123,11 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Lamborghini")
                                     .font(.title)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
                                Spacer()
                                 Text("Estimated high: $ \(lamHigh)")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("Yellow"))
                                 Spacer()
                                 Text("Estimated low: $ \(lamLow)")
                                     .foregroundColor(.red)
@@ -150,7 +155,11 @@ struct ShopView: View {
                         Text("You either don't have enough money to purchase this item or you already own it")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
                 Section {
                     Button {
@@ -159,7 +168,7 @@ struct ShopView: View {
                         Section {
                             HStack {
                                 Image(systemName: "house.fill")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color("FamilyEstate"))
                                     .font(.largeTitle)
                                     .padding(.top)
                                 Spacer()
@@ -172,11 +181,11 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Family Estate")
                                     .font(.title)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
                                 Spacer()
                                 Text("Estimated high: $ \(familyHigh)")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("Yellow"))
                                 Spacer()
                                 Text("Estimated low: $ \(familyLow)")
                                     .foregroundColor(.red)
@@ -201,7 +210,11 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
                 Section {
                     Button {
@@ -224,11 +237,11 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Condominium")
                                     .font(.title)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
                                Spacer()
                                 Text("Estimated high: $ \(condoHigh)")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("Yellow"))
                                 Spacer()
                                 Text("Estimated low: $ \(condoLow)")
                                     .foregroundColor(.red)
@@ -256,7 +269,11 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
                 Section {
                     Button {
@@ -278,11 +295,11 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Bungalow")
                                     .font(.title)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
                                 Spacer()
                                 Text("Estimated high: $ \(bungalowHigh)")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("Yellow"))
                                 Spacer()
                                 Text("Estimated low: $ \(bungalowLow)")
                                     .foregroundColor(.red)
@@ -310,7 +327,11 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
                 Section {
                     Button {
@@ -332,11 +353,11 @@ struct ShopView: View {
                                 Spacer()
                                 Text("Mega Mansion")
                                     .font(.title)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
                                 Spacer()
                                 Text("Estimated high: $ \(mansionHigh)")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("Yellow"))
                                 Spacer()
                                 Text("Estimated low: $ \(mansionLow)")
                                     .foregroundColor(.red)
@@ -364,7 +385,11 @@ struct ShopView: View {
                         Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
                 } footer: {
-                    Text("Item prices change every 10 min.")
+                    HStack{
+                        Spacer()
+                        Text("Item prices change in \(timeRemainingMinutes) min.")
+                        Spacer()
+                    }
                 }
             }
             .navigationTitle("Market")
@@ -382,12 +407,12 @@ struct ShopView: View {
                 timeRemaining = 600
                 //Any other code that should happen after countdown
             }
+            timeRemainingMinutes = timeRemaining/60
         }
     }
 }
     struct ShopView_Previews: PreviewProvider {
         static var previews: some View {
             ShopView()
-                .preferredColorScheme(.dark)
         }
     }
