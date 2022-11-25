@@ -181,6 +181,7 @@ struct BuyAndSellView: View {
                     
                     Section {
                         VStack {
+                            Spacer()
                             HStack {
                                 Spacer()
                                 Text("Sell a Stock")
@@ -190,7 +191,7 @@ struct BuyAndSellView: View {
                             }
                             Spacer()
                             
-                            Text("\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
+                            Text("Price: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
                             
                             HStack {
                                 Text("\(sharesToSell)")
