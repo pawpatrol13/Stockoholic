@@ -42,8 +42,10 @@ struct StockView: View {
     
     @State var buyShares = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timeRemaining = 0 
+    @State var timeRemaining = 0
     @AppStorage("new2") var new2 = true
+    
+    @State var currentStock: Int?
     
     @StateObject var stockManager = StockManager()
     
@@ -71,10 +73,9 @@ struct StockView: View {
         NavigationView {
             
             List(stockManager.stocks) { stock in
-                
                 Section {
-                    
                     Button {
+                        currentStock = stock.num
                         buyShares = true
                     } label: {
                         StockRow(stock: stock)
@@ -115,9 +116,6 @@ struct StockView: View {
                         
                         
                     }
-                    .sheet(isPresented: $buyShares) {
-                        BuyAndSellView(stock: stock)
-                    }
                     
                     
                 }  footer: {
@@ -125,10 +123,9 @@ struct StockView: View {
                         Text("Click to purchase. Share prices change every 20s.")
                     }
                 }
-                
-                
-                
-                
+            }
+            .sheet(isPresented: $buyShares) {
+                BuyAndSellView(stockNum: currentStock ?? -1)
             }
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {
@@ -190,12 +187,12 @@ struct StockView: View {
                 }
                 
                 for i in 0...5 {
-                    if stockManager.stocks[i].pricePerStockArray.count > 11{
+                    while stockManager.stocks[i].pricePerStockArray.count > 11{
                         stockManager.stocks[i].pricePerStockArray.removeLast()
                     }
                 }
                 
-                timeRemaining = 10
+                timeRemaining = 5
                 
                 //Any other code that should happen after countdown
             }
