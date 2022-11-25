@@ -38,64 +38,64 @@ struct ShopView: View {
     @State var notEnoughMoney = false
     @State private var ownedItems: [String] = UserDefaults.standard.object(forKey: "ownedItems") as? [String] ?? [""]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-      @State var timeRemaining = 600
+    @State var timeRemaining = 600
     @State var timeRemainingMinutes = 0
     var body: some View {
         NavigationView {
-       
+            
             List {
                 Section {
-                Button {
-                    sureBuyItem = true
-                } label: {
-                    Section {
-                        HStack {
-                            Image(systemName: "car.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                                .padding(.top)
-                            
-                            Spacer()
-                            Text("$ \(ferrariPrice)")
-                                .foregroundColor(.green)
-                                .font(.title)
-                                .padding(.top)
-                        }
-                        VStack {
-                            Spacer()
-                            Text("Ferrari")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("TextColor"))
-                            Spacer()
-                            Text("Estimated high: $ \(ferrariHigh)")
-                                .foregroundColor(Color("Yellow"))
-                            Spacer()
-                            Text("Estimated low: $ \(ferrariLow)")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                }
-                .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
-                    Button("Yes") {
-                        if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
-                            cash -= ferrariPrice
-                            ownedItems.append("ferrari")
-                            UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
-                        } else {
-                            notEnoughMoney = true
+                    Button {
+                        sureBuyItem = true
+                    } label: {
+                        Section {
+                            HStack {
+                                Image(systemName: "car.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.red)
+                                    .padding(.top)
+                                
+                                Spacer()
+                                Text("$ \(ferrariPrice)")
+                                    .foregroundColor(.green)
+                                    .font(.title)
+                                    .padding(.top)
+                            }
+                            VStack {
+                                Spacer()
+                                Text("Ferrari")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("TextColor"))
+                                Spacer()
+                                Text("Estimated high: $ \(ferrariHigh)")
+                                    .foregroundColor(Color("Yellow"))
+                                Spacer()
+                                Text("Estimated low: $ \(ferrariLow)")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
                         }
                     }
-                    Button("No") {
+                    .alert("Are you sure you wanna buy this item?", isPresented: $sureBuyItem) {
+                        Button("Yes") {
+                            if cash >= ferrariPrice && ownedItems.contains("ferrari") == false {
+                                cash -= ferrariPrice
+                                ownedItems.append("ferrari")
+                                UserDefaults.standard.set(ownedItems, forKey: "ownedItems")
+                            } else {
+                                notEnoughMoney = true
+                            }
+                        }
+                        Button("No") {
+                        }
+                    } message: {
+                        Text("Your value of items will change based on this item's price, but you can't resell it.")
                     }
-                } message: {
-                    Text("Your value of items will change based on this item's price, but you can't resell it.")
-                }
-                .alert("Error!", isPresented: $notEnoughMoney) {
-                } message: {
-                    Text("You either don't have enough money to purchase this item or you already own it")
-                }
+                    .alert("Error!", isPresented: $notEnoughMoney) {
+                    } message: {
+                        Text("You either don't have enough money to purchase this item or you already own it")
+                    }
                 } footer: {
                     HStack{
                         Spacer()
@@ -125,7 +125,7 @@ struct ShopView: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("TextColor"))
-                               Spacer()
+                                Spacer()
                                 Text("Estimated high: $ \(lamHigh)")
                                     .foregroundColor(Color("Yellow"))
                                 Spacer()
@@ -239,7 +239,7 @@ struct ShopView: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("TextColor"))
-                               Spacer()
+                                Spacer()
                                 Text("Estimated high: $ \(condoHigh)")
                                     .foregroundColor(Color("Yellow"))
                                 Spacer()
@@ -411,8 +411,8 @@ struct ShopView: View {
         }
     }
 }
-    struct ShopView_Previews: PreviewProvider {
-        static var previews: some View {
-            ShopView()
-        }
+struct ShopView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShopView()
     }
+}

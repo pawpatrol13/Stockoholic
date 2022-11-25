@@ -135,7 +135,6 @@ struct BuyAndSellView: View {
                     
                     HStack {
                         TextField("Buying:", value: $sharesBuying, formatter: NumberFormatter())
-                            .background(Color.gray)
                             .keyboardType(.decimalPad)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Stepper(value: $sharesBuying, in: 1...1000000){}
@@ -153,11 +152,11 @@ struct BuyAndSellView: View {
                             
                             HStack {
                                 Button("Yes") {                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
-                                        cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
-                                    } else {
-                                        tooPoor = true
-                                    }
+                                    stockManager.stocks[stockNum].stocksOwned += sharesBuying
+                                    cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
+                                } else {
+                                    tooPoor = true
+                                }
                                     
                                 }
                                 Button("No") {}
@@ -185,17 +184,14 @@ struct BuyAndSellView: View {
                             }
                             Spacer()
                             
-                            Text("Price: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
+                            Text("Worth: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
                             
                             HStack {
-                                TextField("Buying:", value: $sharesToSell, formatter: NumberFormatter())
-                                    .background(Color.gray)
+                                TextField("Selling:", value: $sharesToSell, formatter: NumberFormatter())
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                 Spacer()
-                                Stepper(value: $sharesToSell, in: 1...100000) {
-                                    Text("share(s) to sell")
-                                }
+                                Stepper(value: $sharesToSell, in: 1...100000) {}
                             }
                             Spacer()
                         }

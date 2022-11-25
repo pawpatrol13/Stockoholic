@@ -35,7 +35,7 @@ struct PortfolioView: View {
     @State var sharesSold = false
     
     @ObservedObject var stockManager = StockManager()
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -71,124 +71,124 @@ struct PortfolioView: View {
                     Section {
                         VStack{
                             Spacer()
-                        HStack {
+                            HStack {
+                                Spacer()
+                                Text("Shares Owned")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Spacer()
+                            }
                             Spacer()
-                            Text("Shares Owned")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                            Spacer()
-                        HStack {
-                            Spacer()
-                            VStack{
-                                HStack{
-                                    Text("Dusk Motors, Inc:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[0].stocksOwned)  ")
+                            HStack {
+                                Spacer()
+                                VStack{
+                                    HStack{
+                                        Text("Dusk Motors, Inc:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[0].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("Music Max, Inc:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[1].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("FurniWear, Inc:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[2].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("Beats Entertainment LLC:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[3].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("Jack's Beef:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[4].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("Laurene & Co:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[5].stocksOwned)  ")
+                                    }
+                                    HStack{
+                                        Text("Georgian Air:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[6].stocksOwned)  ")
+                                    }
+                                    
                                 }
-                                HStack{
-                                    Text("Music Max, Inc:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[1].stocksOwned)  ")
-                                }
-                                HStack{
-                                    Text("FurniWear, Inc:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[2].stocksOwned)  ")
-                                }
-                                HStack{
-                                    Text("Beats Entertainment LLC:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[3].stocksOwned)  ")
-                                }
-                                HStack{
-                                    Text("Jack's Beef:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[4].stocksOwned)  ")
-                                }
-                                HStack{
-                                    Text("Laurene & Co:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[5].stocksOwned)  ")
-                                }
-                                HStack{
-                                    Text("Georgian Air:")
-                                    Spacer()
-                                    Text("\(stockManager.stocks[6].stocksOwned)  ")
-                                }
-
+                                Spacer()
                             }
                             Spacer()
                         }
-                            Spacer()
-                    }
                     }
                     
                     Section {
                         VStack{
-                        HStack {
-                            Spacer()
-                            Text("Items Owned")
-                                .fontWeight(.bold)
-                                .font(.title2)
-                            Spacer()
-                        }
-                        
-                        ForEach(ownedItems, id: \.self) { item in
                             HStack {
-                                
-                                
-                                if item == "ferrari" {
-                                    Text("Ferrari")
-                                    Spacer()
-                                    Image(systemName: "car.fill")
-                                        .foregroundColor(.red)
-                                    
-                                }
-                                
-                                if item == "lam" {
-                                    Text("Lamborghini")
-                                    Spacer()
-                                    Image(systemName: "car.fill")
-                                        .foregroundColor(.yellow)
-                                }
-                                
-                                
-                                if item == "family" {
-                                    Text("Family Estate")
-                                    Spacer()
-                                    Image(systemName: "house.fill")
-                                        .foregroundColor(Color("FamilyEstate"))
-                                }
-                                
-                                
-                                if item == "condo" {
-                                    Text("Condominium")
-                                    Spacer()
-                                    Image(systemName: "house.fill")
-                                        .foregroundColor(.cyan)
-                                }
-                                
-                                
-                                if item == "bungalow" {
-                                    Text("Bungalow")
-                                    Spacer()
-                                    Image(systemName: "music.note.house.fill")
-                                        .foregroundColor(.brown)
-                                }
-                                
-                                
-                                if item == "mansion" {
-                                    Text("Mega Mansion")
-                                    Spacer()
-                                    Image(systemName: "cablecar.fill")
-                                        .foregroundColor(.gray)
-                                }
+                                Spacer()
+                                Text("Items Owned")
+                                    .fontWeight(.bold)
+                                    .font(.title2)
+                                Spacer()
                             }
-                            .padding([.leading, .trailing],10)
+                            
+                            ForEach(ownedItems, id: \.self) { item in
+                                HStack {
+                                    
+                                    
+                                    if item == "ferrari" {
+                                        Text("Ferrari")
+                                        Spacer()
+                                        Image(systemName: "car.fill")
+                                            .foregroundColor(.red)
+                                        
+                                    }
+                                    
+                                    if item == "lam" {
+                                        Text("Lamborghini")
+                                        Spacer()
+                                        Image(systemName: "car.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                    
+                                    
+                                    if item == "family" {
+                                        Text("Family Estate")
+                                        Spacer()
+                                        Image(systemName: "house.fill")
+                                            .foregroundColor(Color("FamilyEstate"))
+                                    }
+                                    
+                                    
+                                    if item == "condo" {
+                                        Text("Condominium")
+                                        Spacer()
+                                        Image(systemName: "house.fill")
+                                            .foregroundColor(.cyan)
+                                    }
+                                    
+                                    
+                                    if item == "bungalow" {
+                                        Text("Bungalow")
+                                        Spacer()
+                                        Image(systemName: "music.note.house.fill")
+                                            .foregroundColor(.brown)
+                                    }
+                                    
+                                    
+                                    if item == "mansion" {
+                                        Text("Mega Mansion")
+                                        Spacer()
+                                        Image(systemName: "cablecar.fill")
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                .padding([.leading, .trailing],10)
+                            }
                         }
-                    }
                         
                     }
                 }

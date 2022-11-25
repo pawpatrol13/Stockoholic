@@ -70,40 +70,40 @@ struct ProgressView: View {
                         
                         
                         if cash > 10000 {
-                                HStack {
-                                    Image("10K 3")
-                                    Text("You earned $ 10 000. You're off to a great start!")
-                                }
+                            HStack {
+                                Image("10K 3")
+                                Text("You earned $ 10 000. You're off to a great start!")
+                            }
                         }
                         
                         if cash > 100000 {
-                                HStack {
-                                    Image("100K 2")
-                                    
-                                    Text("You earned $ 100 000. You're on to riches, alright!")
-                                }
+                            HStack {
+                                Image("100K 2")
+                                
+                                Text("You earned $ 100 000. You're on to riches, alright!")
+                            }
                         }
                         
                         if cash > 1000000 {
-                                HStack {
-                                    Image("1M 2")
-                                    Text("You earned $ 1 million. You've officially joined the millionaire club.")
-                                    
-                                }
+                            HStack {
+                                Image("1M 2")
+                                Text("You earned $ 1 million. You've officially joined the millionaire club.")
+                                
+                            }
                         }
                         
                         if cash > 100000000 {
-                                HStack {
-                                    Image("100M 2")
-                                    Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
-                                }
+                            HStack {
+                                Image("100M 2")
+                                Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
+                            }
                         }
                         
                         if cash > 1000000000 {
-                                HStack {
-                                    Image("1B 2")
-                                    Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
-                                }
+                            HStack {
+                                Image("1B 2")
+                                Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
+                            }
                         }
                         
                     }
