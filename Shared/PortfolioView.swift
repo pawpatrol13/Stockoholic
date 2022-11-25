@@ -44,16 +44,17 @@ struct PortfolioView: View {
                     HStack {
                         Spacer()
                         VStack {
-                            
-                            Image(systemName: "person.fill")
+                            Spacer()
+                            Image(systemName:"person.crop.circle")
                                 .font(.system(size: 90))
                             
                             Spacer()
                             
                             
-                            Text("Value of items owned: $\(netWorth)")
+                            Text("Net Worth: $\(netWorth)")
                                 .font(.title2)
                                 .fontWeight(.light)
+                                .multilineTextAlignment(.center)
                             
                             
                             Spacer()
@@ -66,20 +67,16 @@ struct PortfolioView: View {
                             Text("Cash: $\(cash)")
                                 .font(.title2)
                                 .fontWeight(.light)
+                            Spacer()
                             
                         }
                         Spacer()
                         
                         
                     }
-                    Text("* Value of items owned refers to items from shop. It does not include total value of shares.")
-                        .fontWeight(.ultraLight)
-                        .font(.caption)
                     Section {
-                        Text("* Quit and restart app to see updated shares")
-                            .font(.caption)
-                            .fontWeight(.light)
-                            .foregroundColor(.gray)
+                        VStack{
+                            Spacer()
                         HStack {
                             Spacer()
                             Text("Shares Owned")
@@ -87,14 +84,13 @@ struct PortfolioView: View {
                                 .fontWeight(.bold)
                             Spacer()
                         }
+                            Spacer()
                         HStack {
                             Spacer()
                             VStack {
                                 
                                 
-                                if show == false {
-                                    
-                                } else {
+                               
                                     
                                     HStack {
                                         
@@ -123,7 +119,7 @@ struct PortfolioView: View {
                                         }
                                         
                                     }
-                                }
+                                
                                 
                                 
                                 
@@ -131,9 +127,22 @@ struct PortfolioView: View {
                             }
                             Spacer()
                         }
+                            Spacer()
+                    }
+                    } header: {
+                        HStack{
+                            Spacer()
+                            Text("Quit and restart app to see updated shares")
+                                .font(.caption)
+                                .fontWeight(.light)
+                                .foregroundColor(.gray)
+                                .textCase(nil)
+                            Spacer()
+                        }
                     }
                     
-                    Group {
+                    Section {
+                        VStack{
                         HStack {
                             Spacer()
                             Text("Items Owned")
@@ -141,6 +150,7 @@ struct PortfolioView: View {
                                 .font(.title2)
                             Spacer()
                         }
+                        .padding(.top)
                         
                         ForEach(ownedItems, id: \.self) { item in
                             HStack {
@@ -203,41 +213,9 @@ struct PortfolioView: View {
                                 Spacer()
                             }
                         }
+                    }
                         
                     }
-                }
-                Section {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Text("Settings")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            Image(systemName: "gear")
-                                .font(.title2)
-                            Spacer()
-                        }
-                        Spacer()
-                        HStack {
-                            VStack {
-                                HStack{
-                                    Text("Light Mode")
-                                        .font(.title3)
-                                    Spacer()
-                                    Image(systemName: "lightswitch.on")
-                                }
-                                HStack{
-                                    Text("Dark Mode")
-                                        .font(.title3)
-                                    Spacer()
-                                    Image(systemName: "lightswitch.on")
-                                }
-                               
-                            }
-                        }
-                    }
-                    
-                    
                 }
             }
             .navigationTitle("Portfolio")
@@ -274,6 +252,7 @@ struct PortfolioView: View {
                 } else {
                     show = true
                 }
+                
             }
         }
         .onAppear {
@@ -296,9 +275,8 @@ struct PortfolioView: View {
         
     }
 }
-struct Portfoilio_View__Previews: PreviewProvider {
+struct Portfolio_View__Previews: PreviewProvider {
     static var previews: some View {
         PortfolioView()
-            .preferredColorScheme(.dark)
     }
 }
