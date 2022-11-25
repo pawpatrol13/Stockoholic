@@ -25,6 +25,8 @@
 		D95647D529165B880017F6A5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95647D329165B880017F6A5 /* ProgressView.swift */; };
 		D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
 		D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D976D20F2921D1EE00D40F35 /* ShopView.swift */; };
+		D9B5622C292F34C400201268 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B5622B292F34C400201268 /* StockManager.swift */; };
+		D9B5622D292F34C400201268 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B5622B292F34C400201268 /* StockManager.swift */; };
 		D9B68C7E29248E1D002FA077 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B68C7D29248E1D002FA077 /* PortfolioView.swift */; };
 		D9B68C7F29248E1D002FA077 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B68C7D29248E1D002FA077 /* PortfolioView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,7 @@
 		D94224292913A0AF00F08D12 /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
 		D95647D329165B880017F6A5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		D976D20F2921D1EE00D40F35 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		D9B5622B292F34C400201268 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 		D9B68C7D29248E1D002FA077 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +119,7 @@
 				58AEB6D428E5FB9E00A01A4B /* ContentView.swift */,
 				D9B68C7D29248E1D002FA077 /* PortfolioView.swift */,
 				D94224292913A0AF00F08D12 /* StockView.swift */,
+				D9B5622B292F34C400201268 /* StockManager.swift */,
 				D95647D329165B880017F6A5 /* ProgressView.swift */,
 				D976D20F2921D1EE00D40F35 /* ShopView.swift */,
 				D91CAA6329221E6000157FE5 /* alphabetically order .swift */,
@@ -323,6 +327,7 @@
 				D942242A2913A0AF00F08D12 /* StockView.swift in Sources */,
 				D976D2102921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D91CAA6429221E6000157FE5 /* alphabetically order .swift in Sources */,
+				D9B5622C292F34C400201268 /* StockManager.swift in Sources */,
 				D9B68C7E29248E1D002FA077 /* PortfolioView.swift in Sources */,
 				58AEB6FB28E5FB9F00A01A4B /* StockoholicApp.swift in Sources */,
 				D95647D429165B880017F6A5 /* ProgressView.swift in Sources */,
@@ -337,6 +342,7 @@
 				D942242B2913A0AF00F08D12 /* StockView.swift in Sources */,
 				D976D2112921D1EE00D40F35 /* ShopView.swift in Sources */,
 				D91CAA6529221E6000157FE5 /* alphabetically order .swift in Sources */,
+				D9B5622D292F34C400201268 /* StockManager.swift in Sources */,
 				D9B68C7F29248E1D002FA077 /* PortfolioView.swift in Sources */,
 				58AEB6FC28E5FB9F00A01A4B /* StockoholicApp.swift in Sources */,
 				D95647D529165B880017F6A5 /* ProgressView.swift in Sources */,

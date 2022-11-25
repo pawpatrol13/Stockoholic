@@ -11,57 +11,27 @@ import Charts
 
 
 var upOrDowns = [false, true]
-struct Stockie: Identifiable {
+
+struct Stock: Identifiable, Codable{
     let id = UUID()
     
-    let name: String
-    let price: Int
-    let upOrDown: Bool
-    let marketCap: String
-    let lowestToday: String
-    let highestToday: String
-    let num: Int
+    let name:String
+    //Change to Array<Double> if we use decimals like normal people
+    //Will save as most recent as [0] and oldest as [10]
+    var pricePerStockArray:Array<Int>
+    let num:Int
 }
-
-
 
 struct StockRow: View {
     @State var sharesOwned = []
-    var stock: Stockie
+    var stock: Stock
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                
-                
-                Spacer()
-                
-                Text("\(stock.name)")
-                    .font(.title2)
-                    .foregroundColor(.white)
-                    .fontWeight(.medium)
-                Spacer()
-                
-                
-                
-                
-            }
-            Spacer()
-            HStack {
-                Spacer()
-                Text("Market Cap: $ \(stock.marketCap)")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                    .fontWeight(.light)
-                Spacer()
-                
-            }
-            Spacer()
-            
-            
-        }
+        Text("\(stock.name)")
+            .font(.title2)
+            .foregroundColor(.white)
+            .fontWeight(.medium)
     }
 }
 struct StockView: View {
@@ -71,314 +41,158 @@ struct StockView: View {
     @AppStorage("cash") var cash = 1000
     
     @State var buyShares = false
-    @State var numie = 0
     @State var sureBuy = false
     @State var sharesBuying = 1
     @State var companySelected = ""
     @State var price = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timeRemaining = 20
-    
-    // prices
-    @AppStorage("duskPrice") var duskPrice = 50
-    @AppStorage("musicPrice") var musicPrice = 80
-    @AppStorage("furniPrice") var furniPrice = 120
-    @AppStorage("beatsPrice") var beatsPrice = 100
-    @AppStorage("jackPrice") var jackPrice = 150
-    @AppStorage("laurenePrice") var laurenePrice = 200
-    @AppStorage("georgianPrice") var georgianPrice = 45
-    // high or low
-    @AppStorage("duskArrow") var duskArrow = true
-    @AppStorage("musicArrow") var musicArrow = true
-    @AppStorage("furniArrow") var furniArrow = true
-    @AppStorage("beatsArrow") var beatsArrow = true
-    @AppStorage("jackArrow") var jackArrow = true
-    @AppStorage("laureneArrow") var laureneArrow = true
-    @AppStorage("georgianArrow") var georgianArrow = true
-    
-    // average high
-    @AppStorage("duskHigh") var duskHigh = 120
-    @AppStorage("musicHigh") var musicHigh = 230
-    @AppStorage("furniHigh") var furniHigh = 180
-    @AppStorage("beatsHigh") var beatsHigh = 150
-    @AppStorage("jackHigh") var jackHigh = 160
-    @AppStorage("laureneHigh") var laureneHigh = 230
-    @AppStorage("georgianHigh") var georgianHigh = 135
     @AppStorage("new2") var new2 = true
-    // average low
-    @AppStorage("duskLow") var duskLow = 28
-    @AppStorage("musicLow") var musicLow = 40
-    @AppStorage("furniLow") var furniLow = 60
-    @AppStorage("beatsLow") var beatsLow = 50
-    @AppStorage("jackLow") var jackLow = 75
-    @AppStorage("laureneLow") var laureneLow = 100
-    @AppStorage("georgianLow") var georgianLow = 35
     @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     @State var tooPoor = false
-    @State var stocks = [
-        
-        Stockie(name: "Dusk Motors", price: 0, upOrDown: upOrDowns[0], marketCap: "5B", lowestToday: "8", highestToday: "10", num: 0),
-        Stockie(name: "Music Max, Inc.", price: 0, upOrDown: upOrDowns[1], marketCap: "350M", lowestToday: "1", highestToday: "3", num: 1),
-        Stockie(name: "FurniWear, Inc.", price: 0, upOrDown: upOrDowns[1], marketCap: "3.58B", lowestToday: "1", highestToday: "3", num: 2),
-        Stockie(name: "Beats Entertainment LLC", price: 0, upOrDown: upOrDowns[1], marketCap: "20B", lowestToday: "1", highestToday: "3", num: 3),
-        Stockie(name: "Jack's Beef", price: 0, upOrDown: upOrDowns[1], marketCap: "500M", lowestToday: "1", highestToday: "3", num: 4),
-        
-        Stockie(name: "Laurene & Co.", price: 0, upOrDown: upOrDowns[1], marketCap: "2.3B", lowestToday: "1", highestToday: "3", num: 5),
-        
-        Stockie(name: "Georgian Air", price: 0, upOrDown: upOrDowns[1], marketCap: "850M", lowestToday: "1", highestToday: "3", num: 6)
-    ]
     
+    @StateObject var stockManager = StockManager()
     
+    func UpdateStocks(){
+        stockManager.stocks[0].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[1].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[1].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[2].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[2].pricePerStockArray[0]) * Double.random(in: 0.975...1.025)))),at:0)
+        stockManager.stocks[3].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[3].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[4].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
+        stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+    }
+    @State var show = false
+    @State var sharesToSell = 1
+    @State var sureSell = false
+    @State var notEnoughShares = false
+    @AppStorage("ferrariPrice") var ferrariPrice = 250000
+    @AppStorage("lamPrice") var lamPrice = 350000
+    @AppStorage("familyPrice") var familyPrice = 500000
+    @AppStorage("condoPrice") var condoPrice = 1500000
+    @AppStorage("bungalowPrice") var bungalowPrice = 10000000
+    @State var sharesSold = false
     
     var body: some View {
         NavigationView {
             
-            
-            List(stocks) { stock in
+            List(stockManager.stocks) { stock in
                 
                 Section {
                     
                     Button {
                         buyShares = true
                         companySelected = "\(stock.name)"
-                        
-                        if stock.name == "Dusk Motors" {
-                            price = duskPrice
-                        } else if stock.name == "Music Max, Inc." {
-                            price = musicPrice
-                        } else if stock.name == "FurniWear, Inc." {
-                            price = furniPrice
-                        } else if stock.name == "Beats Entertainment LLC" {
-                            price = beatsPrice
-                        } else if stock.name == "Jack's Beef" {
-                            price = jackPrice
-                        } else if stock.name == "Laurene & Co." {
-                            price = laurenePrice
-                        } else if stock.name == "Georgian Air" {
-                            price = georgianPrice
-                        }
-                        
-                        numie = stock.num
                     } label: {
                         StockRow(stock: stock)
-                        if stock.num == 0 {
+                        HStack {
                             
-                            HStack {
-                                Spacer()
-                                if duskArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(duskPrice)")
+                            if stock.pricePerStockArray.count < 2 || stock.pricePerStockArray[0] > stock.pricePerStockArray[1]{
+                                Image(systemName: "arrow.up")
                                     .foregroundColor(.green)
-                                    .font(.title2)
-                                Spacer()
-                            }
-                            Spacer()
-                            HStack {
-                                Text("Average high: $ \(duskHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(duskLow)")
+                                    .font(.title)
+                            } else  {
+                                Image(systemName: "arrow.down")
                                     .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
+                                    .font(.title)
                             }
                             Spacer()
-                        } else if stock.num == 1 {
-                            HStack {
-                                Spacer()
-                                if musicArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(musicPrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                                Spacer()
-                            }
+                        }
+                        HStack {
                             Spacer()
-                            HStack {
-                                Text("Average high: $ \(musicHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(musicLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
+                            Text("$ \(stock.pricePerStockArray[0])")
+                                .foregroundColor(.green)
+                                .font(.title2)
                             Spacer()
-                        } else if stock.num == 2 {
-                            HStack {
-                                Spacer()
-                                if furniArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(furniPrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                                Spacer()
-                            }
+                        }
+                        
+                        
+                        Spacer()
+                        HStack {
+                            Text("Average high: $ \(stock.pricePerStockArray.max() ?? 0)")
+                                .font(.body)
+                                .foregroundColor(.yellow)
+                                .fontWeight(.light)
                             Spacer()
-                            HStack {
-                                Text("Average high: $ \(furniHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(furniLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
-                            Spacer()
-                        } else if stock.num == 3 {
-                            HStack {
-                                Spacer()
-                                if beatsArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(beatsPrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                                Spacer()
-                            }
-                            Spacer()
-                            HStack {
-                                Text("Average high: $ \(beatsHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(beatsLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
-                            Spacer()
-                        }  else if stock.num == 4 {
-                            HStack {
-                                if jackArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(jackPrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                            }
-                            Spacer()
-                            HStack {
-                                Text("Average high: $ \(jackHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(jackLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
-                            Spacer()
-                        }  else if stock.num == 5 {
-                            HStack {
-                                Spacer()
-                                if laureneArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(laurenePrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                                Spacer()
-                            }
-                            Spacer()
-                            HStack {
-                                Text("Average high: $ \(laureneHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(laureneLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
-                            Spacer()
-                        }  else if stock.num == 6 {
-                            HStack {
-                                if georgianArrow == true  {
-                                    Image(systemName: "arrow.up")
-                                        .foregroundColor(.green)
-                                        .font(.title)
-                                } else  {
-                                    Image(systemName: "arrow.down")
-                                        .foregroundColor(.red)
-                                        .font(.title)
-                                }
-                                Text("$ \(georgianPrice)")
-                                    .foregroundColor(.green)
-                                    .font(.title2)
-                            }
-                            Spacer()
-                            HStack {
-                                Text("Average high: $ \(georgianHigh)")
-                                    .font(.body)
-                                    .foregroundColor(.yellow)
-                                    .fontWeight(.light)
-                                Spacer()
-                                Text("Average low: $ \(georgianLow)")
-                                    .foregroundColor(.red)
-                                    .font(.body)
-                                    .fontWeight(.light)
-                            }
-                            Spacer()
+                            Text("Average low: $ \(stock.pricePerStockArray.min() ?? 0)")
+                                .foregroundColor(.red)
+                                .font(.body)
+                                .fontWeight(.light)
                         }
                         
                         
                     }
                     .sheet(isPresented: $buyShares) {
-                        
                         NavigationView {
-                            
                             List {
                                 
                                 if companySelected != "" {
+                                    if #available(iOS 16.0, *) {
+                                        Chart{
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-90))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-90)))"),
+                                                y: .value("Price", stock.pricePerStockArray[9])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[9] > stock.pricePerStockArray[10] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-80))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-80)))"),
+                                                y: .value("Price", stock.pricePerStockArray[8])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[8] > stock.pricePerStockArray[9] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
+                                                y: .value("Price", stock.pricePerStockArray[7])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[7] > stock.pricePerStockArray[8] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
+                                                y: .value("Price", stock.pricePerStockArray[6])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[6] > stock.pricePerStockArray[7] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
+                                                y: .value("Price", stock.pricePerStockArray[5])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[5] > stock.pricePerStockArray[6] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
+                                                y: .value("Price", stock.pricePerStockArray[4])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[4] > stock.pricePerStockArray[5] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
+                                                y: .value("Price", stock.pricePerStockArray[3])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[3] > stock.pricePerStockArray[4] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
+                                                y: .value("Price", stock.pricePerStockArray[2])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[2] > stock.pricePerStockArray[3] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
+                                                y: .value("Price", stock.pricePerStockArray[1])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[1] > stock.pricePerStockArray[2] ? Color.green : Color.red)
+                                            
+                                            BarMark(
+                                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date())):\(Calendar.current.component(.second, from: Date()))"),
+                                                y: .value("Price", stock.pricePerStockArray[0])
+                                            )
+                                            .foregroundStyle(stock.pricePerStockArray[0] > stock.pricePerStockArray[1] ? Color.green : Color.red)
+                                        }
+                                        .padding()
+                                    } else {
+                                        // Fallback on earlier versions
+                                    }
                                     
                                     if companySelected == "Dusk Motors" {
                                         Text("Dusk Motors is a world renowned vehicle company that has made innovative contributions in the automobile industry. From motorcycles to electric cars, Dusk Motors is revolutionising transportation.\n\nThey are currently working on electric vehicles and more environmetally friendly solutions.")
@@ -421,7 +235,6 @@ struct StockView: View {
                                             
                                         }
                                         
-                                        
                                     }
                                     
                                     Text("Cost: $\(price * sharesBuying)")
@@ -438,10 +251,10 @@ struct StockView: View {
                                                 Button("Yes") {
                                                     
                                                     
-                                                    if cash >= price*sharesBuying {
-                                                        shares[numie] += sharesBuying
+                                                    if cash >= price * sharesBuying {
+                                                        shares[stock.num] += sharesBuying
                                                         UserDefaults.standard.set(shares, forKey: "shares")
-                                                        cash -= (price*sharesBuying)
+                                                        cash -= (price * sharesBuying)
                                                         buyShares = false
                                                         print(shares)
                                                     } else {
@@ -453,7 +266,6 @@ struct StockView: View {
                                                 Button("No") {
                                                     
                                                 }
-                                                
                                             }
                                         } message: {
                                             Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(companySelected)?")
@@ -467,8 +279,68 @@ struct StockView: View {
                                     }
                                     
                                     
-                                } else  if companySelected == "" {
+                                } else {
                                     Text("This stock is still loading. Click another one.")
+                                }
+                                Section {
+                                    VStack {
+                                        HStack {
+                                            Spacer()
+                                            Text("Sell a Stock")
+                                                .font(.title2)
+                                                .fontWeight(.bold)
+                                            Spacer()
+                                        }
+                                        Spacer()
+                                        
+                                        Text("\(stock.pricePerStockArray[0]*sharesToSell)")
+                                        
+                                        HStack {
+                                            Text("\(sharesToSell)")
+                                            Spacer()
+                                            Stepper(value: $sharesToSell, in: 1...100000) {
+                                                Text("share(s) to sell")
+                                            }
+                                        }
+                                        Spacer()
+                                    }
+                                    HStack {
+                                        Spacer()
+                                        Button("Sell") {
+                                            sureSell = true
+                                        }
+                                        .foregroundColor(.blue)
+                                        .font(.title3)
+                                        .alert("Are you sure you wanna sell this stock?", isPresented: $sureSell) {
+                                            Button("Yes") {
+                                                if shares[stock.num] >= sharesToSell {
+                                                    cash += stock.pricePerStockArray[0]*sharesToSell
+                                                    shares[stock.num] -= sharesToSell
+                                                    UserDefaults.standard.set(shares, forKey: "shares")
+                                                    sharesSold = true
+                                                } else {
+                                                    notEnoughShares = true
+                                                }
+                                            }
+                                            
+                                            Button("No")
+                                        } message: {
+                                            Text("You'll get the current value of these shares deposited into your cash balance immediately.")
+                                        }
+                                        
+                                        .alert("You don't have enough shares", isPresented: $notEnoughShares) {
+                                            
+                                        } message: {
+                                            Text("You're trying to sell more shares than you own in this company.")
+                                        }
+                                        
+                                        .alert("Successfully sold shares", isPresented: $sharesSold) {
+                                            
+                                        } message: {
+                                            Text("Shares for this company has been deducted, and money has been deposited into your account.")
+                                        }
+                                        Spacer()
+                                    }
                                 }
                             }
                             .navigationTitle("\(companySelected)")
@@ -534,9 +406,6 @@ struct StockView: View {
             .onDisappear {
                 new2 = false
             }
-            
-            
-            
         }
         .onReceive(timer) { time in
             if timeRemaining > 0 {
@@ -544,94 +413,21 @@ struct StockView: View {
                 timeRemaining -= 1
                 
             } else {
-                duskPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
-                musicPrice = Int(round(Double(duskPrice) * Double.random(in: 0.925...1.075)))
-                furniPrice = Int(round(Double(duskPrice) * Double.random(in: 0.975...1.025)))
-                beatsPrice = Int(round(Double(duskPrice) * Double.random(in: 0.925...1.075)))
-                jackPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
-                laurenePrice = Int(round(Double(duskPrice) * Double.random(in: 0.9...1.1)))
-                georgianPrice = Int(round(Double(duskPrice) * Double.random(in: 0.95...1.05)))
-                
-                if duskPrice > 165 {
-                    duskArrow = true
-                    duskHigh = Int.random(in: 170...250)
-                    duskLow = Int.random(in: 120...164)
-                } else {
-                    duskArrow = false
-                    duskHigh = Int.random(in: 130...220)
-                    duskLow = Int.random(in: 50...90)
+                while stockManager.stocks[0].pricePerStockArray.count < 12 {
+                    UpdateStocks()
                 }
                 
-                if musicPrice > 270 {
-                    musicArrow = true
-                    musicHigh = Int.random(in: 350...450)
-                    musicLow = Int.random(in: 150...250)
-                } else {
-                    musicArrow = false
-                    musicHigh = Int.random(in: 150...250)
-                    musicLow = Int.random(in: 50...100)
+                for i in 0...5 {
+                    if stockManager.stocks[i].pricePerStockArray.count > 11{
+                        stockManager.stocks[i].pricePerStockArray.removeLast()
+                    }
                 }
                 
-                if furniPrice > 120 {
-                    furniArrow = true
-                    furniHigh = Int.random(in: 150...220)
-                    furniLow = Int.random(in: 60...110)
-                } else {
-                    furniArrow = false
-                    furniHigh = Int.random(in: 100...170)
-                    furniLow = Int.random(in: 60...80)
-                }
-                
-                if beatsPrice > 270 {
-                    beatsArrow = true
-                    beatsHigh = Int.random(in: 350...450)
-                    beatsLow = Int.random(in: 150...250)
-                } else {
-                    beatsArrow = false
-                    beatsHigh = Int.random(in: 150...250)
-                    beatsLow = Int.random(in: 80...120)
-                }
-                
-                if jackPrice > 230 {
-                    jackArrow = true
-                    jackHigh = Int.random(in: 270...370)
-                    jackLow = Int.random(in: 120...250)
-                } else {
-                    jackArrow = false
-                    jackHigh = Int.random(in: 150...250)
-                    jackLow = Int.random(in: 75...130)
-                }
-                
-                if laurenePrice > 415 {
-                    laureneArrow = true
-                    laureneHigh = Int.random(in: 570...780)
-                    laureneLow = Int.random(in: 270...370)
-                } else {
-                    laureneArrow = false
-                    laureneHigh = Int.random(in: 370...570)
-                    laureneLow = Int.random(in: 120...290)
-                }
-                
-                if georgianPrice > 135 {
-                    georgianArrow = true
-                    georgianHigh = Int.random(in: 250...320)
-                    georgianLow = Int.random(in: 80...170)
-                } else {
-                    georgianArrow = false
-                    georgianHigh = Int.random(in: 150...250)
-                    georgianLow = Int.random(in: 60...150)
-                }
-                
-                
-                
-                timeRemaining = 20
+                timeRemaining = 10
                 
                 //Any other code that should happen after countdown
             }
         }
-        
-        
-        
     }
 }
 struct StockView_Previews: PreviewProvider {

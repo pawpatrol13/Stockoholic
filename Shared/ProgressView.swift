@@ -75,7 +75,6 @@ struct ProgressView: View {
                                 
                                 HStack {
                                     Image("10K 3")
-                                        .frame(width: 20, height: 10)
                                     Spacer()
                                     Spacer()
                                     Text("You earned $ 10 000. You're off to a great start!")
@@ -111,7 +110,7 @@ struct ProgressView: View {
                             Section {
                                 
                                 HStack {
-                                    Image("1B 2")
+                                    Image("100M 2")
                                     Spacer()
                                     Text("You earned $ 1 billion. That's pretty insane! Congratulations!")
                                         .fontWeight(.black)
@@ -119,11 +118,11 @@ struct ProgressView: View {
                             }
                         }
                         
-                        if cash > 1000000000000 {
+                        if cash > 1000000000 {
                             Section {
                                 
                                 HStack {
-                                    Image("1T 2")
+                                    Image("1B 2")
                                     Spacer()
                                     Text("You earned $ 1 trillion. You're a genius! How'd you even do it?!")
                                         .fontWeight(.black)

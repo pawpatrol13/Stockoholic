@@ -40,7 +40,6 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
-        .tint(Color("ForegroundColor"))
     }
 }
 struct ContentView_Previews: PreviewProvider {

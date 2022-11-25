@@ -250,128 +250,210 @@ struct PortfoilioView: View {
                             Text("Total value: $ \(georgianPrice*sharesToSell)")
                         }
                 
-                        HStack {
-                            Text("\(sharesToSell)")
-                            Spacer()
-                            Stepper(value: $sharesToSell, in: 1...100000) {
-                                Text("share(s) to sell")
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        
-                        
-                        
-                        
-                    }
+                Group {
                     HStack {
                         Spacer()
-                    Button("Sell") {
-                        sureSell = true
-                    }
-                    .foregroundColor(.blue)
-                    .font(.title3)
-                    .alert("Are you sure you wanna sell this stock?", isPresented: $sureSell) {
-                        Button("Yes") {
+                        VStack {
                             
-                            if stockSelected == 1 {
-                                
-                                if shares[0] >= sharesToSell {
-                                    cash += duskPrice*sharesToSell
-                                    shares[0] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 2 {
-                                
-                                if shares[1] >= sharesToSell {
-                                    cash += musicPrice*sharesToSell
-                                    shares[1] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 3 {
-                                if shares[2] >= sharesToSell {
-                                    cash += furniPrice*sharesToSell
-                                    shares[2] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 4 {
-                                if shares[3] >= sharesToSell {
-                                    cash += beatsPrice*sharesToSell
-                                    shares[3] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 5 {
-                                if shares[4] >= sharesToSell {
-                                    cash += jackPrice*sharesToSell
-                                    shares[4] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 6 {
-                                if shares[5] >= sharesToSell {
-                                    cash += laurenePrice*sharesToSell
-                                    shares[5] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            } else if stockSelected == 7 {
-                                if shares[6] >= sharesToSell {
-                                    cash += georgianPrice*sharesToSell
-                                    shares[6] -= sharesToSell
-                                    UserDefaults.standard.set(shares, forKey: "shares")
-                                    sharesSold = true
-                                } else {
-                                    notEnoughShares = true
-                                }
-                            }
+                            Image(systemName: "person.fill")
+                                .font(.system(size: 90))
                             
+                            Spacer()
+                            
+                            
+                            Text("Value of items owned: $\(netWorth)")
+                                .font(.title2)
+                                .fontWeight(.light)
+                            
+                            
+                            Spacer()
+                            Text("Level: \(level)")
+                                .font(.title2)
+                                .fontWeight(.light)
+                            
+                            
+                            Spacer()
+                            Text("Cash: $\(cash)")
+                                .font(.title2)
+                                .fontWeight(.light)
                             
                         }
-                
-                        Button("No") {
-                            
-                        }
-                    } message: {
-                        Text("You'll get the current value of these shares deposited into your cash balance immediately.")
-                    }
-                        
-                    .alert("You don't have enough shares", isPresented: $notEnoughShares) {
-                        
-                    } message: {
-                        Text("You're trying to sell more shares than you own in this company.")
-                    }
-                        
-                    .alert("Successfully sold shares", isPresented: $sharesSold) {
-                        
-                    } message: {
-                        Text("Shares for this company has been deducted, and money has been deposited into your account.")
-                    }
                         Spacer()
+                        
+                        
+                    }
+                    Text("* Value of items owned refers to items from shop. It does not include total value of shares.")
+                        .fontWeight(.ultraLight)
+                        .font(.caption)
+                    Section {
+                        Text("* Quit and restart app to see updated shares")
+                            .font(.caption)
+                            .fontWeight(.light)
+                            .foregroundColor(.gray)
+                        HStack {
+                            Spacer()
+                            Text("Shares Owned")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            VStack {
+                                
+                                
+                                if show == false {
+                                    
+                                } else {
+                                    
+                                    HStack {
+                                        
+                                        VStack {
+                                            Text("Dusk Motors, Inc:                    \(shares[0])")
+                                            Spacer()
+                                            Text("Music Max, Inc:                        \(shares[1])")
+                                            Spacer()
+                                            Text("FurniWear, Inc:                         \(shares[2])")
+                                            Spacer()
+                                            
+                                            Text("Beats Entertainment LLC:       \(shares[3])")
+                                            Spacer()
+                                        }
+                                        
+                                    }
+                                    
+                                    HStack {
+                                        VStack {
+                                            Text("Jack's Beef:                              \(shares[4])")
+                                            Spacer()
+                                            Text("Laurene & Co:                           \(shares[5])")
+                                            Spacer()
+                                            Text("Georgian Air:                             \(shares[6])")
+                                            Spacer()
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                
+                                
+                                
+                            }
+                            Spacer()
+                        }
+                    }
+                    
+                    Group {
+                        HStack {
+                            Spacer()
+                            Text("Items Owned")
+                                .fontWeight(.bold)
+                                .font(.title2)
+                            Spacer()
+                        }
+                        
+                        ForEach(ownedItems, id: \.self) { item in
+                            HStack {
+                                
+                                
+                                if item == "ferrari" {
+                                    Image(systemName: "car.fill")
+                                        .foregroundColor(.red)
+                                    Spacer()
+                                    Text("Ferrari")
+                                        .font(.title3)
+                                }
+                                
+                                if item == "lam" {
+                                    Image(systemName: "car.fill")
+                                        .foregroundColor(.yellow)
+                                    Spacer()
+                                    Text("Lamborghini")
+                                        .font(.title3)
+                                }
+                                
+                                
+                                if item == "family" {
+                                    Image(systemName: "house.fill")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Text("Family Estate")
+                                        .font(.title3)
+                                }
+                                
+                                
+                                if item == "condo" {
+                                    Image(systemName: "house.fill")
+                                        .foregroundColor(.cyan)
+                                    Spacer()
+                                    
+                                    Text("Condominium")
+                                        .font(.title3)
+                                }
+                                
+                                
+                                if item == "bungalow" {
+                                    Image(systemName: "music.note.house.fill")
+                                        .foregroundColor(.brown)
+                                    Spacer()
+                                    Text("Bungalow")
+                                        .font(.title3)
+                                }
+                                
+                                
+                                if item == "mansion" {
+                                    Image(systemName: "cablecar.fill")
+                                        .foregroundColor(.gray)
+                                    Text("Mega Mansion")
+                                        .font(.title3)
+                                }
+                                
+                                
+                                
+                                Spacer()
+                            }
+                        }
+                        
+                    }
                 }
+                Section {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Text("Settings")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Image(systemName: "gear")
+                                .font(.title2)
+                            Spacer()
+                        }
+                        Spacer()
+                        HStack {
+                            VStack {
+                                HStack{
+                                    Text("Light Mode")
+                                        .font(.title3)
+                                    Spacer()
+                                    Image(systemName: "lightswitch.on")
+                                }
+                                HStack{
+                                    Text("Dark Mode")
+                                        .font(.title3)
+                                    Spacer()
+                                    Image(systemName: "lightswitch.on")
+                                }
+                               
+                            }
+                        }
+                    }
+                    
+                    
                 }
-                
             }
             .navigationTitle("Portfolio")
             .onAppear {
                 
-           
+                
                 if ownedItems.contains("ferrari") && ferrariCheck == false {
                     netWorth += ferrariPrice
                     ferrariCheck = true
@@ -396,7 +478,7 @@ struct PortfoilioView: View {
                     netWorth += bungalowPrice
                     bungalowCheck = true
                 }
-             
+                
                 if shares.count < 2 {
                     
                 } else {
@@ -406,7 +488,6 @@ struct PortfoilioView: View {
             netWorth=netWorth+duskPrice*shares[0]+musicPrice*shares[1]+furniPrice*shares[2]+beatsPrice*shares[3]+jackPrice*shares[4]+laurenePrice*shares[5]+georgianPrice*shares[6]
             
             }
-     
         }
         .onAppear {
             if new == true {
@@ -417,7 +498,7 @@ struct PortfoilioView: View {
                 shares.append(0)
                 shares.append(0)
                 shares.append(0)
-             
+                
                 new = false
                 
                 
@@ -425,12 +506,9 @@ struct PortfoilioView: View {
                 
             }
         }
+        
     }
-    
-
-    
 }
-
 struct Portfoilio_View__Previews: PreviewProvider {
     static var previews: some View {
         PortfoilioView()
