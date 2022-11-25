@@ -83,7 +83,7 @@ struct PortfolioView: View {
                                 Spacer()
                                 VStack{
                                     HStack{
-                                        Text("Dusk Motors, Inc:")
+                                        Text("Dusk Motors:")
                                         Spacer()
                                         Text("\(stockManager.stocks[0].stocksOwned)  ")
                                     }
@@ -117,7 +117,11 @@ struct PortfolioView: View {
                                         Spacer()
                                         Text("\(stockManager.stocks[6].stocksOwned)  ")
                                     }
-                                    
+                                    HStack{
+                                        Text("Midas, Inc:")
+                                        Spacer()
+                                        Text("\(stockManager.stocks[7].stocksOwned)  ")
+                                    }
                                 }
                                 Spacer()
                             }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-`@main
+@main
 struct StockoholicApp: App {
     var body: some Scene {
         WindowGroup {

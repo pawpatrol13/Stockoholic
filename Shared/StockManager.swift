@@ -19,8 +19,10 @@ class StockManager: ObservableObject {
                                  Stock(name: "FurniWear, Inc.", pricePerStockArray: [220], stocksOwned: 0, num: 2),
                                  Stock(name: "Beats Entertainment LLC", pricePerStockArray: [500], stocksOwned: 0, num: 3),
                                  Stock(name: "Jack's Beef", pricePerStockArray: [450], stocksOwned: 0, num: 4),
-                                 Stock(name: "Laurene & Co.", pricePerStockArray: [825], stocksOwned: 0, num: 5),
-                                 Stock(name: "Georgian Air", pricePerStockArray: [343], stocksOwned: 0, num: 6)]
+                                 Stock(name: "Laurene & Co.", pricePerStockArray: [699], stocksOwned: 0, num: 5),
+                                 Stock(name: "Georgian Air", pricePerStockArray: [343], stocksOwned: 0, num: 6),
+                                 Stock(name: "Midas, Inc", pricePerStockArray: [420], stocksOwned: 0, num: 7)]
+    
     
     init() {
         load()

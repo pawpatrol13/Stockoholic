@@ -56,6 +56,7 @@ struct StockView: View {
         stockManager.stocks[4].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
         stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
         stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[7].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[7].pricePerStockArray[0]) * Double.random(in: 0.958...1.042)))),at:0)
     }
     
     @State var show = false

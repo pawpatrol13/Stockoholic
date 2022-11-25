@@ -127,7 +127,10 @@ struct BuyAndSellView: View {
                         Text("Georgian Air is a low-cost long haul airline company that seeks to provide a great flying experience at low prices.\n\nThey have flights connecting all major cities, and have a strong frequent flyer loyalty programme.")
                             .fontWeight(.ultraLight)
                             .font(.callout)
-                        
+                    } else if stockManager.stocks[stockNum].name == "Midas Inc" {
+                        Text("Midas Inc is a gold mining company that controls 20% of the world's gold supply, as well as heavy investors the jewellery industry and tech industry.\n\nThey have over 20 mining spots all over the world and produces some of the finest gold in the world")
+                            .fontWeight(.ultraLight)
+                            .font(.callout)
                     }
                     
                     Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \nNote: Stock information in this app do not reflect real values!")
