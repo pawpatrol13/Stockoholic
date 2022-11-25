@@ -42,7 +42,7 @@ struct StockView: View {
     
     @State var buyShares = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timeRemaining = 0 
+    @State var timeRemaining = 0
     @AppStorage("new2") var new2 = true
     
     @State var currentStock: Stock?
@@ -121,10 +121,6 @@ struct StockView: View {
                 }  footer: {
                     Text("Click to purchase shares. Share prices change every 20s.")
                 }
-                
-                
-                
-                
             }
             .sheet(isPresented: $buyShares) {
                 BuyAndSellView(stock: currentStock ?? Stock(name: "This shouldn't appear", pricePerStockArray: [0, 0, 0, 0, 0, 0, 0], num: 0))
@@ -194,7 +190,7 @@ struct StockView: View {
                     }
                 }
                 
-                timeRemaining = 10
+                timeRemaining = 5
                 
                 //Any other code that should happen after countdown
             }

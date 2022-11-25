@@ -87,7 +87,7 @@ struct BuyAndSellView: View {
                         )
                         .foregroundStyle(stock.pricePerStockArray[0] > stock.pricePerStockArray[1] ? Color.green : Color.red)
                     }
-                    .chartYScale(domain: ((stock.pricePerStockArray.min() ?? 0) - 10)...((stock.pricePerStockArray.max() ?? 0) + 10))
+                    .chartYScale(domain: ((stock.pricePerStockArray.min() ?? 0))...((stock.pricePerStockArray.max() ?? 0)))
                     .padding()
                 } else {
                     // Fallback on earlier versions
