@@ -134,8 +134,11 @@ struct BuyAndSellView: View {
                         .foregroundColor(.gray)
                     
                     HStack {
-                        Text("\(sharesBuying) shares")
-                        Stepper(value: $sharesBuying, in: 1...100000){}
+                        TextField("Buying:", value: $sharesBuying, formatter: NumberFormatter())
+                            .background(Color.gray)
+                            .keyboardType(.decimalPad)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Stepper(value: $sharesBuying, in: 1...1000000){}
                     }
                     
                     Text("Cost: $\(stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)")
@@ -149,10 +152,7 @@ struct BuyAndSellView: View {
                         .alert("Are you sure?", isPresented: $sureBuy) {
                             
                             HStack {
-                                Button("Yes") {
-                                    
-                                    
-                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
+                                Button("Yes") {                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
                                         stockManager.stocks[stockNum].stocksOwned += sharesBuying
                                         cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
                                     } else {
@@ -160,10 +160,7 @@ struct BuyAndSellView: View {
                                     }
                                     
                                 }
-                                
-                                Button("No") {
-                                    
-                                }
+                                Button("No") {}
                             }
                         } message: {
                             Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(stockManager.stocks[stockNum].name)?")
@@ -191,7 +188,10 @@ struct BuyAndSellView: View {
                             Text("Price: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
                             
                             HStack {
-                                Text("\(sharesToSell)")
+                                TextField("Buying:", value: $sharesToSell, formatter: NumberFormatter())
+                                    .background(Color.gray)
+                                    .keyboardType(.decimalPad)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
                                 Spacer()
                                 Stepper(value: $sharesToSell, in: 1...100000) {
                                     Text("share(s) to sell")
