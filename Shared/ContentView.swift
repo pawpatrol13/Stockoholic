@@ -16,6 +16,8 @@ struct ContentView: View {
         UITabBar.appearance().backgroundColor = UIColor.systemGray6
     }
     
+    @StateObject var stockManager = StockManager()
+    
     var body: some View {
         TabView(selection: $selection){
             
@@ -40,6 +42,7 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
+        .environmentObject(stockManager)
     }
 }
 struct ContentView_Previews: PreviewProvider {

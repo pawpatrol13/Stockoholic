@@ -46,7 +46,7 @@ struct StockView: View {
     
     @State var currentStock: Int?
     
-    @StateObject var stockManager = StockManager()
+    @EnvironmentObject var stockManager: StockManager
     
     func UpdateStocks(){
         stockManager.stocks[0].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
@@ -129,7 +129,7 @@ struct StockView: View {
                 }
             }
             .sheet(isPresented: $buyShares) {
-                BuyAndSellView(stockNum: currentStock ?? -1)
+                BuyAndSellView(stockView: self, stockNum: currentStock ?? -1)
             }
             .navigationTitle("Stocks")
             .sheet(isPresented: $new2) {
@@ -180,6 +180,7 @@ struct StockView: View {
                 new2 = false
             }
         }
+        .environmentObject(stockManager)
         .onReceive(timer) { time in
             if timeRemaining > 0 {
                 

@@ -9,8 +9,8 @@ import SwiftUI
 import Charts
 
 struct BuyAndSellView: View {
-    @ObservedObject var stockManager = StockManager()
-    @State var stockView = StockView()
+    @EnvironmentObject var stockManager: StockManager
+    @State var stockView:StockView
     
     @AppStorage("cash") var cash = 1000
     @State var stockNum:Int
@@ -246,6 +246,6 @@ struct BuyAndSellView: View {
 
 struct BuyAndSellView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyAndSellView(stockNum: 0)
+        BuyAndSellView(stockView: StockView(), stockNum: 0)
     }
 }

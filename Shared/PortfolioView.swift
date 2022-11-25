@@ -34,7 +34,7 @@ struct PortfolioView: View {
     @AppStorage("bungalowPrice") var bungalowPrice = 10000000
     @State var sharesSold = false
     
-    @ObservedObject var stockManager = StockManager()
+    @EnvironmentObject var stockManager: StockManager
 
     var body: some View {
         NavigationView {
