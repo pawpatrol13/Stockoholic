@@ -19,6 +19,7 @@ struct Stock: Identifiable, Codable{
     //Change to Array<Double> if we use decimals like normal people
     //Will save as most recent as [0] and oldest as [10]
     var pricePerStockArray:Array<Int>
+    var stocksOwned:Int
     let num:Int
 }
 

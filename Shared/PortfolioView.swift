@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct PortfolioView: View {
-    @AppStorage("new") var new = true
     @State private var showingSheet = false
     @State var netWorth = 0
     @AppStorage("itemsValue") var itemsValue = 0
@@ -34,12 +33,12 @@ struct PortfolioView: View {
     @AppStorage("condoPrice") var condoPrice = 1500000
     @AppStorage("bungalowPrice") var bungalowPrice = 10000000
     @State var sharesSold = false
-    @State var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0]
+    
+    @ObservedObject var stockManager = StockManager()
+
     var body: some View {
         NavigationView {
             List {
-                
-                
                 Group {
                     HStack {
                         Spacer()
@@ -49,7 +48,6 @@ struct PortfolioView: View {
                                 .font(.system(size: 90))
                             
                             Spacer()
-                            
                             
                             Text("Net Worth: $\(netWorth)")
                                 .font(.title2)
@@ -71,8 +69,6 @@ struct PortfolioView: View {
                             
                         }
                         Spacer()
-                        
-                        
                     }
                     Section {
                         VStack{
@@ -87,58 +83,55 @@ struct PortfolioView: View {
                             Spacer()
                         HStack {
                             Spacer()
-                            VStack {
-                                
-                                
-                               
-                                    
-                                    HStack {
-                                        
-                                        VStack {
-                                            Text("Dusk Motors, Inc:                    \(shares[0])")
-                                            Spacer()
-                                            Text("Music Max, Inc:                        \(shares[1])")
-                                            Spacer()
-                                            Text("FurniWear, Inc:                         \(shares[2])")
-                                            Spacer()
-                                            
-                                            Text("Beats Entertainment LLC:       \(shares[3])")
-                                            Spacer()
-                                        }
-                                        
-                                    }
-                                    
-                                    HStack {
-                                        VStack {
-                                            Text("Jack's Beef:                              \(shares[4])")
-                                            Spacer()
-                                            Text("Laurene & Co:                           \(shares[5])")
-                                            Spacer()
-                                            Text("Georgian Air:                             \(shares[6])")
-                                            Spacer()
-                                        }
-                                        
-                                    }
-                                
-                                
-                                
-                                
-                                
+                            VStack{
+                                HStack{
+                                    Text("Dusk Motors, Inc:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[0].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("Music Max, Inc:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[1].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("FurniWear, Inc:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[2].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("Beats Entertainment LLC:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[3].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("Jack's Beef:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[4].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("Laurene & Co:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[5].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+                                HStack{
+                                    Text("Georgian Air:")
+                                    Spacer()
+                                    Text("\(stockManager.stocks[6].stocksOwned)")
+                                        .frame(alignment: .trailing)
+                                }
+
                             }
                             Spacer()
                         }
                             Spacer()
                     }
-                    } header: {
-                        HStack{
-                            Spacer()
-                            Text("Quit and restart app to see updated shares")
-                                .font(.caption)
-                                .fontWeight(.light)
-                                .foregroundColor(.gray)
-                                .textCase(nil)
-                            Spacer()
-                        }
                     }
                     
                     Section {
@@ -246,33 +239,8 @@ struct PortfolioView: View {
                     netWorth += bungalowPrice
                     bungalowCheck = true
                 }
-                
-                if shares.count < 2 {
-                    
-                } else {
-                    show = true
-                }
-                
             }
         }
-        .onAppear {
-            if new == true {
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                shares.append(0)
-                
-                new = false
-                
-                
-            } else {
-                
-            }
-        }
-        
     }
 }
 struct Portfolio_View__Previews: PreviewProvider {

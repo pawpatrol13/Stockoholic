@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct BuyAndSellView: View {
-    @ObservedObject var stockManager = StockManager()
+    @StateObject var stockManager = StockManager()
     
     @AppStorage("cash") var cash = 1000
     @State var stockNum:Int
@@ -21,8 +21,6 @@ struct BuyAndSellView: View {
     @State var notEnoughShares = false
     @State var sureSell = false
     @State var sharesSold = false
-    
-    @State private var shares: [Int] = UserDefaults.standard.object(forKey: "shares") as? [Int] ?? [0, 0, 0, 0, 0, 0, 0]
     
     var body: some View {
         if stockNum == -1{
@@ -155,8 +153,7 @@ struct BuyAndSellView: View {
                                     
                                     
                                     if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                        shares[stockManager.stocks[stockNum].num] += sharesBuying
-                                        UserDefaults.standard.set(shares, forKey: "shares")
+                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
                                         cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
                                     } else {
                                         tooPoor = true
@@ -211,10 +208,9 @@ struct BuyAndSellView: View {
                             .font(.title3)
                             .alert("Are you sure you wanna sell this stock?", isPresented: $sureSell) {
                                 Button("Yes") {
-                                    if shares[stockManager.stocks[stockNum].num] >= sharesToSell {
+                                    if stockManager.stocks[stockNum].stocksOwned >= sharesToSell {
                                         cash += stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell
-                                        shares[stockManager.stocks[stockNum].num] -= sharesToSell
-                                        UserDefaults.standard.set(shares, forKey: "shares")
+                                        stockManager.stocks[stockNum].stocksOwned -= sharesToSell
                                         sharesSold = true
                                     } else {
                                         notEnoughShares = true
