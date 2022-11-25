@@ -143,8 +143,13 @@ struct BuyAndSellView: View {
                         Stepper(value: $sharesBuying, in: 1...1000000){}
                     }
                     
-                    Text("Cost: $\(stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)")
-                        .fontWeight(.bold)
+                    HStack {
+                        Text("Cost: $\(stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)")
+                            .padding()
+                        Text("Cash after transaction: $\(cash - (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying))")
+                            .padding()
+                    }
+                    
                     HStack {
                         Spacer()
                         Button("Purchase") {
@@ -154,12 +159,13 @@ struct BuyAndSellView: View {
                         .alert("Are you sure?", isPresented: $sureBuy) {
                             
                             HStack {
-                                Button("Yes") {                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                    stockManager.stocks[stockNum].stocksOwned += sharesBuying
-                                    cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
-                                } else {
-                                    tooPoor = true
-                                }
+                                Button("Yes") {
+                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
+                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
+                                        cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
+                                    } else {
+                                        tooPoor = true
+                                    }
                                     
                                 }
                                 Button("No") {}
@@ -187,14 +193,21 @@ struct BuyAndSellView: View {
                             }
                             Spacer()
                             
-                            Text("Worth: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
-                            
                             HStack {
                                 TextField("Selling:", value: $sharesToSell, formatter: NumberFormatter())
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                 Spacer()
                                 Stepper(value: $sharesToSell, in: 1...100000) {}
+                            }
+                            
+                            HStack{
+                                Text("Worth: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
+                                    .padding()
+                                Text("Cash after transaction: $\(cash + (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesToSell))")
+                                    .padding()
+                                Text("Shares after transaction: $\(stockManager.stocks[stockNum].stocksOwned - sharesToSell)")
+                                    .padding()
                             }
                             Spacer()
                         }
