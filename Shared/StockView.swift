@@ -30,7 +30,7 @@ struct StockRow: View {
     var body: some View {
         Text("\(stock.name)")
             .font(.title2)
-            .foregroundColor(.white)
+            .foregroundColor(Color("TextColor"))
             .fontWeight(.medium)
     }
 }
@@ -78,7 +78,9 @@ struct StockView: View {
                         currentStock = stock.num
                         buyShares = true
                     } label: {
+                        Spacer()
                         StockRow(stock: stock)
+                        Spacer()
                         HStack {
                             
                             if stock.pricePerStockArray.count < 2 || stock.pricePerStockArray[0] > stock.pricePerStockArray[1]{
@@ -90,22 +92,15 @@ struct StockView: View {
                                     .foregroundColor(.red)
                                     .font(.title)
                             }
-                            Spacer()
-                        }
-                        HStack {
-                            Spacer()
                             Text("$ \(stock.pricePerStockArray[0])")
                                 .foregroundColor(.green)
                                 .font(.title2)
-                            Spacer()
                         }
-                        
-                        
                         Spacer()
                         HStack {
                             Text("Average high: $ \(stock.pricePerStockArray.max() ?? 0)")
                                 .font(.body)
-                                .foregroundColor(.yellow)
+                                .foregroundColor(Color("Yellow"))
                                 .fontWeight(.light)
                             Spacer()
                             Text("Average low: $ \(stock.pricePerStockArray.min() ?? 0)")
@@ -113,14 +108,17 @@ struct StockView: View {
                                 .font(.body)
                                 .fontWeight(.light)
                         }
+                        Spacer()
                         
                         
                     }
                     
                     
                 }  footer: {
-                    HStack(alignment:.center){
-                        Text("Click to purchase. Share prices change every 20s.")
+                    HStack{
+                        Spacer()
+                        Text("Click to purchase. Share price will change in \(timeRemaining)s.")
+                        Spacer()
                     }
                 }
             }
@@ -202,7 +200,6 @@ struct StockView: View {
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
         StockView()
-            .preferredColorScheme(.dark)
     }
 }
 
