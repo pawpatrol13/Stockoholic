@@ -31,188 +31,196 @@ struct BuyAndSellView: View {
             NavigationView{
                 List {
                     Section{
-                        Text("Cash: \(cash)")
+                        Text("Cash: $\(cash)")
                             .bold()
                         Text("Shares: \(stockManager.stocks[stockNum].stocksOwned)")
+                            .bold()
                     }
                     
-                    if #available(iOS 16.0, *) {
-                        Chart{
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[14])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[14] > stockManager.stocks[stockNum].pricePerStockArray[15] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-65))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-65)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[13])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[13] > stockManager.stocks[stockNum].pricePerStockArray[14] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[12])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[12] > stockManager.stocks[stockNum].pricePerStockArray[13] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-55))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-55)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[11])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[11] > stockManager.stocks[stockNum].pricePerStockArray[12] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[10])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[10] > stockManager.stocks[stockNum].pricePerStockArray[11] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-45))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-45)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[9])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[9] > stockManager.stocks[stockNum].pricePerStockArray[10] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[8])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[8] > stockManager.stocks[stockNum].pricePerStockArray[9] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-35))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-35)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[7])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[7] > stockManager.stocks[stockNum].pricePerStockArray[8] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[6])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[6] > stockManager.stocks[stockNum].pricePerStockArray[7] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-25))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-25)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[5])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[5] > stockManager.stocks[stockNum].pricePerStockArray[6] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[4])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[4] > stockManager.stocks[stockNum].pricePerStockArray[5] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-15))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-15)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[3])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[3] > stockManager.stocks[stockNum].pricePerStockArray[4] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[2])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[2] > stockManager.stocks[stockNum].pricePerStockArray[3] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-5))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-5)))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[1])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[1] > stockManager.stocks[stockNum].pricePerStockArray[2] ? Color.green : Color.red)
-                            
-                            BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date())):\(Calendar.current.component(.second, from: Date()))"),
-                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[0])
-                            )
-                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[0] > stockManager.stocks[stockNum].pricePerStockArray[1] ? Color.green : Color.red)
-                        }
-                        .chartYScale(domain: ((stockManager.stocks[stockNum].pricePerStockArray.min() ?? 0))...((stockManager.stocks[stockNum].pricePerStockArray.max() ?? 0)))
-                        .chartXAxis(Visibility.hidden)
-                        .padding()
-                    } else {
-                        // Fallback on earlier versions
-                    }
-                    
-                    if stockManager.stocks[stockNum].name == "Dusk Motors" {
-                        Text("Dusk Motors is a world renowned vehicle company that has made innovative contributions in the automobile industry. From motorcycles to electric cars, Dusk Motors is revolutionising transportation.\n\nThey are currently working on electric vehicles and more environmetally friendly solutions.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Music Max, Inc." {
-                        Text("Music Max has revolutionised the way we listen to music. From great headphones to a plethora of streaming services, Music Max has made music available to millions.\n\nThey're currently investing in better headphone technology, and plan to better support artists for their creations on the platform.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "FurniWear, Inc." {
-                        Text("What started out as a humble winter clothing store has become the hit clothing brand of the century.\n\nWith outfits to match almost anyone's needs, FurniWear's working to make fashion more accessible, affordable, comfy and full of style.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Beats Entertainment LLC" {
-                        Text("Beats Entertainment is a movie studio that has produced some of the biggest hits of the decade. They're innovating to bring movies closer to people.\n\nThey've recently launched their own movie streaming service, with their full movie library on the app.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Jack's Beef" {
-                        Text("What started out as a humble butcher's business is now the leader in a plethora of meat products. From Beef Jerky, to Beef stew, to steak to hamburgers, they've got a lot of food.\n\nThey have over 500 restaurants across the country, with some of their meat products in all major retailers for you prepare their food at home.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Laurene & Co." {
-                        Text("A company that specialises in jewelry and exclusive handbags as well as purses, Laurene & Co.'s mission is to make products of only the finest craftsmanship in the world.\n\nWith over 1000 stores across the world, they trade at higher share prices due to their reputation as a globally renowned luxury goods retailer.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Georgian Air" {
-                        Text("Georgian Air is a low-cost long haul airline company that seeks to provide a great flying experience at low prices.\n\nThey have flights connecting all major cities, and have a strong frequent flyer loyalty programme.")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    } else if stockManager.stocks[stockNum].name == "Midas Inc" {
-                        Text("Midas Inc is a gold mining company that controls 20% of the world's gold supply, as well as heavy investors the jewellery industry and tech industry.\n\nThey have over 20 mining spots all over the world and produces some of the finest gold in the world")
-                            .fontWeight(.ultraLight)
-                            .font(.callout)
-                    }
-                    
-                    Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \nNote: Stock information in this app do not reflect real values!")
-                        .foregroundColor(.gray)
-                    
-                    HStack {
-                        TextField("Buying:", value: $sharesBuying, formatter: NumberFormatter())
-                            .keyboardType(.decimalPad)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        Stepper(value: $sharesBuying, in: 1...1000000){}
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Button("Purchase") {
-                            sureBuy = true
-                        }
-                        .foregroundColor(.blue)
-                        .alert("Are you sure?", isPresented: $sureBuy) {
-                            
-                            HStack {
-                                Button("Yes") {
-                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
-                                        cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
-                                    } else {
-                                        tooPoor = true
-                                    }
-                                    
-                                }
-                                Button("No") {}
+                    Section{
+                        if #available(iOS 16.0, *) {
+                            Chart{
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[14])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[14] > stockManager.stocks[stockNum].pricePerStockArray[15] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-65))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-65)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[13])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[13] > stockManager.stocks[stockNum].pricePerStockArray[14] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[12])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[12] > stockManager.stocks[stockNum].pricePerStockArray[13] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-55))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-55)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[11])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[11] > stockManager.stocks[stockNum].pricePerStockArray[12] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[10])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[10] > stockManager.stocks[stockNum].pricePerStockArray[11] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-45))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-45)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[9])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[9] > stockManager.stocks[stockNum].pricePerStockArray[10] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[8])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[8] > stockManager.stocks[stockNum].pricePerStockArray[9] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-35))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-35)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[7])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[7] > stockManager.stocks[stockNum].pricePerStockArray[8] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[6])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[6] > stockManager.stocks[stockNum].pricePerStockArray[7] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-25))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-25)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[5])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[5] > stockManager.stocks[stockNum].pricePerStockArray[6] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[4])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[4] > stockManager.stocks[stockNum].pricePerStockArray[5] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-15))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-15)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[3])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[3] > stockManager.stocks[stockNum].pricePerStockArray[4] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[2])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[2] > stockManager.stocks[stockNum].pricePerStockArray[3] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-5))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-5)))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[1])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[1] > stockManager.stocks[stockNum].pricePerStockArray[2] ? Color.green : Color.red)
+                                
+                                BarMark(
+                                    x: .value("Time", "\(Calendar.current.component(.minute, from: Date())):\(Calendar.current.component(.second, from: Date()))"),
+                                    y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[0])
+                                )
+                                .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[0] > stockManager.stocks[stockNum].pricePerStockArray[1] ? Color.green : Color.red)
                             }
-                        } message: {
-                            Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(stockManager.stocks[stockNum].name)?")
+                            .chartYScale(domain: ((stockManager.stocks[stockNum].pricePerStockArray.min() ?? 0))...((stockManager.stocks[stockNum].pricePerStockArray.max() ?? 0)))
+                            .chartXAxis(Visibility.hidden)
+                            .padding()
+                        } else {
+                            // Fallback on earlier versions
                         }
-                        .alert("You don't have enough cash!", isPresented: $tooPoor) {
-                            
-                        } message: {
-                            Text("Try selling shares of other companies you own.")
+                        
+                        if stockManager.stocks[stockNum].name == "Dusk Motors" {
+                            Text("Dusk Motors is a world renowned vehicle company that has made innovative contributions in the automobile industry. From motorcycles to electric cars, Dusk Motors is revolutionising transportation.\n\nThey are currently working on electric vehicles and more environmetally friendly solutions.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Music Max, Inc." {
+                            Text("Music Max has revolutionised the way we listen to music. From great headphones to a plethora of streaming services, Music Max has made music available to millions.\n\nThey're currently investing in better headphone technology, and plan to better support artists for their creations on the platform.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "FurniWear, Inc." {
+                            Text("What started out as a humble winter clothing store has become the hit clothing brand of the century.\n\nWith outfits to match almost anyone's needs, FurniWear's working to make fashion more accessible, affordable, comfy and full of style.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Beats Entertainment LLC" {
+                            Text("Beats Entertainment is a movie studio that has produced some of the biggest hits of the decade. They're innovating to bring movies closer to people.\n\nThey've recently launched their own movie streaming service, with their full movie library on the app.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Jack's Beef" {
+                            Text("What started out as a humble butcher's business is now the leader in a plethora of meat products. From Beef Jerky, to Beef stew, to steak to hamburgers, they've got a lot of food.\n\nThey have over 500 restaurants across the country, with some of their meat products in all major retailers for you prepare their food at home.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Laurene & Co." {
+                            Text("A company that specialises in jewelry and exclusive handbags as well as purses, Laurene & Co.'s mission is to make products of only the finest craftsmanship in the world.\n\nWith over 1000 stores across the world, they trade at higher share prices due to their reputation as a globally renowned luxury goods retailer.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Georgian Air" {
+                            Text("Georgian Air is a low-cost long haul airline company that seeks to provide a great flying experience at low prices.\n\nThey have flights connecting all major cities, and have a strong frequent flyer loyalty programme.")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
+                        } else if stockManager.stocks[stockNum].name == "Midas Inc" {
+                            Text("Midas Inc is a gold mining company that controls 20% of the world's gold supply, as well as heavy investors the jewellery industry and tech industry.\n\nThey have over 20 mining spots all over the world and produces some of the finest gold in the world")
+                                .fontWeight(.ultraLight)
+                                .font(.callout)
                         }
-                        Spacer()
+                        
+                        Text("Think this is a good investment? Buy some shares and see what happens to your money! \n \nNote: Stock information in this app do not reflect real values!")
+                            .foregroundColor(.gray)
+                        
+                        HStack {
+                            TextField("Buying:", value: $sharesBuying, formatter: NumberFormatter())
+                                .keyboardType(.decimalPad)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            Stepper(value: $sharesBuying, in: 1...1000000){}
+                        }
+                        
+                        HStack{
+                            Spacer()
+                            Text("Price: $\(stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)")
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Spacer()
+                            Button("Purchase") {
+                                sureBuy = true
+                            }
+                            .foregroundColor(.blue)
+                            .alert("Are you sure?", isPresented: $sureBuy) {
+                                
+                                HStack {
+                                    Button("Yes") {
+                                        if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
+                                            stockManager.stocks[stockNum].stocksOwned += sharesBuying
+                                            cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
+                                        } else {
+                                            tooPoor = true
+                                        }
+                                        
+                                    }
+                                    Button("No") {}
+                                }
+                            } message: {
+                                Text("Are you sure you wanna buy \(sharesBuying) share(s) of \(stockManager.stocks[stockNum].name)?")
+                            }
+                            .alert("You don't have enough cash!", isPresented: $tooPoor) {
+                                
+                            } message: {
+                                Text("Try selling shares of other companies you own.")
+                            }
+                            Spacer()
+                        }
                     }
                     
                     Section {
-                        VStack {
-                            Spacer()
                             HStack {
                                 Spacer()
                                 Text("Sell a Stock")
@@ -220,8 +228,7 @@ struct BuyAndSellView: View {
                                     .fontWeight(.bold)
                                 Spacer()
                             }
-                            Spacer()
-                            
+
                             HStack {
                                 TextField("Selling:", value: $sharesToSell, formatter: NumberFormatter())
                                     .keyboardType(.decimalPad)
@@ -230,8 +237,12 @@ struct BuyAndSellView: View {
                                 Stepper(value: $sharesToSell, in: 1...100000) {}
                             }
 
-                            Spacer()
-                        }
+                            HStack{
+                                Spacer()
+                                Text("Worth: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                            }
                         HStack {
                             Spacer()
                             Button("Sell") {
