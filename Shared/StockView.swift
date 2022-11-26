@@ -42,7 +42,7 @@ struct StockView: View {
     @State var buyShares = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timeRemaining = 0
-    @AppStorage("new2") var new2 = true
+    @AppStorage("new2") var new2 = false
     
     @State var currentStock: Int?
     
@@ -137,48 +137,61 @@ struct StockView: View {
                 }
             }
             .sheet(isPresented: $new2) {
-                VStack {
-                    
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text("Welcome to Stockoholic!")
-                            .font(.largeTitle)
-                            .fontWeight(.black)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        VStack {
+                ScrollView{
+                    VStack {
+                        
+                        HStack {
                             Spacer()
-                            Text("- This app is meant for both kids and adults to learn more about investing. \n \n - You can buy shares in 8 different companies from different industries with virtual currency. \n \n- Follow your intuition, and see if you're money grows. Buy items from the market to have a chance to increase your net worth. \n \n - Please not that share prices in this app do not reflect real share values! \n \nCan you become a billionaire investor?")
-                                .fontWeight(.light)
-                                .font(.system(size: 16))
-                            
-                            Spacer()
-                            
-                            Text("Remember, buy low, sell high!")
-                            Spacer()
-                            Text("Tips:")
-                                .font(.title)
-                                .fontWeight(.black)
-                            Spacer()
-                            
-                            HStack {
-                                Spacer()
-                                Text(" 1. Diversify your portfolio \n 2. Do your research \n 3. Don’t listen to others advice without \n checking first \n 4. Don’t blindly invest in stocks \n because others tell you to \n 5. Don’t put all your eggs \n in one basket")
-                                    .fontWeight(.light)
-                                Spacer()
-                            }
+                            Text("Welcome to Stockoholic!")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
                             Spacer()
                         }
-                        Spacer()
+                        .padding(.bottom)
+                        
+                        Text("Trading Made Fun")
+                            .italic()
+                            .padding(.bottom)
+                        
+                        VStack {
+                            
+                            Text("Buy shares in 8 different companies with virtual currency and items to boost your net worth.")
+                                .fontWeight(.light)
+                                .font(.body)
+                                .padding(.bottom)
+                                .padding(.bottom)
+                                .multilineTextAlignment(.center)
+                            
+                            
+                            Text("Tips:")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.bottom)
+                        }
+                        Text("One method to predict stocks is Technical analysis. Technical analysis is the imbalance between the supply and demand of stocks which predict the trend of stock prices. In order to implement this Method you have to: \n\n1. Identifying the trend is it upwards or downwards or sideways trend? \nEach of these three price trends requires a different trading approach, depending on your trading strategy \n\n2. Drawing support and resistance level. \nWhat is a support level and a resistance level? A support level is a level where the downward price trend of an asset pauses as buying demand increases, so the trend reverses and turns upward A resistance levels where the upward price momentum of the asset weakens and the price is likely to reverse and head downward Support and resistance levels can provide excellent opportunities for traders to open new trades \n\n3. Establishing entry and exit point. \nidentifying areas of support and resistance can present excellent entry positions same with technical indicators such as the Average True Range (ATR) and Relative Strength Index (RSI) These can help a trader establish whether there’s adequate momentum behind a price move. \n\n4. Position sizing and risk management. \nTechnical momentum and volatility indicators such as the Average True Range are commonly used by professional traders to help with Position sizing and risk management. Depending on your chosen risk/reward ratio, you can use the ATR to determine where to place your stop loss once you’ve identified an entry position. \n\nAnother method is Graph patterns. Graphs patterns is what you think it is, patterns within graphs. There a multiple types of these patterns, such as: \n\n1. Reversal pattern. \nReversal pattern is a price pattern that signals a change in the prevailing trend is known as a reversal pattern. These patterns signify periods where the bulls or the bears have run out of steam. The established trend will pause, then head in a new direction as new energy emerges from the other side. (bull or bear) \n\n2. Continuation pattern. \nContinuation pattern is a continuation pattern can be considered a pause during a prevailing trend. This is when the bulls catch their breath during an uptrend or when the bears relax for a moment during a downtrend. While a price pattern is forming, there is no way to tell if the trend will continue or reverse. ")
+                            .fontWeight(.light)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        
+                        Text("Are you ready? Start trading now!")
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        Button{
+                            new2 = false
+                        } label: {
+                                Text("Start trading")
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .foregroundColor(.white)
+                        }
+                        
                     }
                 }
-                
             }
             .onDisappear {
                 new2 = false
