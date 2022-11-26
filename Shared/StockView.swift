@@ -49,14 +49,14 @@ struct StockView: View {
     @EnvironmentObject var stockManager: StockManager
     
     func UpdateStocks(){
-        stockManager.stocks[0].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        stockManager.stocks[1].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[1].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
-        stockManager.stocks[2].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[2].pricePerStockArray[0]) * Double.random(in: 0.975...1.025)))),at:0)
-        stockManager.stocks[3].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[3].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
-        stockManager.stocks[4].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        stockManager.stocks[5].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
-        stockManager.stocks[6].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
-        stockManager.stocks[7].pricePerStockArray.insert((Int(round(Double(stockManager.stocks[7].pricePerStockArray[0]) * Double.random(in: 0.958...1.042)))),at:0)
+        stockManager.stocks[0].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[0].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[1].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[1].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[2].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[2].pricePerStockArray[0]) * Double.random(in: 0.975...1.025)))),at:0)
+        stockManager.stocks[3].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[3].pricePerStockArray[0]) * Double.random(in: 0.925...1.075)))),at:0)
+        stockManager.stocks[4].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[4].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[5].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[5].pricePerStockArray[0]) * Double.random(in: 0.9...1.1)))),at:0)
+        stockManager.stocks[6].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[6].pricePerStockArray[0]) * Double.random(in: 0.95...1.05)))),at:0)
+        stockManager.stocks[7].pricePerStockArray.insert((Int(ceil(Double(stockManager.stocks[7].pricePerStockArray[0]) * Double.random(in: 0.958...1.042)))),at:0)
     }
     
     @State var show = false
@@ -182,12 +182,12 @@ struct StockView: View {
                 timeRemaining -= 1
                 
             } else {
-                while stockManager.stocks[0].pricePerStockArray.count < 12 {
+                while stockManager.stocks[0].pricePerStockArray.count < 17 {
                     UpdateStocks()
                 }
                 
                 for i in 0...5 {
-                    while stockManager.stocks[i].pricePerStockArray.count > 11{
+                    while stockManager.stocks[i].pricePerStockArray.count > 16{
                         stockManager.stocks[i].pricePerStockArray.removeLast()
                     }
                 }

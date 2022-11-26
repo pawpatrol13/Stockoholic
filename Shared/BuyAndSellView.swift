@@ -30,58 +30,94 @@ struct BuyAndSellView: View {
         } else {
             NavigationView{
                 List {
+                    Section{
+                        Text("Cash: \(cash)")
+                            .bold()
+                        Text("Shares: \(stockManager.stocks[stockNum].stocksOwned)")
+                    }
+                    
                     if #available(iOS 16.0, *) {
                         Chart{
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-90))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-90)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
+                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[14])
+                            )
+                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[14] > stockManager.stocks[stockNum].pricePerStockArray[15] ? Color.green : Color.red)
+                            
+                            BarMark(
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-65))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-65)))"),
+                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[13])
+                            )
+                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[13] > stockManager.stocks[stockNum].pricePerStockArray[14] ? Color.green : Color.red)
+                            
+                            BarMark(
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
+                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[12])
+                            )
+                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[12] > stockManager.stocks[stockNum].pricePerStockArray[13] ? Color.green : Color.red)
+                            
+                            BarMark(
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-55))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-55)))"),
+                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[11])
+                            )
+                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[11] > stockManager.stocks[stockNum].pricePerStockArray[12] ? Color.green : Color.red)
+                            
+                            BarMark(
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
+                                y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[10])
+                            )
+                            .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[10] > stockManager.stocks[stockNum].pricePerStockArray[11] ? Color.green : Color.red)
+                            
+                            BarMark(
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-45))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-45)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[9])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[9] > stockManager.stocks[stockNum].pricePerStockArray[10] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-80))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-80)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[8])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[8] > stockManager.stocks[stockNum].pricePerStockArray[9] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-70))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-70)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-35))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-35)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[7])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[7] > stockManager.stocks[stockNum].pricePerStockArray[8] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-60))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-60)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[6])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[6] > stockManager.stocks[stockNum].pricePerStockArray[7] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-50))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-50)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-25))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-25)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[5])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[5] > stockManager.stocks[stockNum].pricePerStockArray[6] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-40))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-40)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[4])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[4] > stockManager.stocks[stockNum].pricePerStockArray[5] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-30))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-30)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-15))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-15)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[3])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[3] > stockManager.stocks[stockNum].pricePerStockArray[4] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-20))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-20)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[2])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[2] > stockManager.stocks[stockNum].pricePerStockArray[3] ? Color.green : Color.red)
                             
                             BarMark(
-                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-10))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-10)))"),
+                                x: .value("Time", "\(Calendar.current.component(.minute, from: Date().addingTimeInterval(-5))):\(Calendar.current.component(.second, from: Date().addingTimeInterval(-5)))"),
                                 y: .value("Price", stockManager.stocks[stockNum].pricePerStockArray[1])
                             )
                             .foregroundStyle(stockManager.stocks[stockNum].pricePerStockArray[1] > stockManager.stocks[stockNum].pricePerStockArray[2] ? Color.green : Color.red)
@@ -144,13 +180,6 @@ struct BuyAndSellView: View {
                     }
                     
                     HStack {
-                        Text("Cost: $\(stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)")
-                            .padding()
-                        Text("Cash after transaction: $\(cash - (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying))")
-                            .padding()
-                    }
-                    
-                    HStack {
                         Spacer()
                         Button("Purchase") {
                             sureBuy = true
@@ -200,15 +229,7 @@ struct BuyAndSellView: View {
                                 Spacer()
                                 Stepper(value: $sharesToSell, in: 1...100000) {}
                             }
-                            
-                            HStack{
-                                Text("Worth: $\(stockManager.stocks[stockNum].pricePerStockArray[0]*sharesToSell)")
-                                    .padding()
-                                Text("Cash after transaction: $\(cash + (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesToSell))")
-                                    .padding()
-                                Text("Shares after transaction: $\(stockManager.stocks[stockNum].stocksOwned - sharesToSell)")
-                                    .padding()
-                            }
+
                             Spacer()
                         }
                         HStack {
