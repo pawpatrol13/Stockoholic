@@ -127,6 +127,15 @@ struct StockView: View {
                 BuyAndSellView(stockNum: currentStock ?? -1)
             }
             .navigationTitle("Stocks")
+            .toolbar(){
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button{
+                        new2 = true
+                    } label: {
+                        Image(systemName: "text.book.closed.fill")
+                    }
+                }
+            }
             .sheet(isPresented: $new2) {
                 VStack {
                     
