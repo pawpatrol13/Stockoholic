@@ -146,6 +146,7 @@ struct StockView: View {
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.center)
+                                .padding()
                             Spacer()
                         }
                         .padding(.bottom)
@@ -159,7 +160,7 @@ struct StockView: View {
                             Text("Buy shares in 8 different companies with virtual currency and items to boost your net worth.")
                                 .fontWeight(.light)
                                 .font(.body)
-                                .padding(.bottom)
+                                .padding()
                                 .padding(.bottom)
                                 .multilineTextAlignment(.center)
                             
