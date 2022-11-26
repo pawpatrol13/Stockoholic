@@ -159,12 +159,13 @@ struct BuyAndSellView: View {
                         .alert("Are you sure?", isPresented: $sureBuy) {
                             
                             HStack {
-                                Button("Yes") {                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
-                                    stockManager.stocks[stockNum].stocksOwned += sharesBuying
-                                    cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
-                                } else {
-                                    tooPoor = true
-                                }
+                                Button("Yes") {
+                                    if cash >= stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying {
+                                        stockManager.stocks[stockNum].stocksOwned += sharesBuying
+                                        cash -= (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesBuying)
+                                    } else {
+                                        tooPoor = true
+                                    }
                                     
                                 }
                                 Button("No") {}
@@ -205,7 +206,7 @@ struct BuyAndSellView: View {
                                     .padding()
                                 Text("Cash after transaction: $\(cash + (stockManager.stocks[stockNum].pricePerStockArray[0] * sharesToSell))")
                                     .padding()
-                                Text("Shares after transaction: \(stockManager.stocks[stockNum].stocksOwned - sharesToSell)")
+                                Text("Shares after transaction: $\(stockManager.stocks[stockNum].stocksOwned - sharesToSell)")
                                     .padding()
                             }
                             Spacer()
